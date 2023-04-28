@@ -15,6 +15,6 @@ namespace Game {
     }
 
     public class DisplayMessageEvent : GameEvent {
-        
+        public string Message;
     }
 }
