@@ -9,9 +9,7 @@ namespace Gameplay {
     public class HorizontalCharachterController : MonoBehaviour {
 
         public float velocity = 5f;
-        public float jumpForce = 10f;
-        private float gravity = 14f;
-        private float verticalVelocity;
+        public float jumpForce = 5f;
         private bool isGrounded = true;
         private int score = 0;
         private Rigidbody _rigidbody;
@@ -20,15 +18,17 @@ namespace Gameplay {
             _rigidbody = GetComponent<Rigidbody>();
         }
 
-        private void FixedUpdate() {
-            if (Input.GetKeyDown(KeyCode.Space) && isGrounded) {
-                _rigidbody.velocity = new Vector3(0, 5, 0) * velocity;
-                isGrounded = false;
+        private void Update() {
+            float moveHorizontal = Input.GetAxis("Horizontal");
+            
+            if(moveHorizontal != 0 && isGrounded) {
+                Vector3 movement = new Vector3(moveHorizontal, 0f, 0f);
+                _rigidbody.velocity = movement * velocity;
             }
             
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            Vector3 movement = new Vector3(moveHorizontal, 0f, 0f);
-            _rigidbody.velocity = movement * velocity;
+            if (Input.GetKeyDown(KeyCode.Space) && isGrounded) {
+                _rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            }
         }
 
         private void IncrementScore() {
@@ -39,9 +39,8 @@ namespace Gameplay {
         }
 
         private void OnCollisionEnter(Collision other) {
-            if (other.gameObject.CompareTag("Ground")) {
+            if (other.transform.CompareTag("Ground"))
                 isGrounded = true;
-            }
         }
 
         private void OnTriggerEnter(Collider other) {
