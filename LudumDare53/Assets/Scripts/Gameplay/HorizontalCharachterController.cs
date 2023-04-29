@@ -27,6 +27,7 @@ namespace Gameplay {
             }
             
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded) {
+                isGrounded = false;
                 _rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
         }
@@ -41,6 +42,9 @@ namespace Gameplay {
         private void OnCollisionEnter(Collision other) {
             if (other.transform.CompareTag("Ground"))
                 isGrounded = true;
+            else 
+                Debug.Log(other.transform.name);
+            
         }
 
         private void OnTriggerEnter(Collider other) {
