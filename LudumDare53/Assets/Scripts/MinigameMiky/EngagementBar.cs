@@ -32,8 +32,6 @@ public class EngagementBar : MonoBehaviour
                 current = 0.0f;
         }
 
-        Debug.Log(current);
-
         imageBar.fillAmount = current;
     }
 
