@@ -15,11 +15,15 @@ public class Spawner : MonoBehaviour
     public float maxGravity = -5.5f;
     public float minGravity = -4.0f;
 
+    private float maxDiff;
+
     public bool game = true;
 
     // Start is called before the first frame update
     void Start()
     {
+        maxDiff = (Mathf.Abs(leftBound) + Mathf.Abs(rightBound)) / 1.5f;
+
         game = true;
 
         if (prefabs.Length == 0)
@@ -32,9 +36,12 @@ public class Spawner : MonoBehaviour
 
     IEnumerator SpawnObject()
     {
-        while(game)
+        float prevObjX = 0.0f;
+
+        while (game)
         {
-            float wanted = Random.Range(leftBound, rightBound);
+            float wanted = Random.Range(Mathf.Max(leftBound, prevObjX - maxDiff), Mathf.Min(rightBound, prevObjX + maxDiff));
+            prevObjX = wanted;
             Vector3 position = new Vector3(wanted, spawnY, 0.0f);
 
             GameObject go = Instantiate(prefabs[Random.Range(0, prefabs.Length)], position, Quaternion.identity);
