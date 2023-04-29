@@ -9,9 +9,14 @@ namespace Game {
         public static GameOverEvent GameOverEvent = new GameOverEvent();
         public static DisplayMessageEvent DisplayMessageEvent = new DisplayMessageEvent();
         public static WallPassedEvent WallPassedEvent = new WallPassedEvent();
+        public static TimerTimeOutEvent TimerTimeOutEvent = new TimerTimeOutEvent();
     }
 
     public class GameOverEvent : GameEvent {
+        
+    }
+
+    public class TimerTimeOutEvent : GameEvent {
         
     }
 
