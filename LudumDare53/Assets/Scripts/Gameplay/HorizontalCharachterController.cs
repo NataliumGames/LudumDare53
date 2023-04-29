@@ -20,14 +20,12 @@ namespace Gameplay {
             _rigidbody = GetComponent<Rigidbody>();
         }
 
-        private void Update() {
+        private void FixedUpdate() {
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded) {
-                _rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                _rigidbody.velocity = new Vector3(0, 5, 0) * velocity;
                 isGrounded = false;
             }
-        }
-
-        private void FixedUpdate() {
+            
             float moveHorizontal = Input.GetAxis("Horizontal");
             Vector3 movement = new Vector3(moveHorizontal, 0f, 0f);
             _rigidbody.velocity = movement * velocity;
@@ -41,8 +39,9 @@ namespace Gameplay {
         }
 
         private void OnCollisionEnter(Collision other) {
-            if (other.gameObject.CompareTag("Ground"))
+            if (other.gameObject.CompareTag("Ground")) {
                 isGrounded = true;
+            }
         }
 
         private void OnTriggerEnter(Collider other) {
