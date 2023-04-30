@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Interactable
+  - Repairable
+  - Repaired
+  - Enemy
   layers:
   - Default
   - TransparentFX

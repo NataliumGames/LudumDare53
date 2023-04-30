@@ -10,6 +10,8 @@ namespace Game {
         public static DisplayMessageEvent DisplayMessageEvent = new DisplayMessageEvent();
         public static WallPassedEvent WallPassedEvent = new WallPassedEvent();
         public static TimerTimeOutEvent TimerTimeOutEvent = new TimerTimeOutEvent();
+        public static EngagementChangeEvent EngagementChangeEvent = new EngagementChangeEvent();
+        public static HittedByEnemyEvent HittedByEnemyEvent = new HittedByEnemyEvent();
     }
 
     public class GameOverEvent : GameEvent {
@@ -18,6 +20,14 @@ namespace Game {
 
     public class TimerTimeOutEvent : GameEvent {
         
+    }
+
+    public class HittedByEnemyEvent : GameEvent {
+        
+    }
+
+    public class EngagementChangeEvent : GameEvent {
+        public float Value;
     }
 
     public class WallPassedEvent : GameEvent {
