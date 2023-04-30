@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da43c3b2a764d7c906163cbeba103b0, type: 3}
   m_Name: BaDumTsFX
   m_EditorClassIdentifier: 
-  name: BaDumTs
+  soundName: DaBumTs
   clip: {fileID: 8300000, guid: 20907ade90ed22f409ad4801dbe28335, type: 3}
   volume: 0.7
   pitch: 1

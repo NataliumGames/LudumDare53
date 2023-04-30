@@ -21,7 +21,7 @@ namespace Game.Managers {
         */
 
         private void Update() {
-            Debug.Log("Scene Manager");
+            //Debug.Log("Scene Manager");
         }
 
         private void Start() {

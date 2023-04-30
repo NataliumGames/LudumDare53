@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da43c3b2a764d7c906163cbeba103b0, type: 3}
   m_Name: BroueFX
   m_EditorClassIdentifier: 
-  name: Broue
+  soundName: Broue
   clip: {fileID: 8300000, guid: 2895661d1cc359344a1860b50ca1ec13, type: 3}
   volume: 0.7
   pitch: 1

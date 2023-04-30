@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da43c3b2a764d7c906163cbeba103b0, type: 3}
   m_Name: Thump4FX
   m_EditorClassIdentifier: 
-  name: Thump4
+  soundName: Thump4
   clip: {fileID: 8300000, guid: 1b2a3e08ab70fee4c8c662fc07264a6b, type: 3}
   volume: 0.7
   pitch: 1
