@@ -19,6 +19,7 @@ namespace Gameplay {
             if (targetTransform != null) {
                 Vector3 targetDirection = targetTransform.position - transform.position;
                 _characterController.Move(targetDirection * speed * Time.deltaTime);
+                transform.LookAt(targetTransform);
             }
         }
 
