@@ -10,6 +10,7 @@ namespace Gameplay.Managers {
 
         public float spawnDelay = 3f;
         public float increaseDifficultyTime = 10f;
+        public float spawnDecreaseRate = 0.2f;
         public Transform spawnPos;
         public List<GameObject> wallPrefabs;
 
@@ -19,7 +20,7 @@ namespace Gameplay.Managers {
             instantiatedWalls = new List<GameObject>();
             
             InvokeRepeating("SpawnWall", 0f, spawnDelay);
-            InvokeRepeating("IncreaseDifficulty", 0f, increaseDifficultyTime);
+            StartCoroutine(IncreaseDifficulty());
         }
 
         private void SpawnWall() {
@@ -31,11 +32,20 @@ namespace Gameplay.Managers {
             StartCoroutine(DestroyGameobjectAfterDelay(wall, 5f));
         }
 
-        private void IncreaseDifficulty() {
-            spawnDelay -= 0.2f;
+        private IEnumerator IncreaseDifficulty() {
+            bool running = true;
+
+            while (running) {
+                if (spawnDelay <= 0.3)
+                    running = false;
+                else
+                    spawnDelay -= spawnDecreaseRate;
+
+                yield return new WaitForSeconds(increaseDifficultyTime);
+            }
         }
 
-        IEnumerator DestroyGameobjectAfterDelay(GameObject obj, float delay) {
+        private IEnumerator DestroyGameobjectAfterDelay(GameObject obj, float delay) {
             yield return new WaitForSeconds(delay);
             Destroy(obj);
             instantiatedWalls.Remove(obj);
