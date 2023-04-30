@@ -23,7 +23,7 @@ namespace UI {
         
 
         private void OnStartButtonPressed() {
-            FindObjectOfType<AudioManager>().FadeOut("MenuMusic", 1);
+            FindObjectOfType<AudioManager>().FadeOutMusic("MenuMusic", 1);
             FindObjectOfType<SceneManager>().LoadScene();
         }
         

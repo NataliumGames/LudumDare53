@@ -3,11 +3,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Managers {
 	public class AudioManager : MonoBehaviour {
 
-		public List<Sound> sounds = new List<Sound>();
+		public List<Sound> music = new List<Sound>();
+		public List<Sound> hitFx = new List<Sound>();
+		public List<Sound> thumpFx = new List<Sound>();
+		public List<Sound> soundFx = new List<Sound>();
 
 		public static AudioManager instance;
 		
@@ -22,7 +26,7 @@ namespace Managers {
 			
 			DontDestroyOnLoad(gameObject);
 			
-			foreach (Sound s in sounds) {
+			foreach (Sound s in music) {
 				s.source = gameObject.AddComponent<AudioSource>();
 				s.source.clip = s.clip;
 
@@ -33,11 +37,11 @@ namespace Managers {
 		}
 
 		private void Start() {
-			FadeIn("MenuMusic", 1);
+			FadeInMusic("MenuMusic", 1);
 		}
 
-		public void Play(string name) {
-			Sound s = sounds.Find(sound => sound.name == name);
+		public void PlayMusic(string name) {
+			Sound s = music.Find(sound => sound.name == name);
 			if (s == null) {
 				Debug.LogWarning("Sound " + name + " not found!");
 				return;
@@ -46,8 +50,8 @@ namespace Managers {
 			s.source.Play();
 		}
 		
-		public void FadeOut(string name, float duration) {
-			Sound s = sounds.Find(sound => sound.name == name);
+		public void FadeOutMusic(string name, float duration) {
+			Sound s = music.Find(sound => sound.name == name);
 			if (s == null) {
 				Debug.LogWarning("Sound " + name + " not found!");
 				return;
@@ -68,8 +72,8 @@ namespace Managers {
 			s.volume = startVolume;
 		}
 		
-		public void FadeIn(string name, float duration) {
-			Sound s = sounds.Find(sound => sound.name == name);
+		public void FadeInMusic(string name, float duration) {
+			Sound s = music.Find(sound => sound.name == name);
 			if (s == null) {
 				Debug.LogWarning("Sound " + name + " not found!");
 				return;
@@ -91,8 +95,8 @@ namespace Managers {
 			s.volume = topVolume;
 		}
 		
-		public void Stop(string name) {
-			Sound s = sounds.Find(sound => sound.name == name);
+		public void StopMusic(string name) {
+			Sound s = music.Find(sound => sound.name == name);
 			if (s == null) {
 				Debug.LogWarning("Sound " + name + " not found!");
 				return;
@@ -102,7 +106,7 @@ namespace Managers {
 		}
 		
 		private IEnumerator PlayDelayed(string name, float delay) {
-			Sound s = sounds.Find(sound => sound.name == name);
+			Sound s = music.Find(sound => sound.name == name);
 			if (s == null) {
 				Debug.LogWarning("Sound " + name + " not found!");
 				yield break;
