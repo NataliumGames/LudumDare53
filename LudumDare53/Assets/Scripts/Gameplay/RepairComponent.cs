@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Game;
 using Game.Managers;
+using Managers;
 using TMPro;
 using UI;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace Gameplay {
     public class RepairComponent : MonoBehaviour {
         
         public float engagementBonus = 0.1f;
-        
+
         private GameObject _canvas;
         private GameObject text;
         private GameObject gaugeBarGameObject;
@@ -18,8 +19,10 @@ namespace Gameplay {
         private GameObject nearGameobject;
         private bool canvasVisibility = false;
         private Engagement _engagement;
+        private AudioManager _audioManager;
 
         private void Start() {
+            _audioManager = FindObjectOfType<AudioManager>();
             _engagement = FindObjectOfType<Engagement>();
             _canvas = transform.GetChild(1).gameObject;
             text = _canvas.transform.GetChild(0).gameObject;
@@ -56,6 +59,7 @@ namespace Gameplay {
                 else {
                     gaugeBar.IncrementValueBy(0.1f);
                     _engagement.IncrementValueBy(engagementBonus);
+                    _audioManager.PlayFX("Build");
                 }
 
                 yield return new WaitForSeconds(1f);

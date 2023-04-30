@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Game;
 using Game.Managers;
+using Managers;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
@@ -13,12 +14,14 @@ namespace Gameplay {
         public float speed = 5f;
         public float invulnerabilityDuration = 3f;
         private CharacterController _characterController;
+        private AudioManager _audioManager;
         private bool isInvulnerable = true;
         private GameObject enemy;
         private GameObject attackText;
 
         private void Start() {
             _characterController = GetComponent<CharacterController>();
+            _audioManager = FindObjectOfType<AudioManager>();
             attackText = transform.GetChild(1).transform.GetChild(2).gameObject;
             
             EventManager.AddListener<EnemySpawnedEvent>(OnEnemySpawnedEvent);
@@ -39,6 +42,7 @@ namespace Gameplay {
                 if (Input.GetKeyDown(KeyCode.Space)) {
                     AttackEvent attackEvent = Events.AttackEvent;
                     EventManager.Broadcast(attackEvent);
+                    _audioManager.PlayPunch();
                 }
             } else {
                 attackText.SetActive(false);
@@ -58,6 +62,7 @@ namespace Gameplay {
             if (other.transform.CompareTag("Enemy") && !isInvulnerable) {
                 HittedByEnemyEvent hittedByEnemyEvent = Events.HittedByEnemyEvent;
                 EventManager.Broadcast(hittedByEnemyEvent);
+                _audioManager.PlayFX("Monkey");
             }
         }
 

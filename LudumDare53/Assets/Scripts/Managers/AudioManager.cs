@@ -9,6 +9,7 @@ using Random = UnityEngine.Random;
 namespace Managers {
 	public class AudioManager : MonoBehaviour {
 
+		public bool isMainMenu = false;
 		public List<Sound> music = new List<Sound>();
 		public List<Sound> damageFx = new List<Sound>();
 		public List<Sound> thumpFx = new List<Sound>();
@@ -74,7 +75,8 @@ namespace Managers {
 		}
 
 		private void Start() {
-			PlayMusic("MenuMusic");
+			if(isMainMenu)
+				PlayMusic("MenuMusic");
 		}
 
 		public void PlayMusic(string name) {
