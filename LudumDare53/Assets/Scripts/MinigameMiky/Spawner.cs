@@ -15,14 +15,16 @@ public class Spawner : MonoBehaviour
     public float maxGravity = -5.5f;
     public float minGravity = -4.0f;
 
-    private float maxDiff;
+    private float maxDistanceFromPrev;
+    private float gravityRange;
 
     public bool game = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        maxDiff = (Mathf.Abs(leftBound) + Mathf.Abs(rightBound)) / 1.5f;
+        maxDistanceFromPrev = (Mathf.Abs(leftBound) + Mathf.Abs(rightBound)) / 1.5f;
+        gravityRange = maxGravity - minGravity;
 
         game = true;
 
@@ -40,12 +42,18 @@ public class Spawner : MonoBehaviour
 
         while (game)
         {
-            float wanted = Random.Range(Mathf.Max(leftBound, prevObjX - maxDiff), Mathf.Min(rightBound, prevObjX + maxDiff));
-            prevObjX = wanted;
-            Vector3 position = new Vector3(wanted, spawnY, 0.0f);
+            float spawnX, gravityY;
+            GameObject go;
 
-            GameObject go = Instantiate(prefabs[Random.Range(0, prefabs.Length)], position, Quaternion.identity);
-            go.GetComponent<Obj>().customGravity.y = Random.Range(minGravity, maxGravity);
+            gravityY = Random.Range(minGravity, maxGravity);
+            //float tmp = (gravityY - minGravity) / gravityRange;
+            spawnX = Random.Range(Mathf.Max(leftBound, prevObjX - maxDistanceFromPrev), Mathf.Min(rightBound, prevObjX + maxDistanceFromPrev));
+            prevObjX = spawnX;
+            Vector3 position = new Vector3(spawnX, spawnY, 0.0f);
+
+            go = Instantiate(prefabs[Random.Range(0, prefabs.Length)], position, Quaternion.identity);
+            go.GetComponent<Obj>().customGravity.y = gravityY;
+
             yield return new WaitForSeconds(spawnRate);
         }
     }
