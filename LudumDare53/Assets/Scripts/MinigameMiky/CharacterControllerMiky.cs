@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterController : MonoBehaviour
+public class CharacterControllerMiky : MonoBehaviour
 {
     public float speed;
     public GameObject engBar;

@@ -18,25 +18,29 @@ namespace Gameplay.Managers {
 
         private void Start() {
             instantiatedWalls = new List<GameObject>();
-            
-            InvokeRepeating("SpawnWall", 0f, spawnDelay);
+
+            StartCoroutine(SpawnWall());
             StartCoroutine(IncreaseDifficulty());
         }
 
-        private void SpawnWall() {
-            Vector3 pos = new Vector3(Random.Range(-2.4f, 1.8f), spawnPos.position.y, spawnPos.position.z);
-            int randomIndex = Random.Range(0, wallPrefabs.Count);
-            GameObject wall = Instantiate(wallPrefabs[randomIndex], pos, Quaternion.identity);
-            wall.GetComponent<WallMover>().StartMovement();
-            instantiatedWalls.Add(wall);
-            StartCoroutine(DestroyGameobjectAfterDelay(wall, 5f));
+        private IEnumerator SpawnWall() {
+            while (true) {
+                Vector3 pos = new Vector3(Random.Range(-2.4f, 1.8f), spawnPos.position.y, spawnPos.position.z);
+                int randomIndex = Random.Range(0, wallPrefabs.Count);
+                GameObject wall = Instantiate(wallPrefabs[randomIndex], pos, Quaternion.identity);
+                wall.GetComponent<WallMover>().StartMovement();
+                instantiatedWalls.Add(wall);
+                StartCoroutine(DestroyGameobjectAfterDelay(wall, 5f));
+
+                yield return new WaitForSeconds(spawnDelay);
+            }
         }
 
         private IEnumerator IncreaseDifficulty() {
             bool running = true;
 
             while (running) {
-                if (spawnDelay <= 0.3)
+                if (spawnDelay <= 0.5)
                     running = false;
                 else
                     spawnDelay -= spawnDecreaseRate;
