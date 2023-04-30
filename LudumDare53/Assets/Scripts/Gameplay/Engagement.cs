@@ -15,7 +15,8 @@ namespace Gameplay {
         }
 
         private void Update() {
-            if (engagement == 0f) {
+            if (engagement <= 0f) {
+                engagement = 0f;
                 GameOverEvent gameOverEvent = Events.GameOverEvent;
                 EventManager.Broadcast(gameOverEvent);
             }

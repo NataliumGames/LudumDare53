@@ -33,6 +33,7 @@ namespace Gameplay.Managers {
 
         private void OnHittedByEnemyEvent(HittedByEnemyEvent evt) {
             cameraShake.Shake(0.1f);
+            engagementBar.DecrementValueBy(0.2f);
         }
 
         private void OnDestroy() {

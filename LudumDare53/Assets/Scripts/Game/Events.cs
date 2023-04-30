@@ -14,10 +14,20 @@ namespace Game {
         public static HittedByEnemyEvent HittedByEnemyEvent = new HittedByEnemyEvent();
         public static ObjectRepairedEvent ObjectRepairedEvent = new ObjectRepairedEvent();
         public static MinigameFinishedEvent MinigameFinishedEvent = new MinigameFinishedEvent();
+        public static AttackEvent AttackEvent = new AttackEvent();
+        public static EnemySpawnedEvent EnemySpawnedEvent = new EnemySpawnedEvent();
     }
 
     public class MinigameFinishedEvent : GameEvent {
         
+    }
+
+    public class EnemySpawnedEvent : GameEvent {
+        public GameObject Enemy;
+    }
+    
+    public class AttackEvent : GameEvent {
+    
     }
 
     public class GameOverEvent : GameEvent {

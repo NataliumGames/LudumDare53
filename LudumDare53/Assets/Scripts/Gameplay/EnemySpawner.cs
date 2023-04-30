@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game;
+using Game.Managers;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using Random = UnityEngine.Random;
@@ -37,6 +39,10 @@ namespace Gameplay {
                     float z = Random.Range(bounds.min.z, bounds.max.z);
                     GameObject instance = Instantiate(enemyPrefab, new Vector3(x, 0f, z), Quaternion.identity);
                     instantiatedEnemies.Add(instance);
+
+                    EnemySpawnedEvent enemySpawnedEvent = Events.EnemySpawnedEvent;
+                    enemySpawnedEvent.Enemy = instance;
+                    EventManager.Broadcast(enemySpawnedEvent);
                 }
                 
                 yield return new WaitForSeconds(spawnDelay);

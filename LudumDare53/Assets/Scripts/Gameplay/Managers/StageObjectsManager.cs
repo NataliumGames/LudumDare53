@@ -59,8 +59,14 @@ namespace Gameplay.Managers {
         }
 
         private void OnObjectRepaired(ObjectRepairedEvent evt) {
-            GameObject g = instantiatedGameobjects.Find(obj => obj.name.Equals(evt.Object.name));
-            g.tag = "Repaired";
+            GameObject g = instantiatedGameobjects.Find(obj => obj == evt.Object);
+            if (g.name.Contains("Bottle")) {
+                instantiatedGameobjects.Remove(g);
+                Destroy(g);
+            } else {
+                g.tag = "Repaired";
+                g.transform.GetChild(1).gameObject.SetActive(false);
+            }
         }
 
         private void OnDestroy() {
