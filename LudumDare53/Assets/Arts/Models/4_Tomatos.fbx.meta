@@ -1,9 +1,34 @@
 fileFormatVersion: 2
-guid: c465e1ff4dd0d48408ae37133509c3d2
+guid: f4705a2634cc8b84cac0c37377436d58
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_tomatos
+    second: {fileID: 2100000, guid: 334db914b916d104f9b10c0541de4dca, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mat_tomatos_Base_Color
+    second: {fileID: 2800000, guid: f4c890397d889b741b6c771e72436919, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mat_tomatos_Metallic
+    second: {fileID: 2800000, guid: 38c96d464826c944db2d92284728a372, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mat_tomatos_Normal
+    second: {fileID: 2800000, guid: a2051f7187c5124498cc0a3a263b5de1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: mat_tomatos_Roughness
+    second: {fileID: 2800000, guid: dab2f5b45c0302643921c0a63582aa72, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
