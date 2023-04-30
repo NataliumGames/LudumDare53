@@ -18,7 +18,7 @@ public class Spawner : MonoBehaviour
     private float maxDistanceFromPrev;
     private float gravityRange;
 
-    public bool game = true;
+    private bool isRunning = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,21 +26,30 @@ public class Spawner : MonoBehaviour
         maxDistanceFromPrev = (Mathf.Abs(leftBound) + Mathf.Abs(rightBound)) / 1.5f;
         gravityRange = maxGravity - minGravity;
 
-        game = true;
-
+        
         if (prefabs.Length == 0)
         {
             Debug.Log("No prefabs!");
             return;
         }
+    }
+
+    public void StartSpawner()
+    {
+        isRunning = true;
         StartCoroutine(SpawnObject());
+    }
+
+    public void StopSpawner()
+    {
+        isRunning = false;
     }
 
     IEnumerator SpawnObject()
     {
         float prevObjX = 0.0f;
 
-        while (game)
+        while (isRunning)
         {
             float spawnX, gravityY;
             GameObject go;
@@ -51,10 +60,17 @@ public class Spawner : MonoBehaviour
             prevObjX = spawnX;
             Vector3 position = new Vector3(spawnX, spawnY, 0.0f);
 
-            go = Instantiate(prefabs[Random.Range(0, prefabs.Length)], position, Quaternion.identity);
+            go = Instantiate(prefabs[Random.Range(0, prefabs.Length)], transform);
+            go.transform.position = position;
+            go.transform.rotation = Quaternion.identity;
             go.GetComponent<Obj>().customGravity.y = gravityY;
 
             yield return new WaitForSeconds(spawnRate);
         }
+    }
+
+    public int GetSpawnedObj()
+    {
+        return transform.childCount;
     }
 }
