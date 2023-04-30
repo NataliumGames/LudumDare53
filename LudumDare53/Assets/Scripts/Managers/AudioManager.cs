@@ -1,0 +1,116 @@
+﻿using Game;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Managers {
+	public class AudioManager : MonoBehaviour {
+
+		public List<Sound> sounds = new List<Sound>();
+
+		public static AudioManager instance;
+		
+		void Awake() {
+
+			if (instance == null)
+				instance = this;
+			else {
+				Destroy(gameObject);
+				return;
+			}
+			
+			DontDestroyOnLoad(gameObject);
+			
+			foreach (Sound s in sounds) {
+				s.source = gameObject.AddComponent<AudioSource>();
+				s.source.clip = s.clip;
+
+				s.source.volume = s.volume;
+				s.source.pitch = s.pitch;
+				s.source.loop = s.loop;
+			}
+		}
+
+		private void Start() {
+			FadeIn("MenuMusic", 1);
+		}
+
+		public void Play(string name) {
+			Sound s = sounds.Find(sound => sound.name == name);
+			if (s == null) {
+				Debug.LogWarning("Sound " + name + " not found!");
+				return;
+			}
+				
+			s.source.Play();
+		}
+		
+		public void FadeOut(string name, float duration) {
+			Sound s = sounds.Find(sound => sound.name == name);
+			if (s == null) {
+				Debug.LogWarning("Sound " + name + " not found!");
+				return;
+			}
+			
+			s.source.GetComponent<MonoBehaviour>().StartCoroutine(FadeOutCore(s.source, duration));
+		}
+ 
+		private static IEnumerator FadeOutCore(AudioSource s, float duration) {
+			float startVolume = s.volume;
+ 
+			while (s.volume > 0) {
+				s.volume -= startVolume * Time.deltaTime / duration;
+				yield return new WaitForEndOfFrame();
+			}
+ 
+			s.Stop();
+			s.volume = startVolume;
+		}
+		
+		public void FadeIn(string name, float duration) {
+			Sound s = sounds.Find(sound => sound.name == name);
+			if (s == null) {
+				Debug.LogWarning("Sound " + name + " not found!");
+				return;
+			}
+			
+			s.source.GetComponent<MonoBehaviour>().StartCoroutine(FadeInCore(s.source, duration));
+		}
+ 
+		private static IEnumerator FadeInCore(AudioSource s, float duration) {
+			float topVolume = s.volume;
+			s.volume = 0;
+			s.Play();
+ 
+			while (s.volume < topVolume) {
+				s.volume += topVolume * Time.deltaTime / duration;
+				yield return new WaitForEndOfFrame();
+			}
+ 
+			s.volume = topVolume;
+		}
+		
+		public void Stop(string name) {
+			Sound s = sounds.Find(sound => sound.name == name);
+			if (s == null) {
+				Debug.LogWarning("Sound " + name + " not found!");
+				return;
+			}
+
+			s.source.Stop();
+		}
+		
+		private IEnumerator PlayDelayed(string name, float delay) {
+			Sound s = sounds.Find(sound => sound.name == name);
+			if (s == null) {
+				Debug.LogWarning("Sound " + name + " not found!");
+				yield break;
+			}
+
+			yield return new WaitForSeconds(delay);
+			s.source.Play();
+		}
+
+	}
+}

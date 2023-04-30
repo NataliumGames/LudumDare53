@@ -1,5 +1,6 @@
 using System;
 using Game.Managers;
+using Managers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +23,7 @@ namespace UI {
         
 
         private void OnStartButtonPressed() {
+            FindObjectOfType<AudioManager>().FadeOut("MenuMusic", 1);
             FindObjectOfType<SceneManager>().LoadScene();
         }
         
