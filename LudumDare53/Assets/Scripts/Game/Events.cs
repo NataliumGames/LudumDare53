@@ -13,6 +13,11 @@ namespace Game {
         public static EngagementChangeEvent EngagementChangeEvent = new EngagementChangeEvent();
         public static HittedByEnemyEvent HittedByEnemyEvent = new HittedByEnemyEvent();
         public static ObjectRepairedEvent ObjectRepairedEvent = new ObjectRepairedEvent();
+        public static MinigameFinishedEvent MinigameFinishedEvent = new MinigameFinishedEvent();
+    }
+
+    public class MinigameFinishedEvent : GameEvent {
+        
     }
 
     public class GameOverEvent : GameEvent {

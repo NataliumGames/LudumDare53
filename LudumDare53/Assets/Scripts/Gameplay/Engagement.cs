@@ -14,6 +14,13 @@ namespace Gameplay {
             Invoke("BeginDecrease", 2f);
         }
 
+        private void Update() {
+            if (engagement == 0f) {
+                GameOverEvent gameOverEvent = Events.GameOverEvent;
+                EventManager.Broadcast(gameOverEvent);
+            }
+        }
+
         public void IncrementValueBy(float value) {
             engagement += value;
             BroadcastChange(engagement);
@@ -34,7 +41,6 @@ namespace Gameplay {
             EventManager.Broadcast(engagementChangeEvent);
         }
 
-        // TODO: gameover
         private IEnumerator DecreaseOverTime() {
             while (true) {
                 engagement -= naturalDecrease;

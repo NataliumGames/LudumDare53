@@ -16,9 +16,14 @@ namespace Gameplay.Managers {
             cameraShake = FindObjectOfType<CameraShake>();
             EventManager.AddListener<EngagementChangeEvent>(OnEngagementChange);
             EventManager.AddListener<HittedByEnemyEvent>(OnHittedByEnemyEvent);
+            EventManager.AddListener<GameOverEvent>(OnGameOverEvent);
         }
 
         private void Update() {
+            
+        }
+
+        private void OnGameOverEvent(GameOverEvent evt) {
             
         }
 
@@ -33,6 +38,7 @@ namespace Gameplay.Managers {
         private void OnDestroy() {
             EventManager.RemoveListener<EngagementChangeEvent>(OnEngagementChange);
             EventManager.RemoveListener<HittedByEnemyEvent>(OnHittedByEnemyEvent);
+            EventManager.RemoveListener<GameOverEvent>(OnGameOverEvent);
         }
     }
 }
