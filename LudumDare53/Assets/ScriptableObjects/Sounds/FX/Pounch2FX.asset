@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da43c3b2a764d7c906163cbeba103b0, type: 3}
   m_Name: Pounch2FX
   m_EditorClassIdentifier: 
-  name: Punch2
+  soundName: Punch2
   clip: {fileID: 8300000, guid: 3597b7fdab86dd7408bd5a90335b41a1, type: 3}
   volume: 0.7
   pitch: 1

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da43c3b2a764d7c906163cbeba103b0, type: 3}
   m_Name: MonkeyFX
   m_EditorClassIdentifier: 
-  name: Monkey
+  soundName: Monkey
   clip: {fileID: 8300000, guid: 40e9e231e7470324fa36f08e03306bfd, type: 3}
   volume: 0.7
   pitch: 1

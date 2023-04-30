@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Serialization;
 
 namespace Game {
 	
 	[CreateAssetMenu(menuName = "Sound")]
 	public class Sound : ScriptableObject {
 
-		public string name = "name";
+		public string soundName = "name";
 		public AudioClip clip;
 
 		[Range(0f, 1f)]

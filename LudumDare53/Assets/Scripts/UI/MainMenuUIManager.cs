@@ -24,7 +24,8 @@ namespace UI {
 
         private void OnStartButtonPressed() {
             FindObjectOfType<AudioManager>().FadeOutMusic("MenuMusic", 1);
-            FindObjectOfType<SceneManager>().LoadScene();
+            FindObjectOfType<AudioManager>().PlayFX("Broue");
+            //FindObjectOfType<SceneManager>().LoadScene();
         }
         
         private void OnInfoButtonPressed() {

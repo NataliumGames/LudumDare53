@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da43c3b2a764d7c906163cbeba103b0, type: 3}
   m_Name: Damage4FX
   m_EditorClassIdentifier: 
-  name: Damage4
+  soundName: Damage4
   clip: {fileID: 8300000, guid: 3072d9e5a072b13479378b9266776d6f, type: 3}
-  volume: 0.7
+  volume: 0.55
   pitch: 1
   loop: 0
   source: {fileID: 0}

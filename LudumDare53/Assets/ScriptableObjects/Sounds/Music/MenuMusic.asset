@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da43c3b2a764d7c906163cbeba103b0, type: 3}
   m_Name: MenuMusic
   m_EditorClassIdentifier: 
-  name: MenuMusic
+  soundName: MenuMusic
   clip: {fileID: 8300000, guid: ee584d4fd08746d40a4ac7f3a580adc7, type: 3}
-  volume: 0.6
+  volume: 0.45
   pitch: 1
   loop: 1
   source: {fileID: 0}
