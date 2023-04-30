@@ -6,7 +6,7 @@ namespace Game {
         public Transform camTransform;
         public float shakeDuration = 0f;
 	
-        public float shakeAmount = 0.7f;
+        public float shakeAmount = 0.3f;
         public float decreaseFactor = 1.0f;
 	
         Vector3 originalPos;

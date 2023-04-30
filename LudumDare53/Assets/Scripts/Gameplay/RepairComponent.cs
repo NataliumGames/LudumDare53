@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using Game;
+using Game.Managers;
 using TMPro;
 using UI;
 using UnityEngine;
@@ -7,14 +9,18 @@ using UnityEngine;
 namespace Gameplay {
     public class RepairComponent : MonoBehaviour {
         
+        public float engagementBonus = 0.1f;
+        
         private GameObject _canvas;
         private GameObject text;
         private GameObject gaugeBarGameObject;
         private GaugeBar gaugeBar;
         private GameObject nearGameobject;
         private bool canvasVisibility = false;
+        private Engagement _engagement;
 
         private void Start() {
+            _engagement = FindObjectOfType<Engagement>();
             _canvas = transform.GetChild(1).gameObject;
             text = _canvas.transform.GetChild(0).gameObject;
             gaugeBarGameObject = _canvas.transform.GetChild(1).gameObject;
@@ -37,10 +43,20 @@ namespace Gameplay {
             bool running = true;
 
             while (running) {
-                if (gaugeBar.value == 1f)
+                if (gaugeBar.value == 1f) {
                     running = false;
-                else 
+
+                    ObjectRepairedEvent objectRepairedEvent = Events.ObjectRepairedEvent;
+                    objectRepairedEvent.Object = nearGameobject;
+                    EventManager.Broadcast(objectRepairedEvent);
+                    
+                    gaugeBar.SetBarValue(0f);
+                    gaugeBarGameObject.SetActive(false);
+                }
+                else {
                     gaugeBar.IncrementValueBy(0.1f);
+                    _engagement.IncrementValueBy(engagementBonus);
+                }
 
                 yield return new WaitForSeconds(1f);
             }

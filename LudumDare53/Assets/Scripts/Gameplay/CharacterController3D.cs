@@ -23,7 +23,7 @@ namespace Gameplay {
             _characterController.Move(moveDirection * speed * Time.deltaTime);
         }
 
-        private void OnCollisionEnter(Collision other) {
+        private void OnTriggerEnter(Collider other) {
             if (other.transform.CompareTag("Enemy")) {
                 Debug.Log("Hitted");
                 HittedByEnemyEvent hittedByEnemyEvent = Events.HittedByEnemyEvent;

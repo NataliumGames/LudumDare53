@@ -12,6 +12,7 @@ namespace Game {
         public static TimerTimeOutEvent TimerTimeOutEvent = new TimerTimeOutEvent();
         public static EngagementChangeEvent EngagementChangeEvent = new EngagementChangeEvent();
         public static HittedByEnemyEvent HittedByEnemyEvent = new HittedByEnemyEvent();
+        public static ObjectRepairedEvent ObjectRepairedEvent = new ObjectRepairedEvent();
     }
 
     public class GameOverEvent : GameEvent {
@@ -24,6 +25,10 @@ namespace Game {
 
     public class HittedByEnemyEvent : GameEvent {
         
+    }
+
+    public class ObjectRepairedEvent : GameEvent {
+        public GameObject Object;
     }
 
     public class EngagementChangeEvent : GameEvent {
