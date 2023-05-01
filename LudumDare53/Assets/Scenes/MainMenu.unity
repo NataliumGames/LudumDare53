@@ -2079,17 +2079,18 @@ MonoBehaviour:
   m_text: 'This game was created in 72 hours during the game jam Ludum Dare 53.
 
     Punchline!
-    is an ignorant game made by 4 students for fun, so don''t expect much from it.
+    is an ignorant game made by 4 students for fun, so don''t expect much from it,
+    or do it''s a free world.
 
-    We
-    tried our best and it''s our first Game Jam so go easy with the insults nerds.
+    It actually is our first time making a complete
+    game, and had a lot of fun doing it!
 
-    We
-    hope you enjoy our little game, let us know if you want to offer us a coffee
-    (but a good one ''cause we are italian).
+    We really hope you enjoy it, let us
+    know if you want to offer us a coffee (but a good one ''cause we are italian).
 
 
-    Thanks for playing!
+    Thanks
+    for playing!
 
     NataliumGames'
   m_isRightToLeft: 0
@@ -2735,7 +2736,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1509404273}
-  m_LocalRotation: {x: -0.027812283, y: 0.85834163, z: 0.046791926, w: 0.5101829}
+  m_LocalRotation: {x: -0.02781228, y: 0.8583417, z: 0.04679192, w: 0.510183}
   m_LocalPosition: {x: 33.69151, y: 28.74, z: 58.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3515,7 +3516,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1928597070}
-  m_LocalRotation: {x: -0.027812283, y: 0.85834163, z: 0.046791926, w: 0.5101829}
+  m_LocalRotation: {x: -0.02781228, y: 0.8583417, z: 0.04679192, w: 0.510183}
   m_LocalPosition: {x: 18.962677, y: 34.180275, z: 45.434223}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
