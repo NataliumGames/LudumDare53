@@ -31,7 +31,6 @@ public class GameManagerFallingObjects : MonoBehaviour
     private CameraShake cameraShake;
 
     private TextMeshProUGUI textCurrentScore;
-    private TextMeshProUGUI textCurrentTime;
     private TextMeshProUGUI textLevelCompletedScoreValue;
     private TextMeshProUGUI textLevelCompletedEngagementValue;
 
@@ -58,15 +57,13 @@ public class GameManagerFallingObjects : MonoBehaviour
         timer = FindObjectOfType<Timer>();
         cameraShake = FindObjectOfType<CameraShake>();
 
-        timer.timeRemaining = 10;
+        timer.timeRemaining = gameDuration;
         gaugeBar.value = 1.0f;
 
         foreach (TextMeshProUGUI t in gameStatsGameObject.GetComponentsInChildren<TextMeshProUGUI>())
         {
             if (t.name == "TextCurrentScore")
                 textCurrentScore = t;
-            if (t.name == "TextCurrentTime")
-                textCurrentTime = t;
         }
         foreach (TextMeshProUGUI t in levelCompletedGameObject.GetComponentsInChildren<TextMeshProUGUI>())
         {
@@ -134,9 +131,13 @@ public class GameManagerFallingObjects : MonoBehaviour
             gameOver = true;
 
             gameStatsGameObject.SetActive(false);
-            gameOverGameObject.SetActive(true);
+
+            spawner.StopSpawner();
 
             characterController.SetGameRunning(true);
+
+            GameOverEvent gameOverEvent = Events.GameOverEvent;
+            EventManager.Broadcast(gameOverEvent);
 
             timer.StopTimer();
             EventManager.RemoveListener<TimerTimeOutEvent>(OnTimeout);

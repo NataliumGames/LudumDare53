@@ -13,8 +13,8 @@ namespace UI {
 
         private void Awake() {
             EventManager.AddListener<GameOverEvent>(OnGameOverEvent);
-            startButton = gameoverPanel.transform.GetChild(2).GetComponent<Button>();
-            quitButton = gameoverPanel.transform.GetChild(3).GetComponent<Button>();
+            startButton = gameoverPanel.transform.GetChild(1).GetComponent<Button>();
+            quitButton = gameoverPanel.transform.GetChild(2).GetComponent<Button>();
             
             startButton.onClick.AddListener(StartButtonPressed);
             quitButton.onClick.AddListener(QuitButtonPressed);
@@ -22,8 +22,10 @@ namespace UI {
 
         private void StartButtonPressed() {
             SceneManager sceneManager = FindObjectOfType<SceneManager>();
-            if(sceneManager != null)
+            if (sceneManager != null)
+            {
                 sceneManager.LoadMainMenu();
+            }
         }
 
         private void QuitButtonPressed() {
