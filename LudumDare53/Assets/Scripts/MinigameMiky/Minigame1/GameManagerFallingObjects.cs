@@ -27,7 +27,7 @@ public class GameManagerFallingObjects : MonoBehaviour
     private Spawner spawner;
     private Timer timer;
     private GaugeBarVertical gaugeBar;
-    private CharacterControllerMiky characterController;
+    private CharacterControllerFallingObjects characterController;
     private CameraShake cameraShake;
 
     private TextMeshProUGUI textCurrentScore;
@@ -50,7 +50,7 @@ public class GameManagerFallingObjects : MonoBehaviour
 
     void Start()
     {
-        characterController = playerGameObject.GetComponent<CharacterControllerMiky>();
+        characterController = playerGameObject.GetComponent<CharacterControllerFallingObjects>();
 
         spawner = FindObjectOfType<Spawner>();
         audioManager = FindObjectOfType<AudioManager>();
@@ -81,7 +81,7 @@ public class GameManagerFallingObjects : MonoBehaviour
         levelCompletedGameObject.SetActive(false);
         gameOverGameObject.SetActive(false);
 
-        playerGameObject.GetComponent<CharacterControllerMiky>().SetCollisionCallback((v) => {
+        playerGameObject.GetComponent<CharacterControllerFallingObjects>().SetCollisionCallback((v) => {
             
             if (v > 0.0f)
             {
@@ -166,7 +166,6 @@ public class GameManagerFallingObjects : MonoBehaviour
 
     private void OnTimeout(TimerTimeOutEvent e)
     {
-        Debug.Log("Timeout");
         levelCompleted = true;
         spawner.StopSpawner();
         

@@ -157,8 +157,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  engBar: {fileID: 331713436}
-  points: 1
 --- !u!54 &232368612
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -699,15 +697,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 985aa276e5d6f284f836a69fc004407e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs:
-  - {fileID: 7338661569254077446, guid: d8c9634e807609a4f8fa62d951a3ba3d, type: 3}
+  bonusPrefabs: []
+  malusPrefabs: []
   spawnRate: 1
   spawnY: 7
   leftBound: -8
   rightBound: 8
   maxGravity: -5.5
   minGravity: -4
-  game: 1
 --- !u!1 &1208599172
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterControllerMiky : MonoBehaviour
+public class CharacterControllerFallingObjects : MonoBehaviour
 {
     public float speed;
 
