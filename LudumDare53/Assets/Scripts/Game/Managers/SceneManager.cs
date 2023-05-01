@@ -18,7 +18,7 @@ namespace Game.Managers {
         }
 
         public void LoadNextMinigameScene() {
-            string minigame = setupScenes[Random.Range(0, setupScenes.Count - 1)];
+            string minigame = setupScenes[Random.Range(0, setupScenes.Count)];
             setupScenes.Remove(minigame);
             currentScene = minigame;
             UnityEngine.SceneManagement.SceneManager.LoadScene(minigame, LoadSceneMode.Single);
