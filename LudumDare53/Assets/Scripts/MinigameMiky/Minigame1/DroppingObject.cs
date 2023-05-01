@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obj : MonoBehaviour
+public class DroppingObject : MonoBehaviour
 {
     public Vector3 customGravity;
+    public Vector3 rotation;
+
     private Rigidbody rb;
     
     // Start is called before the first frame update
@@ -16,6 +18,8 @@ public class Obj : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.Rotate(rotation * Time.deltaTime); // The main part of the rotation script.
+
         if (transform.position.y < -10.0f)
             Destroy(gameObject);
     }

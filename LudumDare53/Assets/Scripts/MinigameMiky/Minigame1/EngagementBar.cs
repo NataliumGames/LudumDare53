@@ -9,7 +9,8 @@ public class EngagementBar : MonoBehaviour
 
     public float decrease = 0.02f;
     public float initValue = 1.0f;
-    public float pointValue = 0.025f;
+    public float bonusValue = 0.025f;
+    public float malusValue = -0.05f;
 
     private Image imageBar;
 
@@ -35,9 +36,9 @@ public class EngagementBar : MonoBehaviour
             if (current > 0.0f)
             {
                 current -= decrease * Time.deltaTime;
-                if (current < 0.0f)
-                    current = 0.0f;
             }
+            if (current < 0.0f)
+                current = 0.0f;
 
             imageBar.fillAmount = current;
         }
@@ -48,14 +49,19 @@ public class EngagementBar : MonoBehaviour
         return current;
     }
 
-    void AddPoints(float pts)
+    public void AddPoints(float pts)
     {
         current += pts;
     }
 
-    public void AddPoint()
+    public void AddBonus()
     {
-        current += pointValue;
+        current += bonusValue;
+    }
+
+    public void AddMalus()
+    {
+        current += malusValue;
     }
 
     public void StartEngagementBar(float initVal)

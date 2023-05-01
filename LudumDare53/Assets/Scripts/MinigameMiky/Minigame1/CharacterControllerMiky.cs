@@ -6,11 +6,9 @@ public class CharacterControllerMiky : MonoBehaviour
 {
     public float speed;
 
-    public float points = 1.0f;
-
     private Rigidbody rb;
 
-    public delegate void TriggerCallback();
+    public delegate void TriggerCallback(float points);
     private TriggerCallback callback;
 
     private bool gameOver = false;
@@ -18,7 +16,6 @@ public class CharacterControllerMiky : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        points = 1.0f;
 
         rb = GetComponent<Rigidbody>();
     }
@@ -43,10 +40,17 @@ public class CharacterControllerMiky : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //points += 1.0f;
+        if (other.name.Contains("Tomato"))
+        {
+            callback(-1.0f);
+        }
+        else
+        {
+            callback(1.0f);
+        }
+
         Destroy(other.gameObject);
 
-        callback();
     }
 
     public void SetGameOver(bool gameOver)

@@ -17,6 +17,8 @@ public class GameManagerMinigame1 : MonoBehaviour
     public GameObject playerGameObject;
 
     public int gameDuration = 60;
+    public float bonusPoints = 0.05f;
+    public float malusPoints = -0.1f;
 
     private Spawner spawner;
     private TimerNew timer;
@@ -46,8 +48,16 @@ public class GameManagerMinigame1 : MonoBehaviour
         gameStats.SetActive(false);
         minigameOver.SetActive(false);
 
-        playerGameObject.GetComponent<CharacterControllerMiky>().SetCollisionCallback(() => {
-            engagementBar.AddPoint();
+        playerGameObject.GetComponent<CharacterControllerMiky>().SetCollisionCallback((v) => {
+            
+            if (v > 0.0f)
+            {
+                engagementBar.AddPoints(bonusPoints);
+            }
+            else
+            {
+                engagementBar.AddPoints(malusPoints);
+            }
         });
     }
 
@@ -79,7 +89,7 @@ public class GameManagerMinigame1 : MonoBehaviour
                 engagementBar.StopEngagementBar();
 
                 characterController.SetGameOver(true);
-                textMinigameOver.text = "Engagement: " + (Mathf.Max(1.0f, engagementBar.GetCurrent()) * 100).ToString("F0") + "%";
+                textMinigameOver.text = "Engagement: " + (Mathf.Min(1.0f, engagementBar.GetCurrent()) * 100).ToString("F0") + "%";
             }
         }
     }

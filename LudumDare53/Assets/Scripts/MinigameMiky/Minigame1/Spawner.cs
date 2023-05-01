@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject[] prefabs;
+    public GameObject[] bonusPrefabs;
+    public GameObject[] malusPrefabs;
 
     public float spawnRate = 1.0f;
     public float spawnY = 7.0f;
@@ -18,6 +19,8 @@ public class Spawner : MonoBehaviour
     private float maxDistanceFromPrev;
     private float gravityRange;
 
+    private int bonusCount = 0;
+
     private bool isRunning = false;
 
     // Start is called before the first frame update
@@ -27,9 +30,9 @@ public class Spawner : MonoBehaviour
         gravityRange = maxGravity - minGravity;
 
         
-        if (prefabs.Length == 0)
+        if (bonusPrefabs.Length == 0 && malusPrefabs.Length == 0)
         {
-            Debug.Log("No prefabs!");
+            Debug.Log("No prefabs loaded!");
             return;
         }
     }
@@ -60,12 +63,24 @@ public class Spawner : MonoBehaviour
             prevObjX = spawnX;
             Vector3 position = new Vector3(spawnX, spawnY, 0.0f);
 
-            go = Instantiate(prefabs[Random.Range(0, prefabs.Length)], transform);
+            // spawn bonus or malus
+            if(bonusCount < 3 || Random.Range(0, 2) == 1)
+            {
+                bonusCount++;
+                go = Instantiate(bonusPrefabs[Random.Range(0, bonusPrefabs.Length)], transform);
+            }
+            else
+            {
+                bonusCount = 0;
+                go = Instantiate(malusPrefabs[Random.Range(0, malusPrefabs.Length)], transform);
+            }
+
             go.transform.position = position;
             go.transform.rotation = Quaternion.identity;
-            go.GetComponent<Obj>().customGravity.y = gravityY;
+            go.transform.Rotate(new Vector3(Random.Range(0.0f, 180.0f), Random.Range(0.0f, 180.0f), 0.0f));
+            go.GetComponent<DroppingObject>().customGravity.y = gravityY;
 
-            yield return new WaitForSeconds(spawnRate);
+            yield return new WaitForSeconds(1.0f / spawnRate);
         }
     }
 
