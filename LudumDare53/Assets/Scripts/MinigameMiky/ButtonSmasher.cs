@@ -5,15 +5,13 @@ using UnityEngine;
 
 public class ButtonSmasher : MonoBehaviour
 {
-    public GameObject textGameObject;
 
-    private int counter = 0;
-    private TextMeshProUGUI text;
+    public int counter = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        text = textGameObject.GetComponent<TextMeshProUGUI>();
+        //text = textGameObject.GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
@@ -22,7 +20,7 @@ public class ButtonSmasher : MonoBehaviour
         if(Input.GetKeyDown("space"))
         {
             counter++;
-            text.text = "Counter: " + counter;
+            Debug.Log("Counter: " + counter);
         }
 
     }
