@@ -84,7 +84,7 @@ public class GameManagerFallingObjects : MonoBehaviour
             
             if (v > 0.0f)
             {
-                //audioManager.PlayFX("");
+                audioManager.PlayBurp();
                 gaugeBar.IncrementValueBy(bonusEngagement);
                 score += bonusScore;
             }

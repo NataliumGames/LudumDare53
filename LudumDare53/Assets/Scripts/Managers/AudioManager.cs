@@ -14,6 +14,7 @@ namespace Managers {
 		public List<Sound> damageFx = new List<Sound>();
 		public List<Sound> thumpFx = new List<Sound>();
 		public List<Sound> punchFx = new List<Sound>();
+		public List<Sound> burpFx = new List<Sound>();
 		public List<Sound> soundFx = new List<Sound>();
 
 		public static AudioManager instance;
@@ -64,6 +65,15 @@ namespace Managers {
 				s.source.loop = s.loop;
 			}
 			
+			foreach (Sound s in burpFx) {
+				s.source = gameObject.AddComponent<AudioSource>();
+				s.source.clip = s.clip;
+
+				s.source.volume = s.volume;
+				s.source.pitch = s.pitch;
+				s.source.loop = s.loop;
+			}
+			
 			foreach (Sound s in soundFx) {
 				s.source = gameObject.AddComponent<AudioSource>();
 				s.source.clip = s.clip;
@@ -77,6 +87,8 @@ namespace Managers {
 		private void Start() {
 			if(isMainMenu)
 				PlayMusic("MenuMusic");
+			else 
+				PlayMusic("MainMusic");
 		}
 
 		public void TransitionMusic(string name) {
@@ -84,7 +96,7 @@ namespace Managers {
 				if (s.source.isPlaying)
 					FadeOutMusic(s.name, 1);
 			}
-			PlayMusic(name);
+			FadeInMusic(name,2);
 		}
 
 		public void PlayMusic(string name) {
@@ -145,6 +157,16 @@ namespace Managers {
 			Sound s = thumpFx[Random.Range(0, thumpFx.Count)];
 			if (s == null) {
 				Debug.LogWarning("No sounds in ThumpFX list");
+				return;
+			}
+				
+			s.source.Play();
+		}
+		
+		public void PlayBurp() {
+			Sound s = burpFx[Random.Range(0, burpFx.Count)];
+			if (s == null) {
+				Debug.LogWarning("No sounds in BurpFx list");
 				return;
 			}
 				
