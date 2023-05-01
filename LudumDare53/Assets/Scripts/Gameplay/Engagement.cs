@@ -20,6 +20,10 @@ namespace Gameplay {
                 GameOverEvent gameOverEvent = Events.GameOverEvent;
                 EventManager.Broadcast(gameOverEvent);
             }
+
+            if (engagement >= 1f) {
+                engagement = 1f;
+            }
         }
 
         public void IncrementValueBy(float value) {
@@ -28,7 +32,7 @@ namespace Gameplay {
         }
 
         public void DecrementValueBy(float value) {
-            engagement += value;
+            engagement -= value;
             BroadcastChange(engagement);
         }
 

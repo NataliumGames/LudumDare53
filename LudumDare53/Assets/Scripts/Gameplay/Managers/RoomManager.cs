@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game;
+using Game.Managers;
+using UI;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -14,13 +17,31 @@ namespace Gameplay.Managers {
         public Transform spawnPos;
         public List<GameObject> wallPrefabs;
 
+        private GaugeBar engagementBar;
         private List<GameObject> instantiatedWalls;
 
+        private void Awake() {
+            EventManager.AddListener<EngagementChangeEvent>(OnEngagementChange);
+            EventManager.AddListener<TimerTimeOutEvent>(OnTimerTimeoutEvent);
+        }
+
         private void Start() {
+            engagementBar = FindObjectOfType<GaugeBar>();
             instantiatedWalls = new List<GameObject>();
 
             StartCoroutine(SpawnWall());
             StartCoroutine(IncreaseDifficulty());
+        }
+
+        private void OnEngagementChange(EngagementChangeEvent evt) {
+            engagementBar.SetBarValue(evt.Value);
+        }
+
+        private void OnTimerTimeoutEvent(TimerTimeOutEvent evt) {
+            float engagement = FindObjectOfType<Engagement>().engagement;
+            MinigameFinishedEvent minigameFinishedEvent = Events.MinigameFinishedEvent;
+            minigameFinishedEvent.Engagement = engagement;
+            EventManager.Broadcast(minigameFinishedEvent);
         }
 
         private IEnumerator SpawnWall() {
@@ -30,7 +51,7 @@ namespace Gameplay.Managers {
                 GameObject wall = Instantiate(wallPrefabs[randomIndex], pos, Quaternion.identity);
                 wall.GetComponent<WallMover>().StartMovement();
                 instantiatedWalls.Add(wall);
-                StartCoroutine(DestroyGameobjectAfterDelay(wall, 5f));
+                StartCoroutine(DestroyGameobjectAfterDelay(wall, 3.5f));
 
                 yield return new WaitForSeconds(spawnDelay);
             }
@@ -53,6 +74,11 @@ namespace Gameplay.Managers {
             yield return new WaitForSeconds(delay);
             Destroy(obj);
             instantiatedWalls.Remove(obj);
+        }
+
+        private void OnDestroy() {
+            EventManager.RemoveListener<EngagementChangeEvent>(OnEngagementChange);
+            EventManager.RemoveListener<TimerTimeOutEvent>(OnTimerTimeoutEvent);
         }
     }
 }

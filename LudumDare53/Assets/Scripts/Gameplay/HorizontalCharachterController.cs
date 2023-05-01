@@ -1,6 +1,7 @@
 using System;
 using Game;
 using Game.Managers;
+using Managers;
 using UnityEngine;
 
 namespace Gameplay {
@@ -14,10 +15,16 @@ namespace Gameplay {
         private int score = 0;
         private Rigidbody _rigidbody;
         private CharacterController _characterController;
+        private Engagement _engagement;
+        private CameraShake _cameraShake;
+        private AudioManager _audioManager;
 
         private void Start() {
             _rigidbody = GetComponent<Rigidbody>();
             _characterController = GetComponent<CharacterController>();
+            _engagement = FindObjectOfType<Engagement>();
+            _cameraShake = FindObjectOfType<CameraShake>();
+            _audioManager = FindObjectOfType<AudioManager>();
         }
 
         private void Update() {
@@ -44,6 +51,13 @@ namespace Gameplay {
             wallPassedEvent.Score = score;
             EventManager.Broadcast(wallPassedEvent);
         }
+        
+        private void DecrementScore() {
+            score--;
+            WallPassedEvent wallPassedEvent = Events.WallPassedEvent;
+            wallPassedEvent.Score = score;
+            EventManager.Broadcast(wallPassedEvent);
+        }
 
         private void OnCollisionEnter(Collision other) {
             if (other.transform.CompareTag("Ground"))
@@ -51,7 +65,15 @@ namespace Gameplay {
         }
 
         private void OnTriggerEnter(Collider other) {
-            IncrementScore();
+            if (other.CompareTag("Safe")) {
+                IncrementScore();
+                _engagement.IncrementValueBy(0.1f);
+            } else if (other.CompareTag("Wall")) {
+                DecrementScore();
+                _engagement.DecrementValueBy(0.1f);
+                _cameraShake.Shake(0.1f);
+                _audioManager.PlayDamage();
+            }
         }
     }
 }
