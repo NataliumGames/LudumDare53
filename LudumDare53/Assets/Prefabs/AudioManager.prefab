@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMainMenu: 0
+  isPunchline: 0
   music:
   - {fileID: 11400000, guid: 9d88b3479e9535e479e8cfc7acb3ff76, type: 2}
   - {fileID: 11400000, guid: 3bb4a04a64317b2458b3b0cc76ee4da6, type: 2}
@@ -82,3 +83,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e55565efcfeac554fb8b6d8afe596d2f, type: 2}
   - {fileID: 11400000, guid: 6438a1ea5c9aa1e4c85159b9ea9f96dd, type: 2}
   - {fileID: 11400000, guid: 94f3d960af479fd4baa7e0fb6cdf1aae, type: 2}
+  - {fileID: 11400000, guid: a3d49a71177b6614db669ea1401f6011, type: 2}
