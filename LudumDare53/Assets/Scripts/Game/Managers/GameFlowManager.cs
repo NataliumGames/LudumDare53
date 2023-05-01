@@ -12,7 +12,7 @@ namespace Game.Managers {
 
         private SceneManager _sceneManager;
         private MainMenuUIManager _menuUIManager;
-        private int numberOfMinigameDone = 0;
+        public int numberOfMinigameDone = 0;
         private bool isMainMenuLoaded = false;
         private bool managerFound = false;
         public Dictionary<string, float> engagementMap = new Dictionary<string, float>();
@@ -32,8 +32,7 @@ namespace Game.Managers {
 
         private void OnMinigameFinished(MinigameFinishedEvent evt) {
             if (numberOfMinigameDone == 2) {
-                Debug.Log("Punchline");
-                _sceneManager.LoadPunchline();
+                
             } else {
                 engagementMap[evt.Minigame] = evt.Engagement;
                 numberOfMinigameDone++;
@@ -54,6 +53,10 @@ namespace Game.Managers {
 
         public void LoadNextMinigame() {
             _sceneManager.LoadNextMinigameScene();
+        }
+
+        public void LoadPunchline() {
+            _sceneManager.LoadPunchline();
         }
         
         private void OnDestroy() {

@@ -19,8 +19,10 @@ public class ButtonSmasher : MonoBehaviour
     public int maxCounterValue;
 
     public GameObject multiplierTextObject;
+    public GameObject controls;
 
     private int counterStep;
+    private bool gameIsRunning = false;
 
     private GaugeBar gaugeBar;
     private TextMeshProUGUI multiplierText;
@@ -36,15 +38,19 @@ public class ButtonSmasher : MonoBehaviour
         multiplierText = multiplierTextObject.GetComponent<TextMeshProUGUI>();
 
         counterStep = (int)maxCounterValue/5;
-
-        FindObjectOfType<AudioManager>().PlayMusic("Punchline");
-        FindAnyObjectByType<Timer>().StartTimer();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown("space"))
+        if (!gameIsRunning && Input.GetKeyDown(KeyCode.Space)) {
+            gameIsRunning = true;
+            controls.SetActive(false);
+            FindObjectOfType<AudioManager>().PlayMusic("Punchline");
+            FindAnyObjectByType<Timer>().StartTimer();
+        }
+        
+        if(gameIsRunning && Input.GetKeyDown("space"))
         {  
             counter++;
             gaugeBar.IncrementValueBy(1.0f/maxCounterValue);
