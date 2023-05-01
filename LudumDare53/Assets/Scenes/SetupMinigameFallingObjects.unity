@@ -220,11 +220,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1252749227640827169, guid: c5b82b4e19a5d69419ba6f288c57d3d6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1252749228656605141, guid: c5b82b4e19a5d69419ba6f288c57d3d6, type: 3}
       propertyPath: m_text
-      value: 'You lost the audience engamenet :(
+      value: 'You lost all audience engamenet :(
 
 '
       objectReference: {fileID: 0}
@@ -1113,7 +1113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1252749227640827169, guid: 82a8f44ddaf014ed495a33c163728b78, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1252749228656605138, guid: 82a8f44ddaf014ed495a33c163728b78, type: 3}
       propertyPath: m_AnchorMax.x
