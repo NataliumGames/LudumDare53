@@ -2225,6 +2225,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 447502244249117420, guid: abfde3d12272741339010e9ba8756ba4, type: 3}
+      propertyPath: timeRemaining
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 447502244249117420, guid: abfde3d12272741339010e9ba8756ba4, type: 3}
       propertyPath: TextMeshProUGUI
       value: 
       objectReference: {fileID: 1964935368}

@@ -27,8 +27,8 @@ namespace Game.Managers {
 
         private void Start() {
             setupScenes.Add("SetupMinigameMuri");
-            setupScenes.Add("SetupMinigameMonkeyFix");
-            setupScenes.Add("SetupMinigameMiky");
+            // setupScenes.Add("SetupMinigameMonkeyFix");
+            // setupScenes.Add("SetupMinigameMiky");
         }
 
         public void LoadNextMinigameScene() {
