@@ -17,9 +17,11 @@ namespace Gameplay.Managers {
         public float spawnDecreaseRate = 0.2f;
         public Transform spawnPos;
         public List<GameObject> wallPrefabs;
-        public GameObject controls;
 
-        private GaugeBar engagementBar;
+        public GameObject controls;
+        public GameObject stats;
+
+        private GaugeBarVertical engagementBar;
         private bool gameIsRunning = false;
         private List<GameObject> instantiatedWalls;
 
@@ -27,16 +29,20 @@ namespace Gameplay.Managers {
             EventManager.AddListener<EngagementChangeEvent>(OnEngagementChange);
             EventManager.AddListener<TimerTimeOutEvent>(OnTimerTimeoutEvent);
 
-            engagementBar = FindObjectOfType<GaugeBar>();
+            engagementBar = FindObjectOfType<GaugeBarVertical>();
         }
 
         private void Start() {
             instantiatedWalls = new List<GameObject>();
+
+            controls.SetActive(true);
+            stats.SetActive(false);
         }
 
         private void Update() {
             if (!gameIsRunning && (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))) {
                 controls.SetActive(false);
+                stats.SetActive(true);
                 gameIsRunning = true;
 
                 StartCoroutine(SpawnWall());
