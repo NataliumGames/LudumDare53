@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DroppingObject : MonoBehaviour
+public class FallingObject : MonoBehaviour
 {
     public Vector3 customGravity;
     public Vector3 rotation;

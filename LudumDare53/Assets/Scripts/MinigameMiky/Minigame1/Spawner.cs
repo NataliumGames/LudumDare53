@@ -77,8 +77,8 @@ public class Spawner : MonoBehaviour
 
             go.transform.position = position;
             go.transform.rotation = Quaternion.identity;
-            go.transform.Rotate(new Vector3(Random.Range(0.0f, 180.0f), Random.Range(0.0f, 180.0f), 0.0f));
-            go.GetComponent<DroppingObject>().customGravity.y = gravityY;
+            go.transform.Rotate(new Vector3(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), 0.0f));
+            go.GetComponent<FallingObject>().customGravity.y = gravityY;
 
             yield return new WaitForSeconds(1.0f / spawnRate);
         }

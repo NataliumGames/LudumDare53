@@ -11,7 +11,7 @@ public class CharacterControllerMiky : MonoBehaviour
     public delegate void TriggerCallback(float points);
     private TriggerCallback callback;
 
-    private bool gameOver = false;
+    private bool gameRunning = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,7 @@ public class CharacterControllerMiky : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!gameOver)
+        if(!gameRunning)
         {
 
             float moveHorizontal = Input.GetAxis("Horizontal");
@@ -53,8 +53,8 @@ public class CharacterControllerMiky : MonoBehaviour
 
     }
 
-    public void SetGameOver(bool gameOver)
+    public void SetGameRunning(bool gameOver)
     {
-        this.gameOver = gameOver;
+        this.gameRunning = gameOver;
     }
 }
