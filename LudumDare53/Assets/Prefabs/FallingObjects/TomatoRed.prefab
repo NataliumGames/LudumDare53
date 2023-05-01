@@ -77,6 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customGravity: {x: 0, y: -4.9, z: 0}
+  rotation: {x: 15, y: 100, z: 15}
 --- !u!1001 &5612497722954275961
 PrefabInstance:
   m_ObjectHideFlags: 0
