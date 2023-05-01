@@ -9,7 +9,7 @@ namespace UI {
 
         public float minValue = 0.0f;
         public float maxValue = 1.0f;
-        public float value = 0.0f;
+        public float value = 1.0f;
 
         private void Awake()
         {

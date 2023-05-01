@@ -14,8 +14,6 @@ public class GameManagerFallingObjects : MonoBehaviour
     public GameObject levelCompletedGameObject;
     public GameObject gameOverGameObject;
 
-    public GameObject timerGameObject;
-    public GameObject spawnerGameObject;
     public GameObject playerGameObject;
 
     public int gameDuration = 60;
@@ -52,13 +50,16 @@ public class GameManagerFallingObjects : MonoBehaviour
 
     void Start()
     {
-        audioManager = FindObjectOfType<AudioManager>();
-        spawner = spawnerGameObject.GetComponent<Spawner>();
-        timer = timerGameObject.GetComponent<Timer>();
-        gaugeBar = FindObjectOfType<GaugeBarVertical>();
         characterController = playerGameObject.GetComponent<CharacterControllerMiky>();
 
+        spawner = FindObjectOfType<Spawner>();
+        audioManager = FindObjectOfType<AudioManager>();
+        gaugeBar = FindObjectOfType<GaugeBarVertical>();
+        timer = FindObjectOfType<Timer>();
         cameraShake = FindObjectOfType<CameraShake>();
+
+        timer.timeRemaining = 10;
+        gaugeBar.value = 1.0f;
 
         foreach (TextMeshProUGUI t in gameStatsGameObject.GetComponentsInChildren<TextMeshProUGUI>())
         {
@@ -102,7 +103,7 @@ public class GameManagerFallingObjects : MonoBehaviour
     void Update()
     {
         // Press one movement key to start the minigame
-        if (!gameRunning && (Input.GetKeyDown("a") || Input.GetKeyDown("d")))
+        if (!gameRunning && !levelCompleted && !gameOver && (Input.GetKeyDown("a") || Input.GetKeyDown("d")))
         {
             gameRunning = true;
 
@@ -111,8 +112,7 @@ public class GameManagerFallingObjects : MonoBehaviour
 
             spawner.StartSpawner();
 
-            timerGameObject.SetActive(true);
-            //timer.StartTimer(gameDuration);
+            timer.StartTimer();
             gaugeBar.SetBarValue(1.0f);
             textCurrentScore.text = "" + score;
 
@@ -135,15 +135,18 @@ public class GameManagerFallingObjects : MonoBehaviour
 
             characterController.SetGameRunning(true);
 
+            timer.StopTimer();
             EventManager.RemoveListener<TimerTimeOutEvent>(OnTimeout);
         }
 
         // Level is completed successfully
-        if (levelCompleted)
+        if (levelCompleted && !gameOver)
         {
             if (spawner.GetSpawnedObj() == 0)
             {
                 gameRunning = false;
+                levelCompleted = true;
+
                 gameStatsGameObject.SetActive(false);
                 levelCompletedGameObject.SetActive(true);
 
@@ -159,26 +162,11 @@ public class GameManagerFallingObjects : MonoBehaviour
                 EventManager.Broadcast(minigameFinishedEvent);
             }
         }
-
-        // Game over (loss)
-        if (gameOver)
-        {
-            if (spawner.GetSpawnedObj() == 0)
-            {
-                gameStatsGameObject.SetActive(false);
-                gameOverGameObject.SetActive(true);
-
-
-                EventManager.RemoveListener<TimerTimeOutEvent>(OnTimeout);
-
-                GameOverEvent gameOverEvent = Events.GameOverEvent;
-                EventManager.Broadcast(gameOverEvent);
-            }
-        }
     }
 
     private void OnTimeout(TimerTimeOutEvent e)
     {
+        Debug.Log("Timeout");
         levelCompleted = true;
         spawner.StopSpawner();
         
