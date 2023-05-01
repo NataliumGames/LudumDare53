@@ -12,9 +12,9 @@ namespace Game.Managers {
         private string currentScene = "MainMenu";
 
         private void Start() {
-            setupScenes.Add("SetupMinigameMuri");
+            setupScenes.Add("SetupMinigameFallingObjects");
+            setupScenes.Add("SetupMinigameWallsDodging");
             setupScenes.Add("SetupMinigameMonkeyFix");
-            setupScenes.Add("SetupMinigameMiky");
         }
 
         public void LoadNextMinigameScene() {
@@ -29,7 +29,7 @@ namespace Game.Managers {
         }
 
         public void LoadPunchline() {
-            
+            UnityEngine.SceneManagement.SceneManager.LoadScene("PunchlineMinigame", LoadSceneMode.Single);
         }
     }
 }
