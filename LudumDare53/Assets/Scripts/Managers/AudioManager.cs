@@ -82,7 +82,7 @@ namespace Managers {
 		public void TransitionMusic(string name) {
 			foreach (Sound s in music) {
 				if (s.source.isPlaying)
-					FadeOutCore(s.source, 1);
+					FadeOutMusic(s.name, 1);
 			}
 			PlayMusic(name);
 		}
