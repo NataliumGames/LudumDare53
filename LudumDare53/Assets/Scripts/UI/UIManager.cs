@@ -17,11 +17,11 @@ namespace UI {
         }
 
         private void Start() {
-            _textMeshProUGUI.text = "Score: 0";
+            _textMeshProUGUI.text = "0";
         }
 
         private void OnWallPassedEvent(WallPassedEvent evt) {
-            _textMeshProUGUI.text = "Score: " + evt.Score;
+            _textMeshProUGUI.text = "" + evt.Score;
         }
 
         private void OnGameOverEvent(GameOverEvent evt) {
