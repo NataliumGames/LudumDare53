@@ -1753,6 +1753,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1964165650 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1252749227640827169, guid: 82a8f44ddaf014ed495a33c163728b78, type: 3}
+  m_PrefabInstance: {fileID: 1429227267}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1964935366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,6 +1926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textMeshProUGUI: {fileID: 837127063}
+  gameoverPanel: {fileID: 1964165650}
 --- !u!114 &1981134558
 MonoBehaviour:
   m_ObjectHideFlags: 0
