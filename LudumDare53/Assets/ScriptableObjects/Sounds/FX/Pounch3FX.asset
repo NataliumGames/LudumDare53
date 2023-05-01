@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundName: Punch3
   clip: {fileID: 8300000, guid: c215dd4d88f974441a5b02065877e595, type: 3}
-  volume: 0.7
+  volume: 0.3
   pitch: 1
   loop: 0
   source: {fileID: 0}

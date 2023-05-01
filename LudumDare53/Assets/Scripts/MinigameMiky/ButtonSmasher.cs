@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UI;
+using Managers;
+using Game;
 
 
 public class ButtonSmasher : MonoBehaviour
@@ -27,6 +29,8 @@ public class ButtonSmasher : MonoBehaviour
         multiplierText = multiplierTextObject.GetComponent<TextMeshProUGUI>();
 
         counterStep = (int)maxCounterValue/5;
+
+        FindAnyObjectByType<Timer>().StartTimer();
     }
 
     // Update is called once per frame
@@ -39,6 +43,8 @@ public class ButtonSmasher : MonoBehaviour
 
             int multiplier = updateMultiplier();
             multiplierText.SetText("x"+multiplier);
+
+            FindObjectOfType<AudioManager>().PlayPunch();
         }
     }
 
