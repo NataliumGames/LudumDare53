@@ -79,6 +79,14 @@ namespace Managers {
 				PlayMusic("MenuMusic");
 		}
 
+		public void TransitionMusic(string name) {
+			foreach (Sound s in music) {
+				if (s.source.isPlaying)
+					FadeOutCore(s.source, 1);
+			}
+			PlayMusic(name);
+		}
+
 		public void PlayMusic(string name) {
 			Sound s = music.Find(sound => sound.soundName == name);
 			if (s == null) {
