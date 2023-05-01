@@ -3,6 +3,7 @@ using Game.Managers;
 using Managers;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using TMPro;
 using UI;
 using UnityEngine;
@@ -151,8 +152,8 @@ public class GameManagerFallingObjects : MonoBehaviour
                 gameRunning = false;
                 levelCompleted = true;
 
-                gameStatsGameObject.SetActive(false);
-                levelCompletedGameObject.SetActive(true);
+                //gameStatsGameObject.SetActive(false);
+                //levelCompletedGameObject.SetActive(true);
 
                 characterController.SetGameRunning(true);
                 textLevelCompletedScoreValue.text = "" + score;
@@ -162,7 +163,14 @@ public class GameManagerFallingObjects : MonoBehaviour
                 MinigameFinishedEvent minigameFinishedEvent = Events.MinigameFinishedEvent;
                 minigameFinishedEvent.Minigame = "DroppingObjects";
                 minigameFinishedEvent.Engagement = gaugeBar.value;
-                //minigameFinishedEvent.Score
+                float eng = minigameFinishedEvent.Engagement * 100f;
+                
+                StringBuilder stringBuilder = new StringBuilder("<align=\"center\">" + minigameFinishedEvent.Minigame);
+                stringBuilder.Append("\n\n\n");
+                stringBuilder.Append("<align=\"left\"><color=\"red\">Engagement: <color=\"black\">" + eng.ToString("0.00") + "%");
+
+                minigameFinishedEvent.Recap = stringBuilder.ToString();
+                
                 EventManager.Broadcast(minigameFinishedEvent);
             }
         }

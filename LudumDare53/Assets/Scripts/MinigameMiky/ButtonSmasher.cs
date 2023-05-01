@@ -2,16 +2,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using TMPro;
 using UnityEngine;
 using UI;
 using Managers;
 using Game;
 using Game.Managers;
+using UnityEngine.UI;
 
 
-public class ButtonSmasher : MonoBehaviour
-{
+public class ButtonSmasher : MonoBehaviour {
+
+    public GameObject recapPanel;
+    public TextMeshProUGUI description;
+    public Button menuButton;
+    public Button quitButton;
 
     public int counter = 0;
     public GameObject gaugeBarObject;
@@ -34,6 +40,8 @@ public class ButtonSmasher : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        menuButton.onClick.AddListener(MenuButton);
+        quitButton.onClick.AddListener(QuitButton);
         gaugeBar = gaugeBarObject.GetComponent<GaugeBar>();
         multiplierText = multiplierTextObject.GetComponent<TextMeshProUGUI>();
 
@@ -46,6 +54,7 @@ public class ButtonSmasher : MonoBehaviour
         if (!gameIsRunning && Input.GetKeyDown(KeyCode.Space)) {
             gameIsRunning = true;
             controls.SetActive(false);
+            FindObjectOfType<AudioManager>().StopAll();
             FindObjectOfType<AudioManager>().PlayMusic("Punchline");
             FindAnyObjectByType<Timer>().StartTimer();
         }
@@ -68,9 +77,18 @@ public class ButtonSmasher : MonoBehaviour
         if(gameFlowManager == null)
             return;
 
-        float media = gameFlowManager.engagementMap.Values.Average();
+        float media = gameFlowManager.engagementMap.Values.Average() * 100f;
+        int multiplier = updateMultiplier();
+        float finalScore = media * multiplier;
 
-        // show final recap
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.Append("Average Engagement: " + media + "\n");
+        stringBuilder.Append("Punchline Multiplier: X" + multiplier + "\n\n");
+        stringBuilder.Append("Final Score: " + finalScore + "\n");
+
+        description.text = stringBuilder.ToString();
+
+        recapPanel.SetActive(true);
     }
 
     private int updateMultiplier() {
@@ -92,6 +110,14 @@ public class ButtonSmasher : MonoBehaviour
         }
 
         return multiplier;
+    }
+
+    private void MenuButton() {
+        FindObjectOfType<SceneManager>().LoadMainMenu();
+    }
+
+    private void QuitButton() {
+        Application.Quit();
     }
 
     private void OnDestroy() {

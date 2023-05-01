@@ -61,10 +61,11 @@ namespace Gameplay.Managers {
             MinigameFinishedEvent minigameFinishedEvent = Events.MinigameFinishedEvent;
             minigameFinishedEvent.Engagement = engagement;
             minigameFinishedEvent.Minigame = "Dodge the Insults";
+            float eng = minigameFinishedEvent.Engagement * 100f;
             
             StringBuilder stringBuilder = new StringBuilder("<align=\"center\">" + minigameFinishedEvent.Minigame);
             stringBuilder.Append("\n\n\n");
-            stringBuilder.Append("<align=\"left\"><color=\"red\">Engagement: <color=\"black\">" + minigameFinishedEvent.Engagement * 100 + "%");
+            stringBuilder.Append("<align=\"left\"><color=\"red\">Engagement: <color=\"black\">" + eng.ToString("0.00") + "%");
 
             minigameFinishedEvent.Recap = stringBuilder.ToString();
             

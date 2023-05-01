@@ -230,6 +230,13 @@ namespace Managers {
 
 			s.source.Stop();
 		}
+
+		public void StopAll() {
+			foreach (Sound s in music) {
+				if (s.source.isPlaying)
+					FadeOutMusic(s.name, 1);
+			}
+		}
 		
 		private IEnumerator PlayDelayed(string name, float delay) {
 			Sound s = music.Find(sound => sound.soundName == name);
