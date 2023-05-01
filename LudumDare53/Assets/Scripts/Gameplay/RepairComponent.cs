@@ -32,7 +32,7 @@ namespace Gameplay {
         }
 
         private void Update() {
-            if(Input.GetKeyDown(KeyCode.E) && canvasVisibility && nearGameobject != null)
+            if(Input.GetKeyDown(KeyCode.E) && canvasVisibility && nearGameobject != null && !repairing)
                 BeginRepair(nearGameobject);
         }
 
