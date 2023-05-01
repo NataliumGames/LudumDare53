@@ -51,13 +51,24 @@ namespace UI {
         private void OnStartButtonPressed() {
             FindObjectOfType<AudioManager>().TransitionMusic("MainMusic");
             FindObjectOfType<AudioManager>().PlayFX("Broue");
-            
-            _gameFlowManager.LoadNextMinigame();
+
+            if (_gameFlowManager.numberOfMinigameDone == 2) {
+                _gameFlowManager.LoadPunchline();
+            }
+            else {
+                _gameFlowManager.LoadNextMinigame();
+            }
         }
 
         private void OnNextButtonPressed() {
             recapPanel.SetActive(false);
-            _gameFlowManager.LoadNextMinigame();
+            
+            if (_gameFlowManager.numberOfMinigameDone == 2) {
+                _gameFlowManager.LoadPunchline();
+            }
+            else {
+                _gameFlowManager.LoadNextMinigame();
+            }
         }
         
         private void OnInfoButtonPressed() {
