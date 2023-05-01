@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Game;
 using Game.Managers;
+using UI;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -66,6 +67,13 @@ namespace Gameplay.Managers {
             } else {
                 g.tag = "Repaired";
                 g.transform.GetChild(1).gameObject.SetActive(false);
+            }
+
+            if (instantiatedGameobjects.All(obj => obj.tag.Equals("Repaired"))) {
+                MinigameFinishedEvent minigameFinishedEvent = Events.MinigameFinishedEvent;
+                Engagement engagement = FindObjectOfType<Engagement>();
+                minigameFinishedEvent.Engagement = engagement.engagement;
+                EventManager.Broadcast(minigameFinishedEvent);
             }
         }
 
