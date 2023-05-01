@@ -28,7 +28,7 @@ public class GameManagerFallingObjects : MonoBehaviour
     private AudioManager audioManager;
     private Spawner spawner;
     private Timer timer;
-    private GaugeBar gaugeBar;
+    private GaugeBarVertical gaugeBar;
     private CharacterControllerMiky characterController;
     private CameraShake cameraShake;
 
@@ -55,7 +55,7 @@ public class GameManagerFallingObjects : MonoBehaviour
         audioManager = FindObjectOfType<AudioManager>();
         spawner = spawnerGameObject.GetComponent<Spawner>();
         timer = timerGameObject.GetComponent<Timer>();
-        gaugeBar = FindObjectOfType<GaugeBar>();
+        gaugeBar = FindObjectOfType<GaugeBarVertical>();
         characterController = playerGameObject.GetComponent<CharacterControllerMiky>();
 
         cameraShake = FindObjectOfType<CameraShake>();
