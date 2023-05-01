@@ -37,8 +37,9 @@ namespace Gameplay {
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
 
-            Vector3 moveDirection = new Vector3(horizontal, 0f, vertical);
+            Vector3 moveDirection = new Vector3(horizontal, -5f, vertical);
             _characterController.Move(moveDirection * speed * Time.deltaTime);
+            moveDirection = new Vector3(horizontal, 0f, vertical);
             transformHead.rotation = Quaternion.LookRotation(moveDirection);
             
             if (enemy != null && Vector3.Distance(transform.position, enemy.transform.position) <= 5f) {
