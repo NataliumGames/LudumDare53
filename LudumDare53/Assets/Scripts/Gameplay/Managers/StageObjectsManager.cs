@@ -22,7 +22,7 @@ namespace Gameplay.Managers {
         public List<Transform> stoodSpawnPoints;
         public List<Transform> bottleSpawnPoints;
         public bool gameIsRunning = false;
-        public GaugeBar engagementBar;
+        public GaugeBarVertical engagementBar;
         private Engagement engagement;
         private CameraShake cameraShake;
 

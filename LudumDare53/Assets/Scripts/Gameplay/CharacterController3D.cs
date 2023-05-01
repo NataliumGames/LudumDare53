@@ -19,6 +19,7 @@ namespace Gameplay {
         private bool canAttack = true;
         private GameObject enemy;
         private GameObject attackText;
+        private Transform transformHead;
 
         private void Start() {
             _characterController = GetComponent<CharacterController>();
@@ -28,6 +29,8 @@ namespace Gameplay {
             EventManager.AddListener<EnemySpawnedEvent>(OnEnemySpawnedEvent);
 
             StartCoroutine(EndInvulnerability());
+
+            transformHead = transform.GetChild(0);
         }
 
         private void Update() {
@@ -36,7 +39,7 @@ namespace Gameplay {
 
             Vector3 moveDirection = new Vector3(horizontal, 0f, vertical);
             _characterController.Move(moveDirection * speed * Time.deltaTime);
-            transform.rotation = Quaternion.LookRotation(moveDirection);
+            transformHead.rotation = Quaternion.LookRotation(moveDirection);
             
             if (enemy != null && Vector3.Distance(transform.position, enemy.transform.position) <= 5f) {
                 if(canAttack)
