@@ -9,21 +9,32 @@ namespace Gameplay {
 
         public float engagement = 1f;
         public float naturalDecrease = 0.05f;
+        private bool gameIsRunning = false;
 
         private void Start() {
-            Invoke("BeginDecrease", 2f);
+            
         }
 
         private void Update() {
-            if (engagement <= 0f) {
-                engagement = 0f;
-                GameOverEvent gameOverEvent = Events.GameOverEvent;
-                EventManager.Broadcast(gameOverEvent);
-            }
+            if (gameIsRunning) {
+                engagement -= Time.deltaTime * 0.05f;
+                BroadcastChange(engagement);
+                
+                if (engagement <= 0f) {
+                    engagement = 0f;
+                    gameIsRunning = false;
+                    GameOverEvent gameOverEvent = Events.GameOverEvent;
+                    EventManager.Broadcast(gameOverEvent);
+                }
 
-            if (engagement >= 1f) {
-                engagement = 1f;
+                if (engagement >= 1f) {
+                    engagement = 1f;
+                }
             }
+        }
+
+        public void SetRunning(bool value) {
+            gameIsRunning = value;
         }
 
         public void IncrementValueBy(float value) {
@@ -36,23 +47,10 @@ namespace Gameplay {
             BroadcastChange(engagement);
         }
 
-        private void BeginDecrease() {
-            StartCoroutine(DecreaseOverTime());
-        }
-
         private void BroadcastChange(float value) {
             EngagementChangeEvent engagementChangeEvent = Events.EngagementChangeEvent;
             engagementChangeEvent.Value = value;
             EventManager.Broadcast(engagementChangeEvent);
-        }
-
-        private IEnumerator DecreaseOverTime() {
-            while (true) {
-                engagement -= naturalDecrease;
-                BroadcastChange(engagement);
-
-                yield return new WaitForSeconds(1);
-            }
         }
     }
 }
