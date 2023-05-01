@@ -83,20 +83,23 @@ public class GameManagerFallingObjects : MonoBehaviour
 
         playerGameObject.GetComponent<CharacterControllerFallingObjects>().SetCollisionCallback((v) => {
             
-            if (v > 0.0f)
+            if (gameRunning)
             {
-                audioManager.PlayBurp();
-                gaugeBar.IncrementValueBy(bonusEngagement);
-                score += bonusScore;
+                if (v > 0.0f)
+                {
+                    audioManager.PlayBurp();
+                    gaugeBar.IncrementValueBy(bonusEngagement);
+                    score += bonusScore;
+                }
+                else
+                {
+                    audioManager.PlayDamage();
+                    cameraShake.Shake(0.1f);
+                    gaugeBar.IncrementValueBy(malusEngagement);
+                    score += malusScore;
+                }
+                textCurrentScore.text = "" + score;
             }
-            else
-            {
-                audioManager.PlayDamage();
-                cameraShake.Shake(0.1f);
-                gaugeBar.IncrementValueBy(malusEngagement);
-                score += malusScore;
-            }
-            textCurrentScore.text = "" + score;
         });
     }
 
