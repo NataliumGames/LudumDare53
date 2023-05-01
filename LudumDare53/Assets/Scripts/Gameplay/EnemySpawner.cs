@@ -20,15 +20,13 @@ namespace Gameplay {
         private void Start() {
             instantiatedEnemies = new List<GameObject>();
             bounds = spawnArea.bounds;
-            
-            Invoke("BeginSpawn", 3f);
         }
 
         private void Update() {
             
         }
 
-        private void BeginSpawn() {
+        public void BeginSpawn() {
             StartCoroutine(Spawn());
         }
 
