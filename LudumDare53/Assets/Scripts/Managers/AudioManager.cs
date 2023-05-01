@@ -10,6 +10,8 @@ namespace Managers {
 	public class AudioManager : MonoBehaviour {
 
 		public bool isMainMenu = false;
+		public bool isPunchline = false;
+		
 		public List<Sound> music = new List<Sound>();
 		public List<Sound> damageFx = new List<Sound>();
 		public List<Sound> thumpFx = new List<Sound>();
@@ -18,7 +20,7 @@ namespace Managers {
 		public List<Sound> soundFx = new List<Sound>();
 
 		public static AudioManager instance;
-		
+
 		void Awake() {
 			if (instance == null)
 				instance = this;
@@ -85,10 +87,11 @@ namespace Managers {
 		}
 
 		private void Start() {
-			if(isMainMenu)
+			if (isMainMenu)
 				PlayMusic("MenuMusic");
-			else 
+			else if (!isPunchline)
 				PlayMusic("MainMusic");
+
 		}
 
 		public void TransitionMusic(string name) {

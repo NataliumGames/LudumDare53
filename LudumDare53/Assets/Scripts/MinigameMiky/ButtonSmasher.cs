@@ -30,6 +30,7 @@ public class ButtonSmasher : MonoBehaviour
 
         counterStep = (int)maxCounterValue/5;
 
+        FindObjectOfType<AudioManager>().PlayMusic("Punchline");
         FindAnyObjectByType<Timer>().StartTimer();
     }
 
@@ -37,7 +38,7 @@ public class ButtonSmasher : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown("space"))
-        {
+        {  
             counter++;
             gaugeBar.IncrementValueBy(1.0f/maxCounterValue);
 

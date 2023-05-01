@@ -48,6 +48,7 @@ MonoBehaviour:
   music:
   - {fileID: 11400000, guid: 9d88b3479e9535e479e8cfc7acb3ff76, type: 2}
   - {fileID: 11400000, guid: 3bb4a04a64317b2458b3b0cc76ee4da6, type: 2}
+  - {fileID: 11400000, guid: e01c96c317863b747a830589b19102ab, type: 2}
   damageFx:
   - {fileID: 11400000, guid: 05da4ad0effb6c34e8e04dff64a0dee8, type: 2}
   - {fileID: 11400000, guid: f06e185602a65b14bb9c54ce2be59875, type: 2}
