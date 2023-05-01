@@ -49,7 +49,7 @@ namespace UI {
         }
         
         private void OnStartButtonPressed() {
-            FindObjectOfType<AudioManager>().FadeOutMusic("MenuMusic", 1);
+            FindObjectOfType<AudioManager>().TransitionMusic("MainMusic");
             FindObjectOfType<AudioManager>().PlayFX("Broue");
             
             _gameFlowManager.LoadNextMinigame();

@@ -17,8 +17,10 @@ namespace Gameplay.Managers {
         public float spawnDecreaseRate = 0.2f;
         public Transform spawnPos;
         public List<GameObject> wallPrefabs;
+        public GameObject controls;
 
         private GaugeBar engagementBar;
+        private bool gameIsRunning = false;
         private List<GameObject> instantiatedWalls;
 
         private void Awake() {
@@ -30,9 +32,18 @@ namespace Gameplay.Managers {
 
         private void Start() {
             instantiatedWalls = new List<GameObject>();
+        }
 
-            StartCoroutine(SpawnWall());
-            StartCoroutine(IncreaseDifficulty());
+        private void Update() {
+            if (!gameIsRunning && (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))) {
+                controls.SetActive(false);
+                gameIsRunning = true;
+
+                StartCoroutine(SpawnWall());
+                StartCoroutine(IncreaseDifficulty());
+                FindObjectOfType<Engagement>().SetRunning(true);
+                FindObjectOfType<Timer>().StartTimer();
+            }
         }
 
         private void OnEngagementChange(EngagementChangeEvent evt) {
@@ -56,7 +67,7 @@ namespace Gameplay.Managers {
 
         private IEnumerator SpawnWall() {
             while (true) {
-                Vector3 pos = new Vector3(Random.Range(-2f, 1f), spawnPos.position.y, spawnPos.position.z);
+                Vector3 pos = new Vector3(0f, spawnPos.position.y, spawnPos.position.z);
                 int randomIndex = Random.Range(0, wallPrefabs.Count);
                 GameObject wall = Instantiate(wallPrefabs[randomIndex], pos, Quaternion.identity);
                 wall.GetComponent<WallMover>().StartMovement();

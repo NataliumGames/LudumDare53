@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da43c3b2a764d7c906163cbeba103b0, type: 3}
+  m_Name: Burp2FX
+  m_EditorClassIdentifier: 
+  soundName: Burp2
+  clip: {fileID: 8300000, guid: f54dfa6f013f9534a843e89174c04d7b, type: 3}
+  volume: 0.7
+  pitch: 1
+  loop: 0
+  source: {fileID: 0}

@@ -11,10 +11,6 @@ namespace Game {
         public float timeRemaining = 60;
         private bool timerIsRunning = false;
 
-        private void Start() {
-            timerIsRunning = true;
-        }
-
         private void Update() {
             if (timerIsRunning) {
                 if (timeRemaining > 0) {
@@ -31,6 +27,14 @@ namespace Game {
             }
         }
 
+        public void StartTimer() {
+            timerIsRunning = true;
+        }
+
+        public void StopTimer() {
+            timerIsRunning = false;
+        }
+        
         private void DisplayTime(float timeToDisplay) {
             timeToDisplay += 1;
             float minutes = Mathf.FloorToInt(timeToDisplay / 60);
