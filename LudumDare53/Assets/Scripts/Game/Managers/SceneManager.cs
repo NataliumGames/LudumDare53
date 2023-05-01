@@ -8,27 +8,13 @@ using Random = UnityEngine.Random;
 namespace Game.Managers {
     public class SceneManager : MonoBehaviour {
 
-        /*
-        public static SceneManager Instance;
-
-        private void Awake() {
-            if (Instance != null) {
-                Destroy(gameObject);
-                return;
-            }
-            
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        */
-
         private List<string> setupScenes = new List<string>();
         private string currentScene = "MainMenu";
 
         private void Start() {
             setupScenes.Add("SetupMinigameMuri");
-            // setupScenes.Add("SetupMinigameMonkeyFix");
-            // setupScenes.Add("SetupMinigameMiky");
+            setupScenes.Add("SetupMinigameMonkeyFix");
+            setupScenes.Add("SetupMinigameMiky");
         }
 
         public void LoadNextMinigameScene() {

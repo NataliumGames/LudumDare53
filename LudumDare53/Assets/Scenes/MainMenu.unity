@@ -2286,6 +2286,10 @@ PrefabInstance:
       propertyPath: m_text
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1252749228656605141, guid: 82a8f44ddaf014ed495a33c163728b78, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1252749229610633424, guid: 82a8f44ddaf014ed495a33c163728b78, type: 3}
       propertyPath: m_text
       value: RIASSUNTAZZO

@@ -20,6 +20,7 @@ namespace Game {
 
     public class MinigameFinishedEvent : GameEvent {
         public string Minigame;
+        public string Recap;
         public float Engagement;
         public int Score;
         public float Time;

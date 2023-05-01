@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Game;
 using Game.Managers;
 using UI;
@@ -23,6 +24,7 @@ namespace Gameplay.Managers {
 
         private void Awake() {
             EventManager.AddListener<ObjectRepairedEvent>(OnObjectRepaired);
+            EventManager.AddListener<TimerTimeOutEvent>(OnTimerTimeout);
         }
 
         private void Start() {
@@ -59,6 +61,28 @@ namespace Gameplay.Managers {
             
         }
 
+        private void EndGame() {
+            MinigameFinishedEvent minigameFinishedEvent = Events.MinigameFinishedEvent;
+            Engagement engagement = FindObjectOfType<Engagement>();
+            minigameFinishedEvent.Engagement = engagement.engagement;
+            minigameFinishedEvent.Minigame = "Fix Stage";
+            minigameFinishedEvent.Time = FindObjectOfType<Timer>().timeRemaining;
+
+            StringBuilder stringBuilder = new StringBuilder("<align=\"center\">" + minigameFinishedEvent.Minigame);
+            stringBuilder.Append("\n\n\n");
+            stringBuilder.Append("<align=\"left\"><color=\"red\">Engagement: <color=\"black\">" + minigameFinishedEvent.Engagement * 100 + "%");
+            stringBuilder.Append("\n");
+            stringBuilder.Append("<align=\"left\"><color=\"red\">Time Left: <color=\"black\">" + minigameFinishedEvent.Time);
+
+            minigameFinishedEvent.Recap = stringBuilder.ToString();
+            
+            EventManager.Broadcast(minigameFinishedEvent);
+        }
+
+        private void OnTimerTimeout(TimerTimeOutEvent evt) {
+            EndGame();
+        }
+
         private void OnObjectRepaired(ObjectRepairedEvent evt) {
             GameObject g = instantiatedGameobjects.Find(obj => obj == evt.Object);
             if (g.name.Contains("Bottle")) {
@@ -70,17 +94,13 @@ namespace Gameplay.Managers {
             }
 
             if (instantiatedGameobjects.All(obj => obj.tag.Equals("Repaired"))) {
-                MinigameFinishedEvent minigameFinishedEvent = Events.MinigameFinishedEvent;
-                Engagement engagement = FindObjectOfType<Engagement>();
-                minigameFinishedEvent.Engagement = engagement.engagement;
-                minigameFinishedEvent.Minigame = "Fix Stage";
-                minigameFinishedEvent.Time = FindObjectOfType<Timer>().timeRemaining;
-                EventManager.Broadcast(minigameFinishedEvent);
+                EndGame();
             }
         }
 
         private void OnDestroy() {
             EventManager.RemoveListener<ObjectRepairedEvent>(OnObjectRepaired);
+            EventManager.RemoveListener<TimerTimeOutEvent>(OnTimerTimeout);
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using Game;
 using Game.Managers;
 using UI;
@@ -23,10 +24,11 @@ namespace Gameplay.Managers {
         private void Awake() {
             EventManager.AddListener<EngagementChangeEvent>(OnEngagementChange);
             EventManager.AddListener<TimerTimeOutEvent>(OnTimerTimeoutEvent);
+
+            engagementBar = FindObjectOfType<GaugeBar>();
         }
 
         private void Start() {
-            engagementBar = FindObjectOfType<GaugeBar>();
             instantiatedWalls = new List<GameObject>();
 
             StartCoroutine(SpawnWall());
@@ -42,6 +44,13 @@ namespace Gameplay.Managers {
             MinigameFinishedEvent minigameFinishedEvent = Events.MinigameFinishedEvent;
             minigameFinishedEvent.Engagement = engagement;
             minigameFinishedEvent.Minigame = "Dodge the Insults";
+            
+            StringBuilder stringBuilder = new StringBuilder("<align=\"center\">" + minigameFinishedEvent.Minigame);
+            stringBuilder.Append("\n\n\n");
+            stringBuilder.Append("<align=\"left\"><color=\"red\">Engagement: <color=\"black\">" + minigameFinishedEvent.Engagement * 100 + "%");
+
+            minigameFinishedEvent.Recap = stringBuilder.ToString();
+            
             EventManager.Broadcast(minigameFinishedEvent);
         }
 
