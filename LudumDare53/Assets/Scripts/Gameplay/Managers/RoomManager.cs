@@ -41,6 +41,7 @@ namespace Gameplay.Managers {
             float engagement = FindObjectOfType<Engagement>().engagement;
             MinigameFinishedEvent minigameFinishedEvent = Events.MinigameFinishedEvent;
             minigameFinishedEvent.Engagement = engagement;
+            minigameFinishedEvent.Minigame = "Dodge the Insults";
             EventManager.Broadcast(minigameFinishedEvent);
         }
 

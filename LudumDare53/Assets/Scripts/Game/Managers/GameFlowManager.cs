@@ -3,8 +3,27 @@ using UnityEngine;
 
 namespace Game.Managers {
     public class GameFlowManager : MonoBehaviour {
+
+        private int numberOfMinigameDone = 0;
+
+        private void Awake() {
+            
+        }
+
+        private void Start() {
+            
+        }
+
         private void Update() {
-            //Debug.Log("Game Flow Manager");
+            
+        }
+
+        private void OnMinigameFinished(MinigameFinishedEvent evt) {
+            
+        }
+
+        private void OnDestroy() {
+            
         }
     }
 }

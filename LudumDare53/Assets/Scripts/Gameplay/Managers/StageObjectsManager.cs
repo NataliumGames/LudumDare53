@@ -73,6 +73,8 @@ namespace Gameplay.Managers {
                 MinigameFinishedEvent minigameFinishedEvent = Events.MinigameFinishedEvent;
                 Engagement engagement = FindObjectOfType<Engagement>();
                 minigameFinishedEvent.Engagement = engagement.engagement;
+                minigameFinishedEvent.Minigame = "Fix Stage";
+                minigameFinishedEvent.Time = FindObjectOfType<Timer>().timeRemaining;
                 EventManager.Broadcast(minigameFinishedEvent);
             }
         }

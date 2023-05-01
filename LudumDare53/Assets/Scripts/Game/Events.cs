@@ -19,7 +19,10 @@ namespace Game {
     }
 
     public class MinigameFinishedEvent : GameEvent {
+        public string Minigame;
         public float Engagement;
+        public int Score;
+        public float Time;
     }
 
     public class EnemySpawnedEvent : GameEvent {
