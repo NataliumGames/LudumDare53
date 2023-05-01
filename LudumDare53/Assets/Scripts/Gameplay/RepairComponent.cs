@@ -18,6 +18,7 @@ namespace Gameplay {
         private GaugeBar gaugeBar;
         private GameObject nearGameobject;
         private bool canvasVisibility = false;
+        private bool repairing = false;
         private Engagement _engagement;
         private AudioManager _audioManager;
 
@@ -36,6 +37,7 @@ namespace Gameplay {
         }
 
         private void BeginRepair(GameObject obj) {
+            repairing = true;
             text.SetActive(false);
             gaugeBarGameObject.SetActive(true);
 
@@ -45,7 +47,7 @@ namespace Gameplay {
         private IEnumerator FillGaugeBar() {
             bool running = true;
 
-            while (running) {
+            while (running && repairing) {
                 if (gaugeBar.value == 1f) {
                     running = false;
 
@@ -76,6 +78,7 @@ namespace Gameplay {
 
         private void OnTriggerExit(Collider other) {
             if (other.CompareTag("Repairable")) {
+                repairing = false;
                 canvasVisibility = false;
                 text.SetActive(canvasVisibility);
                 gaugeBarGameObject.SetActive(canvasVisibility);

@@ -16,6 +16,7 @@ namespace Gameplay {
         private CharacterController _characterController;
         private AudioManager _audioManager;
         private bool isInvulnerable = true;
+        private bool canAttack = true;
         private GameObject enemy;
         private GameObject attackText;
 
@@ -37,12 +38,16 @@ namespace Gameplay {
             _characterController.Move(moveDirection * speed * Time.deltaTime);
             
             if (enemy != null && Vector3.Distance(transform.position, enemy.transform.position) <= 5f) {
-                attackText.SetActive(true);
+                if(canAttack)
+                    attackText.SetActive(true);
 
-                if (Input.GetKeyDown(KeyCode.Space)) {
+                if (Input.GetKeyDown(KeyCode.Space) && canAttack) {
+                    canAttack = false;
+                    attackText.SetActive(false);
                     AttackEvent attackEvent = Events.AttackEvent;
                     EventManager.Broadcast(attackEvent);
                     _audioManager.PlayPunch();
+                    StartCoroutine(AttackCooldown());
                 }
             } else {
                 attackText.SetActive(false);
@@ -56,6 +61,12 @@ namespace Gameplay {
         public IEnumerator EndInvulnerability() {
             yield return new WaitForSeconds(invulnerabilityDuration);
             isInvulnerable = false;
+        }
+
+        public IEnumerator AttackCooldown() {
+            yield return new WaitForSeconds(2f);
+            _audioManager.PlayFXPitch("Snap", 2f);
+            canAttack = true;
         }
         
         private void OnTriggerEnter(Collider other) {

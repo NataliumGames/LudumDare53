@@ -7,10 +7,12 @@ using Game.Managers;
 using UI;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Timer = Game.Timer;
 
 namespace Gameplay.Managers {
     public class StageObjectsManager : MonoBehaviour {
 
+        public GameObject controls;
         public GameObject monitorPrefab;
         public GameObject micstandPrefab;
         public GameObject stoodPrefab;
@@ -19,14 +21,22 @@ namespace Gameplay.Managers {
         public List<Transform> micstandSpawnPoints;
         public List<Transform> stoodSpawnPoints;
         public List<Transform> bottleSpawnPoints;
+        public bool gameIsRunning = false;
+        public GaugeBar engagementBar;
+        private Engagement engagement;
+        private CameraShake cameraShake;
 
         private List<GameObject> instantiatedGameobjects;
 
         private void Awake() {
             EventManager.AddListener<ObjectRepairedEvent>(OnObjectRepaired);
             EventManager.AddListener<TimerTimeOutEvent>(OnTimerTimeout);
+            engagement = GetComponent<Engagement>();
+            cameraShake = FindObjectOfType<CameraShake>();
+            EventManager.AddListener<EngagementChangeEvent>(OnEngagementChange);
+            EventManager.AddListener<HittedByEnemyEvent>(OnHittedByEnemyEvent);
         }
-
+        
         private void Start() {
             instantiatedGameobjects = new List<GameObject>();
 
@@ -58,7 +68,23 @@ namespace Gameplay.Managers {
         }
 
         private void Update() {
-            
+            if (!gameIsRunning && (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.D))) {
+                controls.SetActive(false);
+                gameIsRunning = true;
+                
+                engagement.SetRunning(true);
+                FindObjectOfType<Timer>().StartTimer();
+                FindObjectOfType<EnemySpawner>().Spawn();
+            }
+        }
+        
+        private void OnEngagementChange(EngagementChangeEvent evt) {
+            engagementBar.SetBarValue(evt.Value);
+        }
+
+        private void OnHittedByEnemyEvent(HittedByEnemyEvent evt) {
+            cameraShake.Shake(0.1f);
+            engagementBar.DecrementValueBy(0.2f);
         }
 
         private void EndGame() {
@@ -101,6 +127,8 @@ namespace Gameplay.Managers {
         private void OnDestroy() {
             EventManager.RemoveListener<ObjectRepairedEvent>(OnObjectRepaired);
             EventManager.RemoveListener<TimerTimeOutEvent>(OnTimerTimeout);
+            EventManager.RemoveListener<EngagementChangeEvent>(OnEngagementChange);
+            EventManager.RemoveListener<HittedByEnemyEvent>(OnHittedByEnemyEvent);
         }
     }
 }

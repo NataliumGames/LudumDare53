@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - Safe
   - Wall
+  - EnemyVisibility
   layers:
   - Default
   - TransparentFX
