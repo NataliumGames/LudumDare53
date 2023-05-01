@@ -16,11 +16,9 @@ namespace Gameplay.Managers {
         public GameObject monitorPrefab;
         public GameObject micstandPrefab;
         public GameObject stoodPrefab;
-        public GameObject bottlePrefab;
         public List<Transform> monitorSpawnPoints;
         public List<Transform> micstandSpawnPoints;
         public List<Transform> stoodSpawnPoints;
-        public List<Transform> bottleSpawnPoints;
         public bool gameIsRunning = false;
         public GaugeBarVertical engagementBar;
         private Engagement engagement;
@@ -57,14 +55,6 @@ namespace Gameplay.Managers {
             transform = stoodSpawnPoints[Random.Range(0, stoodSpawnPoints.Count - 1)];
             g = Instantiate(stoodPrefab, transform);
             instantiatedGameobjects.Add(g);
-            
-            // Bottle spawn
-            for (int i = 0; i < 4; i++) {
-                transform = bottleSpawnPoints[Random.Range(0, bottleSpawnPoints.Count - 1)];
-                bottleSpawnPoints.Remove(transform);
-                g = Instantiate(bottlePrefab, transform);
-                instantiatedGameobjects.Add(g);
-            }
         }
 
         private void Update() {
@@ -93,12 +83,11 @@ namespace Gameplay.Managers {
             minigameFinishedEvent.Engagement = engagement.engagement;
             minigameFinishedEvent.Minigame = "Fix Stage";
             minigameFinishedEvent.Time = FindObjectOfType<Timer>().timeRemaining;
+            float eng = minigameFinishedEvent.Engagement * 100f;
 
             StringBuilder stringBuilder = new StringBuilder("<align=\"center\">" + minigameFinishedEvent.Minigame);
             stringBuilder.Append("\n\n\n");
-            stringBuilder.Append("<align=\"left\"><color=\"red\">Engagement: <color=\"black\">" + minigameFinishedEvent.Engagement * 100 + "%");
-            stringBuilder.Append("\n");
-            stringBuilder.Append("<align=\"left\"><color=\"red\">Time Left: <color=\"black\">" + minigameFinishedEvent.Time);
+            stringBuilder.Append("<align=\"left\"><color=\"red\">Engagement: <color=\"black\">" + eng.ToString("0.00") + "%");
 
             minigameFinishedEvent.Recap = stringBuilder.ToString();
             
@@ -111,13 +100,9 @@ namespace Gameplay.Managers {
 
         private void OnObjectRepaired(ObjectRepairedEvent evt) {
             GameObject g = instantiatedGameobjects.Find(obj => obj == evt.Object);
-            if (g.name.Contains("Bottle")) {
-                instantiatedGameobjects.Remove(g);
-                Destroy(g);
-            } else {
-                g.tag = "Repaired";
-                g.transform.GetChild(1).gameObject.SetActive(false);
-            }
+            
+            g.tag = "Repaired";
+            g.transform.GetChild(1).gameObject.SetActive(false);
 
             if (instantiatedGameobjects.All(obj => obj.tag.Equals("Repaired"))) {
                 EndGame();

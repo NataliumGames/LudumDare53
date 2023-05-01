@@ -82,9 +82,9 @@ public class ButtonSmasher : MonoBehaviour {
         float finalScore = media * multiplier;
 
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.Append("Average Engagement: " + media + "\n");
+        stringBuilder.Append("Average Engagement: " + media.ToString("0.00") + "\n");
         stringBuilder.Append("Punchline Multiplier: X" + multiplier + "\n\n");
-        stringBuilder.Append("Final Score: " + finalScore + "\n");
+        stringBuilder.Append("Final Score: " + finalScore.ToString("0.00") + "\n");
 
         description.text = stringBuilder.ToString();
 
