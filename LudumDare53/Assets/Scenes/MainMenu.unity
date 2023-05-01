@@ -864,7 +864,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-48294
+  m_Name: pb_Mesh-62564
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1028,7 +1028,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-48266
+  m_Name: pb_Mesh-62536
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1350,7 +1350,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-48280
+  m_Name: pb_Mesh-62550
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1542,7 +1542,7 @@ PrefabInstance:
       objectReference: {fileID: 527185253}
     - target: {fileID: 8858051464628989710, guid: e1f6eba8ee8e6bb468ec7f155d930954, type: 3}
       propertyPath: m_VersionIndex
-      value: 2037
+      value: 2040
       objectReference: {fileID: 0}
     - target: {fileID: 8858051464771763726, guid: e1f6eba8ee8e6bb468ec7f155d930954, type: 3}
       propertyPath: m_Mesh
@@ -1558,7 +1558,7 @@ PrefabInstance:
       objectReference: {fileID: 1649325139}
     - target: {fileID: 8858051464771763730, guid: e1f6eba8ee8e6bb468ec7f155d930954, type: 3}
       propertyPath: m_VersionIndex
-      value: 4786
+      value: 4789
       objectReference: {fileID: 0}
     - target: {fileID: 8858051464799311269, guid: e1f6eba8ee8e6bb468ec7f155d930954, type: 3}
       propertyPath: m_Name
@@ -1624,18 +1624,6 @@ PrefabInstance:
       propertyPath: m_AdditionalLightsShadowResolutionTier
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 8858051465962919427, guid: e1f6eba8ee8e6bb468ec7f155d930954, type: 3}
-      propertyPath: m_Range
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 8858051465962919427, guid: e1f6eba8ee8e6bb468ec7f155d930954, type: 3}
-      propertyPath: m_Intensity
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 8858051465962919427, guid: e1f6eba8ee8e6bb468ec7f155d930954, type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8858051466121597752, guid: e1f6eba8ee8e6bb468ec7f155d930954, type: 3}
       propertyPath: m_AdditionalLightsShadowResolutionTier
       value: 2
@@ -1654,7 +1642,7 @@ PrefabInstance:
       objectReference: {fileID: 326623277}
     - target: {fileID: 8858051466354572094, guid: e1f6eba8ee8e6bb468ec7f155d930954, type: 3}
       propertyPath: m_VersionIndex
-      value: 2321
+      value: 2324
       objectReference: {fileID: 0}
     - target: {fileID: 8858051466376026718, guid: e1f6eba8ee8e6bb468ec7f155d930954, type: 3}
       propertyPath: m_Mesh
@@ -1670,7 +1658,7 @@ PrefabInstance:
       objectReference: {fileID: 402691776}
     - target: {fileID: 8858051466376026786, guid: e1f6eba8ee8e6bb468ec7f155d930954, type: 3}
       propertyPath: m_VersionIndex
-      value: 4834
+      value: 4837
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1f6eba8ee8e6bb468ec7f155d930954, type: 3}
@@ -2972,7 +2960,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-48252
+  m_Name: pb_Mesh-62522
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
