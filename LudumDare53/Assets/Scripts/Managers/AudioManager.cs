@@ -107,6 +107,20 @@ namespace Managers {
 			s.source.Play();
 		}
 		
+		public void PlayFXPitch(string name, float pitch) {
+			Sound s = soundFx.Find(sound => sound.soundName == name);
+			if (s == null) {
+				Debug.LogWarning("Sound " + name + " not found!");
+				return;
+			}
+
+			float original = s.pitch;
+			s.pitch = pitch;
+			s.source.Play();
+
+			s.pitch = original;
+		}
+		
 		public void PlayDamage() {
 			Sound s = damageFx[Random.Range(0, damageFx.Count)];
 			if (s == null) {
