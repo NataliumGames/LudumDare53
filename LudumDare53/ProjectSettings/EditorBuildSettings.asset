@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SetupMinigameMuri.unity
     guid: 42cab89ed73ca450ca267fd0d888d9ef
+  - enabled: 1
+    path: Assets/Scenes/SetupMinigameMiky.unity
+    guid: 11030e921fa3f364883c2f1752c6d894
+  - enabled: 1
+    path: Assets/Scenes/SetupMinigameMonkeyFix.unity
+    guid: fd8a0a7b1f7734302a0f27c53a7dd7e4
   m_configObjects: {}

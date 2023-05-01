@@ -47,7 +47,7 @@ namespace Gameplay.Managers {
 
         private IEnumerator SpawnWall() {
             while (true) {
-                Vector3 pos = new Vector3(Random.Range(-2.4f, 1.8f), spawnPos.position.y, spawnPos.position.z);
+                Vector3 pos = new Vector3(Random.Range(-2f, 1f), spawnPos.position.y, spawnPos.position.z);
                 int randomIndex = Random.Range(0, wallPrefabs.Count);
                 GameObject wall = Instantiate(wallPrefabs[randomIndex], pos, Quaternion.identity);
                 wall.GetComponent<WallMover>().StartMovement();
