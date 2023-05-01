@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SetupMinigameMonkeyFix.unity
     guid: fd8a0a7b1f7734302a0f27c53a7dd7e4
+  - enabled: 1
+    path: Assets/Scenes/PunchlineMinigame.unity
+    guid: 83520cadfc3942540ad05e5601666d7e
   m_configObjects: {}

@@ -1,10 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UI;
 using Managers;
 using Game;
+using Game.Managers;
 
 
 public class ButtonSmasher : MonoBehaviour
@@ -21,6 +24,10 @@ public class ButtonSmasher : MonoBehaviour
 
     private GaugeBar gaugeBar;
     private TextMeshProUGUI multiplierText;
+
+    private void Awake() {
+        EventManager.AddListener<TimerTimeOutEvent>(OnTimerTimeoutEvent);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +55,17 @@ public class ButtonSmasher : MonoBehaviour
             FindObjectOfType<AudioManager>().PlayPunch();
         }
     }
+    
+    private void OnTimerTimeoutEvent(TimerTimeOutEvent evt) {
+        // calculate points
+        GameFlowManager gameFlowManager = FindObjectOfType<GameFlowManager>();
+        if(gameFlowManager == null)
+            return;
+
+        float media = gameFlowManager.engagementMap.Values.Average();
+
+        // show final recap
+    }
 
     private int updateMultiplier() {
         int multiplier = 0;
@@ -68,5 +86,9 @@ public class ButtonSmasher : MonoBehaviour
         }
 
         return multiplier;
+    }
+
+    private void OnDestroy() {
+        EventManager.RemoveListener<TimerTimeOutEvent>(OnTimerTimeoutEvent);
     }
 }

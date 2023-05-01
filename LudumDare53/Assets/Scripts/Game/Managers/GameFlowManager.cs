@@ -15,7 +15,7 @@ namespace Game.Managers {
         private int numberOfMinigameDone = 0;
         private bool isMainMenuLoaded = false;
         private bool managerFound = false;
-        private Dictionary<string, float> engagementMap = new Dictionary<string, float>();
+        public Dictionary<string, float> engagementMap = new Dictionary<string, float>();
 
         private void Awake() {
             _sceneManager = FindObjectOfType<SceneManager>();
@@ -31,8 +31,9 @@ namespace Game.Managers {
         }
 
         private void OnMinigameFinished(MinigameFinishedEvent evt) {
-            if (numberOfMinigameDone == 3) {
-                
+            if (numberOfMinigameDone == 2) {
+                Debug.Log("Punchline");
+                _sceneManager.LoadPunchline();
             } else {
                 engagementMap[evt.Minigame] = evt.Engagement;
                 numberOfMinigameDone++;
