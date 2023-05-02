@@ -1663,7 +1663,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1023197506}
-  - component: {fileID: 1023197507}
   - component: {fileID: 1023197508}
   - component: {fileID: 1023197509}
   m_Layer: 0
@@ -1688,19 +1687,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1023197507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1023197505}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af68ec85235c42bda8d5ce7dafc04261, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  engagementBar: {fileID: 0}
 --- !u!114 &1023197508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1729,7 +1715,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controls: {fileID: 1252749227848318664}
   stats: {fileID: 145983424}
-  gameOver: {fileID: 0}
+  gameOver: {fileID: 1252749227878948065}
   monitorPrefab: {fileID: 7165981007031097631, guid: 7723e8afb0ee74bd2b01ddbdb8249591, type: 3}
   micstandPrefab: {fileID: 4521786920372917891, guid: 77341b5b819cb4479a799a10431dc875, type: 3}
   stoodPrefab: {fileID: 6835004784489532574, guid: 89b738b6030c440069e627c5672ca408, type: 3}
@@ -3210,7 +3196,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 59.25
+  m_fontSize: 28.85
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3648,7 +3634,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 66.3
+  m_fontSize: 32.25
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3918,7 +3904,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 57.15
   m_fontSizeBase: 68
   m_fontWeight: 400
   m_enableAutoSizing: 1
