@@ -14,7 +14,7 @@ namespace Gameplay.Managers {
 
         public GameObject controls;
         public GameObject stats;
-        public GameObject gameOver;
+        //public GameObject gameOver;
         public GameObject monitorPrefab;
         public GameObject micstandPrefab;
         public GameObject stoodPrefab;
@@ -60,7 +60,7 @@ namespace Gameplay.Managers {
 
             controls.SetActive(true);
             stats.SetActive(false);
-            gameOver.SetActive(false);
+            //gameOver.SetActive(false);
         }
 
         private void Update() {
@@ -81,8 +81,8 @@ namespace Gameplay.Managers {
         }
 
         private void OnHittedByEnemyEvent(HittedByEnemyEvent evt) {
-            cameraShake.Shake(0.1f);
-            engagementBar.DecrementValueBy(0.2f);
+            // cameraShake.Shake(0.1f);
+            // engagementBar.DecrementValueBy(0.2f);
         }
 
         private void EndGame()

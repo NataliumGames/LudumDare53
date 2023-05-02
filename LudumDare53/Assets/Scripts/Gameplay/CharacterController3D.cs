@@ -3,6 +3,7 @@ using System.Collections;
 using Game;
 using Game.Managers;
 using Managers;
+using UI;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
@@ -40,7 +41,8 @@ namespace Gameplay {
             Vector3 moveDirection = new Vector3(horizontal, -5f, vertical);
             _characterController.Move(moveDirection * speed * Time.deltaTime);
             moveDirection = new Vector3(horizontal, 0f, vertical);
-            transformHead.rotation = Quaternion.LookRotation(moveDirection);
+            if(moveDirection != Vector3.zero)
+                transformHead.rotation = Quaternion.LookRotation(moveDirection);
             
             if (enemy != null && Vector3.Distance(transform.position, enemy.transform.position) <= 5f) {
                 if(canAttack)
@@ -76,8 +78,14 @@ namespace Gameplay {
         
         private void OnTriggerEnter(Collider other) {
             if (other.transform.CompareTag("Enemy") && !isInvulnerable) {
+                isInvulnerable = true;
                 HittedByEnemyEvent hittedByEnemyEvent = Events.HittedByEnemyEvent;
                 EventManager.Broadcast(hittedByEnemyEvent);
+                FindObjectOfType<CameraShake>().Shake(0.1f);
+                FindObjectOfType<Engagement>().DecrementValueBy(0.1f);
+                FindObjectOfType<GaugeBarVertical>().DecrementValueBy(0.1f);
+                
+                StartCoroutine(EndInvulnerability());
                 _audioManager.PlayFX("Heckler");
             }
         }
