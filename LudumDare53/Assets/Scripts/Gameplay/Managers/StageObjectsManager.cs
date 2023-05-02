@@ -13,6 +13,8 @@ namespace Gameplay.Managers {
     public class StageObjectsManager : MonoBehaviour {
 
         public GameObject controls;
+        public GameObject stats;
+        public GameObject gameOver;
         public GameObject monitorPrefab;
         public GameObject micstandPrefab;
         public GameObject stoodPrefab;
@@ -55,11 +57,17 @@ namespace Gameplay.Managers {
             transform = stoodSpawnPoints[Random.Range(0, stoodSpawnPoints.Count - 1)];
             g = Instantiate(stoodPrefab, transform);
             instantiatedGameobjects.Add(g);
+
+            controls.SetActive(true);
+            stats.SetActive(false);
+            gameOver.SetActive(false);
         }
 
         private void Update() {
             if (!gameIsRunning && (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.D))) {
                 controls.SetActive(false);
+                stats.SetActive(true);
+
                 gameIsRunning = true;
                 
                 engagement.SetRunning(true);
@@ -77,7 +85,10 @@ namespace Gameplay.Managers {
             engagementBar.DecrementValueBy(0.2f);
         }
 
-        private void EndGame() {
+        private void EndGame()
+        {
+            stats.SetActive(false);
+
             MinigameFinishedEvent minigameFinishedEvent = Events.MinigameFinishedEvent;
             Engagement engagement = FindObjectOfType<Engagement>();
             minigameFinishedEvent.Engagement = engagement.engagement;
@@ -92,6 +103,7 @@ namespace Gameplay.Managers {
             minigameFinishedEvent.Recap = stringBuilder.ToString();
             
             EventManager.Broadcast(minigameFinishedEvent);
+
         }
 
         private void OnTimerTimeout(TimerTimeOutEvent evt) {
