@@ -78,7 +78,7 @@ namespace Gameplay {
             if (other.transform.CompareTag("Enemy") && !isInvulnerable) {
                 HittedByEnemyEvent hittedByEnemyEvent = Events.HittedByEnemyEvent;
                 EventManager.Broadcast(hittedByEnemyEvent);
-                _audioManager.PlayFX("Monkey");
+                _audioManager.PlayFX("Heckler");
             }
         }
 
