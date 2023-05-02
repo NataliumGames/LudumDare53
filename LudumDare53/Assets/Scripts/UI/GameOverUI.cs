@@ -1,6 +1,7 @@
 using System;
 using Game;
 using Game.Managers;
+using Managers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,10 +21,15 @@ namespace UI {
             quitButton.onClick.AddListener(QuitButtonPressed);
         }
 
-        private void StartButtonPressed() {
+        private void StartButtonPressed()
+        {
+            
             SceneManager sceneManager = FindObjectOfType<SceneManager>();
             if (sceneManager != null)
             {
+                AudioManager audioManager = FindAnyObjectByType<AudioManager>();
+                audioManager.StopAll();
+                audioManager.PlayMusic("MenuMusic");
                 sceneManager.LoadMainMenu();
             }
         }

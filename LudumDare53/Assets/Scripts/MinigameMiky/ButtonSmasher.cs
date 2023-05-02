@@ -27,6 +27,8 @@ public class ButtonSmasher : MonoBehaviour {
     public GameObject multiplierTextObject;
     public GameObject controls;
 
+    private AudioManager audioManager;
+
     private int counterStep;
     private bool gameIsRunning = false;
 
@@ -40,6 +42,8 @@ public class ButtonSmasher : MonoBehaviour {
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = FindAnyObjectByType<AudioManager>();
+
         menuButton.onClick.AddListener(MenuButton);
         quitButton.onClick.AddListener(QuitButton);
         gaugeBar = gaugeBarObject.GetComponent<GaugeBar>();
@@ -113,6 +117,8 @@ public class ButtonSmasher : MonoBehaviour {
     }
 
     private void MenuButton() {
+        audioManager.PlayMusic("MenuMusic");
+
         FindObjectOfType<SceneManager>().LoadMainMenu();
     }
 
