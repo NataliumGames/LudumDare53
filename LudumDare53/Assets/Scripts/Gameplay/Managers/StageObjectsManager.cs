@@ -42,19 +42,20 @@ namespace Gameplay.Managers {
 
             // Monitor spawn
             for (int i = 0; i < 2; i++) {
-                Transform t = monitorSpawnPoints[Random.Range(0, monitorSpawnPoints.Count - 1)];
+                Transform t = monitorSpawnPoints[Random.Range(0, monitorSpawnPoints.Count)];
                 monitorSpawnPoints.Remove(t);
                 GameObject monitor = Instantiate(monitorPrefab, t);
+                monitor.name = "Monitor " + i;
                 instantiatedGameobjects.Add(monitor);
             }
             
             // Mic stand spawn
-            Transform transform = micstandSpawnPoints[Random.Range(0, micstandSpawnPoints.Count - 1)];
+            Transform transform = micstandSpawnPoints[Random.Range(0, micstandSpawnPoints.Count)];
             GameObject g = Instantiate(micstandPrefab, transform);
             instantiatedGameobjects.Add(g);
             
             // Stood spawn
-            transform = stoodSpawnPoints[Random.Range(0, stoodSpawnPoints.Count - 1)];
+            transform = stoodSpawnPoints[Random.Range(0, stoodSpawnPoints.Count)];
             g = Instantiate(stoodPrefab, transform);
             instantiatedGameobjects.Add(g);
 

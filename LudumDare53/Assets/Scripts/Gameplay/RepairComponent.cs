@@ -1,16 +1,18 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Game;
 using Game.Managers;
 using Managers;
 using TMPro;
 using UI;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Gameplay {
     public class RepairComponent : MonoBehaviour {
         
-        public float engagementBonus = 0.1f;
+        public float bonus = 0.1f;
 
         private GameObject _canvas;
         private GameObject text;
@@ -21,6 +23,7 @@ namespace Gameplay {
         private bool repairing = false;
         private Engagement _engagement;
         private AudioManager _audioManager;
+        private Dictionary<String, float> gameobjectMap;
 
         private void Start() {
             _audioManager = FindObjectOfType<AudioManager>();
@@ -29,11 +32,13 @@ namespace Gameplay {
             text = _canvas.transform.GetChild(0).gameObject;
             gaugeBarGameObject = _canvas.transform.GetChild(1).gameObject;
             gaugeBar = gaugeBarGameObject.GetComponent<GaugeBar>();
+            gameobjectMap = new Dictionary<String, float>();
         }
 
         private void Update() {
-            if(Input.GetKeyDown(KeyCode.E) && canvasVisibility && nearGameobject != null && !repairing)
+            if (Input.GetKeyDown(KeyCode.E) && canvasVisibility && nearGameobject && !repairing) {
                 BeginRepair(nearGameobject);
+            }
         }
 
         private void BeginRepair(GameObject obj) {
@@ -41,31 +46,37 @@ namespace Gameplay {
             text.SetActive(false);
             gaugeBarGameObject.SetActive(true);
 
-            StartCoroutine(FillGaugeBar());
+            gameobjectMap.TryAdd(obj.name, 0f);
+
+            StartCoroutine(Repair(obj));
         }
 
-        private IEnumerator FillGaugeBar() {
+        private IEnumerator Repair(GameObject obj) {
             bool running = true;
-
+            
             while (running && repairing) {
-                if (gaugeBar.value == 1f) {
+                if (gameobjectMap[obj.name] >= 1f) {
                     running = false;
-
-                    ObjectRepairedEvent objectRepairedEvent = Events.ObjectRepairedEvent;
-                    objectRepairedEvent.Object = nearGameobject;
-                    EventManager.Broadcast(objectRepairedEvent);
-                    
+                    repairing = false;
                     gaugeBar.SetBarValue(0f);
                     gaugeBarGameObject.SetActive(false);
-                }
-                else {
-                    gaugeBar.IncrementValueBy(0.1f);
-                    _engagement.IncrementValueBy(engagementBonus);
+                    
+                    BroadcastRepairedEvent(obj);
+                } else {
+                    gameobjectMap[obj.name] += bonus;
+                    gaugeBar.SetBarValue(gameobjectMap[obj.name]);
+                    _engagement.IncrementValueBy(bonus);
                     _audioManager.PlayFX("Build");
                 }
 
                 yield return new WaitForSeconds(1f);
             }
+        }
+
+        private void BroadcastRepairedEvent(GameObject obj) {
+            ObjectRepairedEvent objectRepairedEvent = Events.ObjectRepairedEvent;
+            objectRepairedEvent.Object = nearGameobject;
+            EventManager.Broadcast(objectRepairedEvent);
         }
         
         private void OnTriggerEnter(Collider other) {
