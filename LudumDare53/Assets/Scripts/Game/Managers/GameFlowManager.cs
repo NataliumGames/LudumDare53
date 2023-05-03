@@ -7,7 +7,6 @@ using UnityEngine;
 namespace Game.Managers {
     public class GameFlowManager : MonoBehaviour {
 
-        public GameObject transitionPanel;
         public GameObject infoButton;
 
         private SceneManager _sceneManager;
@@ -23,17 +22,17 @@ namespace Game.Managers {
         }
 
         private void Start() {
-            
+            infoButton.SetActive(true);
         }
 
         private void Update() {
             
         }
 
-        private void OnMinigameFinished(MinigameFinishedEvent evt) {
-            if (numberOfMinigameDone == 2) {
-                
-            } else {
+        private void OnMinigameFinished(MinigameFinishedEvent evt)
+        {
+            if (numberOfMinigameDone != 2)
+            {
                 engagementMap[evt.Minigame] = evt.Engagement;
                 numberOfMinigameDone++;
                 isMainMenuLoaded = true;

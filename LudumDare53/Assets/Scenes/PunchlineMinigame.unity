@@ -635,7 +635,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 264223319581125781, guid: d0897756d71168e468e50d6b16b88752, type: 3}
       propertyPath: m_text
-      value: Smash that Spacebar!
+      value: Punch the line! (Space)
       objectReference: {fileID: 0}
     - target: {fileID: 264223319581125781, guid: d0897756d71168e468e50d6b16b88752, type: 3}
       propertyPath: m_margin.z
@@ -643,7 +643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 264223319581125781, guid: d0897756d71168e468e50d6b16b88752, type: 3}
       propertyPath: m_HorizontalAlignment
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1252749227640827168, guid: d0897756d71168e468e50d6b16b88752, type: 3}
       propertyPath: m_Pivot.x
@@ -737,6 +737,38 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3511219841388346385, guid: d0897756d71168e468e50d6b16b88752, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3511219841388346385, guid: d0897756d71168e468e50d6b16b88752, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 3511219841388346385, guid: d0897756d71168e468e50d6b16b88752, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3511219841388346385, guid: d0897756d71168e468e50d6b16b88752, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -53
+      objectReference: {fileID: 0}
+    - target: {fileID: 3511219841388346385, guid: d0897756d71168e468e50d6b16b88752, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3511219841388346385, guid: d0897756d71168e468e50d6b16b88752, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 26.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434836524717532865, guid: d0897756d71168e468e50d6b16b88752, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434836524717532865, guid: d0897756d71168e468e50d6b16b88752, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4434836524717532865, guid: d0897756d71168e468e50d6b16b88752, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
@@ -747,12 +779,44 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: f25473a20c171a445b1090dd3463fadd, type: 3}
     - target: {fileID: 6024175743706914359, guid: d0897756d71168e468e50d6b16b88752, type: 3}
       propertyPath: m_text
-      value: Press the spacebar as fast as you can to get your score multiplier as
-        high as possible!
+      value: Press the spacebar as fast as you can to get the highest possible score
+        multiplier!
       objectReference: {fileID: 0}
     - target: {fileID: 6024175743706914359, guid: d0897756d71168e468e50d6b16b88752, type: 3}
       propertyPath: m_fontSize
-      value: 40
+      value: 45.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6024175743706914359, guid: d0897756d71168e468e50d6b16b88752, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 7011845907972675749, guid: d0897756d71168e468e50d6b16b88752, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7011845907972675749, guid: d0897756d71168e468e50d6b16b88752, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7011845907972675749, guid: d0897756d71168e468e50d6b16b88752, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7011845907972675749, guid: d0897756d71168e468e50d6b16b88752, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7011845907972675749, guid: d0897756d71168e468e50d6b16b88752, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377072308683062985, guid: d0897756d71168e468e50d6b16b88752, type: 3}
+      propertyPath: m_fontSize
+      value: 70.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377072308683062985, guid: d0897756d71168e468e50d6b16b88752, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 84
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0897756d71168e468e50d6b16b88752, type: 3}
@@ -767,7 +831,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-500352
+  m_Name: pb_Mesh-510464
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6647,7 +6711,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-500366
+  m_Name: pb_Mesh-510478
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6811,7 +6875,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-500380
+  m_Name: pb_Mesh-510492
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11788,7 +11852,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-500394
+  m_Name: pb_Mesh-510506
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

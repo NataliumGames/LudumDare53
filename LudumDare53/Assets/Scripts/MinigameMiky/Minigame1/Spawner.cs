@@ -22,6 +22,7 @@ public class Spawner : MonoBehaviour
     private int bonusCount = 0;
 
     private bool isRunning = false;
+    private bool malus = true;
 
     // Start is called before the first frame update
     void Start()
@@ -64,7 +65,7 @@ public class Spawner : MonoBehaviour
             Vector3 position = new Vector3(spawnX, spawnY, 0.0f);
 
             // spawn bonus or malus
-            if(bonusCount < 3 || Random.Range(0, 2) == 1)
+            if(!malus || bonusCount < 3 || Random.Range(0, 2) == 1)
             {
                 bonusCount++;
                 go = Instantiate(bonusPrefabs[Random.Range(0, bonusPrefabs.Length)], transform);
@@ -82,6 +83,11 @@ public class Spawner : MonoBehaviour
 
             yield return new WaitForSeconds(1.0f / spawnRate);
         }
+    }
+
+    public void StopMalusSpawn()
+    {
+        malus = false;
     }
 
     public int GetSpawnedObj()

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3849184587250017128}
   - component: {fileID: 7761842938111619641}
+  - component: {fileID: 5329729373871655030}
   - component: {fileID: 5180705815005564795}
   m_Layer: 0
   m_Name: HitBoxMalus
@@ -44,8 +45,21 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.734419, y: 3.0432348, z: 1}
-  m_Center: {x: -6.5417376, y: -0.021618713, z: 0}
+  m_Size: {x: 7.931885, y: 3.0432348, z: 1}
+  m_Center: {x: -7.9430046, y: -0.021618659, z: 0}
+--- !u!65 &5329729373871655030
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50344600619119708}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4645859, y: 3.0432348, z: 1}
+  m_Center: {x: -1.4101896, y: -0.021618713, z: 0}
 --- !u!65 &5180705815005564795
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -116,7 +130,7 @@ GameObject:
   - component: {fileID: 8751166241522938713}
   m_Layer: 0
   m_Name: Didnt-Laugh
-  m_TagString: Wall
+  m_TagString: Safe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -225,7 +239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8e6a4fba448c647fb9cc73fe69678fa1, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e6a4fba448c647fb9cc73fe69678fa1, type: 3}

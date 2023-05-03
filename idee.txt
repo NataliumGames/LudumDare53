@@ -1,0 +1,59 @@
+that's offensive!
+drunk annoying person
+chatting
+
+
+
+spero che almeno oggi mi paghino
+la tizia del tavolo 8 mi sta fissando
+credo di aver lasciato la cena nel forno
+ho spento il gas?
+cazzo ho un sassolino nella scarpa
+mi sono completamente scordato del compleanno di mia madre
+
+
+TO-DO:
+golden mic? Maximises the bar;
+
+
+not funny
+you suck
+didn't laugh
+go home
+you're drunk
+fuck off
+shut up
+worst show
+I'm offended
+you're ugly
+
+
+------
+golden mic
+
+
+fix dropping obj 
+fix gauge bar
+fix UI in games
+
+
+
+
+-----
+
+Fix UI:
++ MainMenu
++ GameOver
+
+Fix Walls Game:
++ Disable Colliders;
++ Increase movement speed;
+
+Change Score meaning;
+
++ Stop punchline hits;
+
+Refactor
+
+
+in recap: nascondere info button;

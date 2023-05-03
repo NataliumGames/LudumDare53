@@ -54,6 +54,19 @@ namespace Gameplay.Managers {
 
         private void OnEngagementChange(EngagementChangeEvent evt) {
             engagementBar.SetBarValue(evt.Value);
+
+            if (evt.Value <= 0.0f)
+            {
+                gameIsRunning = false;
+                stats.SetActive(false);
+                FindObjectOfType<Engagement>().SetRunning(false);
+                FindObjectOfType<Timer>().StopTimer();
+
+                StartCoroutine(ClearWalls(0.0f));
+
+                GameOverEvent gameOverEvent = Events.GameOverEvent;
+                EventManager.Broadcast(gameOverEvent);
+            }
         }
 
         private void OnTimerTimeoutEvent(TimerTimeOutEvent evt) {
@@ -73,7 +86,7 @@ namespace Gameplay.Managers {
         }
 
         private IEnumerator SpawnWall() {
-            while (true) {
+            while (gameIsRunning) {
                 Vector3 pos = new Vector3(0f, spawnPos.position.y, spawnPos.position.z);
                 int randomIndex = Random.Range(0, wallPrefabs.Count);
                 GameObject wall = Instantiate(wallPrefabs[randomIndex], pos, Quaternion.identity);
@@ -107,6 +120,16 @@ namespace Gameplay.Managers {
         private void OnDestroy() {
             EventManager.RemoveListener<EngagementChangeEvent>(OnEngagementChange);
             EventManager.RemoveListener<TimerTimeOutEvent>(OnTimerTimeoutEvent);
+        }
+
+        private IEnumerator ClearWalls(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+
+            foreach(GameObject go in GameObject.FindGameObjectsWithTag("Wall"))
+            {
+                Destroy(go);
+            }
         }
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414726, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1147,11 +1147,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1252749228656605141, guid: 82a8f44ddaf014ed495a33c163728b78, type: 3}
       propertyPath: m_text
-      value: Move the player
+      value: Move the player (AD)
       objectReference: {fileID: 0}
     - target: {fileID: 1252749228656605141, guid: 82a8f44ddaf014ed495a33c163728b78, type: 3}
       propertyPath: m_fontSize
-      value: 80
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 1252749228656605141, guid: 82a8f44ddaf014ed495a33c163728b78, type: 3}
       propertyPath: m_fontStyle
@@ -1159,7 +1159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1252749228656605141, guid: 82a8f44ddaf014ed495a33c163728b78, type: 3}
       propertyPath: m_fontSizeMax
-      value: 80
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 1252749228656605141, guid: 82a8f44ddaf014ed495a33c163728b78, type: 3}
       propertyPath: m_fontSizeBase
@@ -1183,7 +1183,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1252749229610633424, guid: 82a8f44ddaf014ed495a33c163728b78, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 84
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252749229610633424, guid: 82a8f44ddaf014ed495a33c163728b78, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 84
       objectReference: {fileID: 0}
     - target: {fileID: 1252749229610633424, guid: 82a8f44ddaf014ed495a33c163728b78, type: 3}
       propertyPath: m_enableAutoSizing
@@ -1395,8 +1399,6 @@ MonoBehaviour:
   - {fileID: 1365080122566447038, guid: 48fa02bef8aa8154092ee4f08801cd40, type: 3}
   - {fileID: 3846763119358576986, guid: 395866e1f81f51044b3c14d079038486, type: 3}
   malusPrefabs:
-  - {fileID: 731923467717277380, guid: 223387e9e64e06a40b11dc3084eed0bf, type: 3}
-  - {fileID: 731923467717277380, guid: 31ea816b454e27842a1db38fa7dd6b45, type: 3}
   - {fileID: 731923467717277380, guid: b319ab681961b3941a18da7e00a25ee9, type: 3}
   - {fileID: 731923467717277380, guid: a900e0610210a0841a5e7cbe1cd8ce86, type: 3}
   spawnRate: 1.2
@@ -1733,7 +1735,7 @@ RectTransform:
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1, y: 0.1}
-  m_AnchorMax: {x: 0.9, y: 0.45}
+  m_AnchorMax: {x: 0.9, y: 0.3}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1785,12 +1787,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80.1
+  m_fontSize: 52.05
   m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 80.1
+  m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -2177,7 +2179,7 @@ MonoBehaviour:
   levelCompletedGameObject: {fileID: 983935193}
   gameOverGameObject: {fileID: 227806268}
   playerGameObject: {fileID: 1290388321}
-  gameDuration: 60
+  gameDuration: 40
   decreaseInTime: 0.04
   bonusEngagement: 0.05
   malusEngagement: -0.1

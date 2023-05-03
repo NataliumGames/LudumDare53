@@ -65,14 +65,26 @@ namespace Gameplay {
         }
 
         private void OnTriggerEnter(Collider other) {
-            if (other.CompareTag("Safe")) {
+            bool isBonus = other.name.Contains("Bonus");
+
+            foreach (Collider c in other.transform.parent.GetComponentsInChildren<Collider>())
+            {
+                c.enabled = false;
+            }
+
+            if (isBonus)
+            {
                 IncrementScore();
                 _engagement.IncrementValueBy(0.1f);
-            } else if (other.CompareTag("Wall")) {
+                //Debug.Log("Bonus");
+            }
+            else
+            {
                 DecrementScore();
                 _engagement.DecrementValueBy(0.1f);
                 _cameraShake.Shake(0.1f);
                 _audioManager.PlayDamage();
+                //Debug.Log("Malus");
             }
         }
     }

@@ -52,21 +52,21 @@ namespace UI {
             FindObjectOfType<AudioManager>().TransitionMusic("MainMusic");
             FindObjectOfType<AudioManager>().PlayFX("Broue");
 
-            if (_gameFlowManager.numberOfMinigameDone == 2) {
-                _gameFlowManager.LoadPunchline();
-            }
-            else {
-                _gameFlowManager.LoadNextMinigame();
-            }
+            infoButton.gameObject.SetActive(false);
+            _gameFlowManager.LoadNextMinigame();
         }
 
         private void OnNextButtonPressed() {
+            FindObjectOfType<AudioManager>().PlayFX("Broue");
             recapPanel.SetActive(false);
-            
+
             if (_gameFlowManager.numberOfMinigameDone == 2) {
+                infoButton.gameObject.SetActive(true);
                 _gameFlowManager.LoadPunchline();
             }
-            else {
+            else
+            {
+                infoButton.gameObject.SetActive(false);
                 _gameFlowManager.LoadNextMinigame();
             }
         }

@@ -17,7 +17,7 @@ public class GameManagerFallingObjects : MonoBehaviour
 
     public GameObject playerGameObject;
 
-    public int gameDuration = 60;
+    public float gameDuration = 40;
     public float decreaseInTime = 0.04f;
     public float bonusEngagement = 0.05f;
     public float malusEngagement = -0.1f;
@@ -40,13 +40,6 @@ public class GameManagerFallingObjects : MonoBehaviour
     private bool gameOver = false;
 
     private int score = 0;
-
-    private enum GameState {
-        GAME_BEFORE_START,
-        GAME_RUNNING,
-        GAME_OVER,
-        GAME_COMPLETED
-    }
 
     void Start()
     {
@@ -103,6 +96,11 @@ public class GameManagerFallingObjects : MonoBehaviour
 
     void Update()
     {
+        if (timer.timeRemaining <= spawner.spawnRate * 3)
+        {
+            spawner.StopMalusSpawn();
+        }
+
         // Press one movement key to start the minigame
         if (!gameRunning && !levelCompleted && !gameOver && (Input.GetKeyDown("a") || Input.GetKeyDown("d")))
         {
@@ -174,6 +172,11 @@ public class GameManagerFallingObjects : MonoBehaviour
                 EventManager.Broadcast(minigameFinishedEvent);
             }
         }
+    }
+
+    private void OnLevelCompleted()
+    {
+
     }
 
     private void OnTimeout(TimerTimeOutEvent e)

@@ -23,8 +23,6 @@ namespace Gameplay {
                 if (engagement <= 0f) {
                     engagement = 0f;
                     gameIsRunning = false;
-                    GameOverEvent gameOverEvent = Events.GameOverEvent;
-                    EventManager.Broadcast(gameOverEvent);
                 }
 
                 if (engagement >= 1f) {
