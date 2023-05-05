@@ -5,8 +5,6 @@ using UnityEngine;
 namespace Game {
     public class CameraShakeController : MonoBehaviour
     {
-
-
         public float shakeStrength = 1;
 
         private ButtonSmasher buttonSmasher;

@@ -208,12 +208,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
+  m_fontSize: 331.75
   m_fontSizeBase: 68
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 400
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -786,13 +786,21 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 1252749228656605141, guid: c5b82b4e19a5d69419ba6f288c57d3d6, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 400
+      objectReference: {fileID: 0}
     - target: {fileID: 1252749229610633424, guid: c5b82b4e19a5d69419ba6f288c57d3d6, type: 3}
       propertyPath: m_text
       value: Setup Level Completed
       objectReference: {fileID: 0}
     - target: {fileID: 1252749229610633424, guid: c5b82b4e19a5d69419ba6f288c57d3d6, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 385.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252749229610633424, guid: c5b82b4e19a5d69419ba6f288c57d3d6, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 400
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5b82b4e19a5d69419ba6f288c57d3d6, type: 3}
@@ -2353,7 +2361,7 @@ MonoBehaviour:
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 400
   m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -2483,12 +2491,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24.35
+  m_fontSize: 269.3
   m_fontSizeBase: 68
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 400
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -2861,12 +2869,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 182.25
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 400
   m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -3094,6 +3102,10 @@ PrefabInstance:
     - target: {fileID: 6101550502867991895, guid: 1af03d178aab9524ab69aeca4e6bd3ce, type: 3}
       propertyPath: m_fontColor.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6101550502867991895, guid: 1af03d178aab9524ab69aeca4e6bd3ce, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 6101550502867991895, guid: 1af03d178aab9524ab69aeca4e6bd3ce, type: 3}
       propertyPath: m_enableAutoSizing
@@ -4275,7 +4287,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6101550502867991895, guid: 1af03d178aab9524ab69aeca4e6bd3ce, type: 3}
       propertyPath: m_fontSize
-      value: 49.35
+      value: 241.7
       objectReference: {fileID: 0}
     - target: {fileID: 6101550502867991895, guid: 1af03d178aab9524ab69aeca4e6bd3ce, type: 3}
       propertyPath: m_margin.z
@@ -4292,6 +4304,10 @@ PrefabInstance:
     - target: {fileID: 6101550502867991895, guid: 1af03d178aab9524ab69aeca4e6bd3ce, type: 3}
       propertyPath: m_fontColor.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6101550502867991895, guid: 1af03d178aab9524ab69aeca4e6bd3ce, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 6101550502867991895, guid: 1af03d178aab9524ab69aeca4e6bd3ce, type: 3}
       propertyPath: m_enableAutoSizing

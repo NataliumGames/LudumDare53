@@ -518,7 +518,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-60446
+  m_Name: pb_Mesh-254678
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -759,6 +759,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1890144952}
     m_Modifications:
+    - target: {fileID: 6046180767294933006, guid: ba05fe2b12a5741bd80c53b402c34b66, type: 3}
+      propertyPath: m_fontSize
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046180767294933006, guid: ba05fe2b12a5741bd80c53b402c34b66, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046180768517420811, guid: ba05fe2b12a5741bd80c53b402c34b66, type: 3}
+      propertyPath: m_fontSize
+      value: 307.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046180768517420811, guid: ba05fe2b12a5741bd80c53b402c34b66, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 400
+      objectReference: {fileID: 0}
     - target: {fileID: 6224884564206360027, guid: ba05fe2b12a5741bd80c53b402c34b66, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
       value: 0
@@ -854,6 +870,18 @@ PrefabInstance:
     - target: {fileID: 6224884564206360031, guid: ba05fe2b12a5741bd80c53b402c34b66, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6430167248634765778, guid: ba05fe2b12a5741bd80c53b402c34b66, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7003099493505961127, guid: ba05fe2b12a5741bd80c53b402c34b66, type: 3}
+      propertyPath: m_fontSize
+      value: 368.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7003099493505961127, guid: ba05fe2b12a5741bd80c53b402c34b66, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 400
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba05fe2b12a5741bd80c53b402c34b66, type: 3}
@@ -952,12 +980,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
+  m_fontSize: 400
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 48
+  m_fontSizeMax: 400
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -1115,7 +1143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1252749228656605138, guid: 82a8f44ddaf014ed495a33c163728b78, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 1252749228656605138, guid: 82a8f44ddaf014ed495a33c163728b78, type: 3}
       propertyPath: m_AnchorMin.y
@@ -1151,7 +1179,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1252749228656605141, guid: 82a8f44ddaf014ed495a33c163728b78, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 1252749228656605141, guid: 82a8f44ddaf014ed495a33c163728b78, type: 3}
       propertyPath: m_fontStyle
@@ -1159,7 +1187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1252749228656605141, guid: 82a8f44ddaf014ed495a33c163728b78, type: 3}
       propertyPath: m_fontSizeMax
-      value: 72
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 1252749228656605141, guid: 82a8f44ddaf014ed495a33c163728b78, type: 3}
       propertyPath: m_fontSizeBase
@@ -1183,11 +1211,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1252749229610633424, guid: 82a8f44ddaf014ed495a33c163728b78, type: 3}
       propertyPath: m_fontSize
-      value: 84
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 1252749229610633424, guid: 82a8f44ddaf014ed495a33c163728b78, type: 3}
       propertyPath: m_fontSizeMax
-      value: 84
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 1252749229610633424, guid: 82a8f44ddaf014ed495a33c163728b78, type: 3}
       propertyPath: m_enableAutoSizing
@@ -1296,12 +1324,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
+  m_fontSize: 368.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 48
+  m_fontSizeMax: 400
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
@@ -1361,7 +1389,7 @@ RectTransform:
   m_Father: {fileID: 975129662}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.65, y: 0.9}
+  m_AnchorMin: {x: 0.67, y: 0.92}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
@@ -1507,12 +1535,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
+  m_fontSize: 400
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 48
+  m_fontSizeMax: 400
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -1590,10 +1618,10 @@ RectTransform:
   m_Father: {fileID: 975129662}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.91}
+  m_AnchorMin: {x: 0.5, y: 0.93}
   m_AnchorMax: {x: 0.65, y: 0.99}
-  m_AnchoredPosition: {x: -10, y: 0}
-  m_SizeDelta: {x: -10, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &569456913
 MonoBehaviour:
@@ -1787,12 +1815,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52.05
+  m_fontSize: 288.35
   m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 400
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1922,12 +1950,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
+  m_fontSize: 400
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 48
+  m_fontSizeMax: 400
   m_fontStyle: 1
   m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
@@ -2270,12 +2298,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
+  m_fontSize: 400
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 48
+  m_fontSizeMax: 400
   m_fontStyle: 1
   m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
@@ -2588,7 +2616,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-60488
+  m_Name: pb_Mesh-254720
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2831,12 +2859,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 58.25
+  m_fontSize: 400
   m_fontSizeBase: 68
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 400
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -3001,7 +3029,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-60460
+  m_Name: pb_Mesh-254692
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3244,12 +3272,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 230.4
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 400
   m_fontStyle: 0
   m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
@@ -3300,7 +3328,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-60474
+  m_Name: pb_Mesh-254706
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3491,7 +3519,7 @@ RectTransform:
   m_Father: {fileID: 975129662}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.4, y: 0.9}
+  m_AnchorMin: {x: 0.4, y: 0.92}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
@@ -3543,12 +3571,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
+  m_fontSize: 368.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 48
+  m_fontSizeMax: 400
   m_fontStyle: 0
   m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
@@ -3896,7 +3924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camTransform: {fileID: 1849899144}
-  shakeDuration: 0.1
+  shakeDuration: 0
   shakeAmount: 0.3
   decreaseFactor: 1
 --- !u!1 &1890144951
@@ -4126,7 +4154,7 @@ RectTransform:
   m_Father: {fileID: 975129662}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.9}
+  m_AnchorMin: {x: 0, y: 0.92}
   m_AnchorMax: {x: 0.4, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
@@ -4178,12 +4206,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
+  m_fontSize: 368.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 48
+  m_fontSizeMax: 400
   m_fontStyle: 0
   m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
