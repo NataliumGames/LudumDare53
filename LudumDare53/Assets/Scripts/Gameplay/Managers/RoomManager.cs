@@ -22,7 +22,8 @@ namespace Gameplay.Managers {
         public GameObject stats;
 
         private GaugeBarVertical engagementBar;
-        private bool gameIsRunning = false;
+        private bool gameRunning = false;
+        private bool gameOver = false;
         private List<GameObject> instantiatedWalls;
 
         private void Awake() {
@@ -40,10 +41,10 @@ namespace Gameplay.Managers {
         }
 
         private void Update() {
-            if (!gameIsRunning && (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))) {
+            if (!gameRunning && !gameOver && (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))) {
                 controls.SetActive(false);
                 stats.SetActive(true);
-                gameIsRunning = true;
+                gameRunning = true;
 
                 StartCoroutine(SpawnWall());
                 StartCoroutine(IncreaseDifficulty());
@@ -57,7 +58,7 @@ namespace Gameplay.Managers {
 
             if (evt.Value <= 0.0f)
             {
-                gameIsRunning = false;
+                gameRunning = false;
                 stats.SetActive(false);
                 FindObjectOfType<Engagement>().SetRunning(false);
                 FindObjectOfType<Timer>().StopTimer();
@@ -70,6 +71,9 @@ namespace Gameplay.Managers {
         }
 
         private void OnTimerTimeoutEvent(TimerTimeOutEvent evt) {
+            gameRunning = false;
+            gameOver = true;
+
             float engagement = FindObjectOfType<Engagement>().engagement;
             MinigameFinishedEvent minigameFinishedEvent = Events.MinigameFinishedEvent;
             minigameFinishedEvent.Engagement = engagement;
@@ -86,7 +90,7 @@ namespace Gameplay.Managers {
         }
 
         private IEnumerator SpawnWall() {
-            while (gameIsRunning) {
+            while (gameRunning) {
                 Vector3 pos = new Vector3(0f, spawnPos.position.y, spawnPos.position.z);
                 int randomIndex = Random.Range(0, wallPrefabs.Count);
                 GameObject wall = Instantiate(wallPrefabs[randomIndex], pos, Quaternion.identity);
