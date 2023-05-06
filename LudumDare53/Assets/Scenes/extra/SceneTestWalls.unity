@@ -171,7 +171,6 @@ GameObject:
   m_Component:
   - component: {fileID: 265357005}
   - component: {fileID: 265357004}
-  - component: {fileID: 265357006}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -193,6 +192,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlsGameObject: {fileID: 1368929465}
   gameStatsGameObject: {fileID: 124818340}
+  gameOverGameObject: {fileID: 538024562}
+  gameOverDescription: {fileID: 538024561}
+  multiplierCanvas: {fileID: 1113578329}
+  particleSystems:
+  - {fileID: 2116068027}
+  - {fileID: 533361018}
   time: 20
 --- !u!4 &265357005
 Transform:
@@ -202,36 +207,20 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 265357003}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.892506, y: 3.409052, z: 28.423412}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &265357006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 265357003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68e9eaac28e949ea98d979432418f280, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camTransform: {fileID: 1121169130}
-  shakeDuration: 20
-  shakeAmount: 0.3
-  decreaseFactor: 1
 --- !u!43 &441209607
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-63404
+  m_Name: pb_Mesh-513590
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -401,7 +390,7 @@ GameObject:
   - component: {fileID: 472132761}
   - component: {fileID: 472132760}
   m_Layer: 0
-  m_Name: Multiplier
+  m_Name: TextMultiplier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -799,7 +788,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533361016}
   serializedVersion: 8
-  lengthInSec: 0.2
+  lengthInSec: 20
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -808,7 +797,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -5540,6 +5529,38 @@ PrefabInstance:
       propertyPath: m_fontSizeMax
       value: 400
       objectReference: {fileID: 0}
+    - target: {fileID: 6046180768517420812, guid: ba05fe2b12a5741bd80c53b402c34b66, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046180768517420812, guid: ba05fe2b12a5741bd80c53b402c34b66, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046180768517420812, guid: ba05fe2b12a5741bd80c53b402c34b66, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046180768517420812, guid: ba05fe2b12a5741bd80c53b402c34b66, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046180768517420812, guid: ba05fe2b12a5741bd80c53b402c34b66, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046180768517420812, guid: ba05fe2b12a5741bd80c53b402c34b66, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046180768517420812, guid: ba05fe2b12a5741bd80c53b402c34b66, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046180768517420812, guid: ba05fe2b12a5741bd80c53b402c34b66, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6224884564206360030, guid: ba05fe2b12a5741bd80c53b402c34b66, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5639,6 +5660,10 @@ PrefabInstance:
     - target: {fileID: 7003099493505961127, guid: ba05fe2b12a5741bd80c53b402c34b66, type: 3}
       propertyPath: m_fontSizeMax
       value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 7003099494685235289, guid: ba05fe2b12a5741bd80c53b402c34b66, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba05fe2b12a5741bd80c53b402c34b66, type: 3}
@@ -5845,7 +5870,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-63402
+  m_Name: pb_Mesh-513576
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6015,7 +6040,7 @@ GameObject:
   - component: {fileID: 858783262}
   - component: {fileID: 858783261}
   m_Layer: 5
-  m_Name: Bar Image
+  m_Name: BarImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6085,7 +6110,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-63400
+  m_Name: pb_Mesh-513562
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6357,6 +6382,7 @@ GameObject:
   - component: {fileID: 1121169133}
   - component: {fileID: 1121169132}
   - component: {fileID: 1121169131}
+  - component: {fileID: 1121169134}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -6463,6 +6489,22 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &1121169134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121169129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e9eaac28e949ea98d979432418f280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camTransform: {fileID: 1121169130}
+  shakeDuration: 0
+  shakeAmount: 0
+  decreaseFactor: 1
 --- !u!1001 &1127322387
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6733,6 +6775,10 @@ PrefabInstance:
     - target: {fileID: 1252749227640827169, guid: d0897756d71168e468e50d6b16b88752, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252749227640827173, guid: d0897756d71168e468e50d6b16b88752, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3511219841388346385, guid: d0897756d71168e468e50d6b16b88752, type: 3}
       propertyPath: m_AnchorMax.x
@@ -7111,7 +7157,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51.8
+  m_fontSize: 46.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7167,7 +7213,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-63406
+  m_Name: pb_Mesh-513604
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7627,7 +7673,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2116068024}
   serializedVersion: 8
-  lengthInSec: 0.1
+  lengthInSec: 20
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -7636,7 +7682,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
