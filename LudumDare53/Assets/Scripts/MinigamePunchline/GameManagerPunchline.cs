@@ -102,23 +102,38 @@ public class GameManagerPunchline : MonoBehaviour
             {
                 punchButton.Release();
             }
+            
+            Debug.LogWarning("Cur Time:" + Time.realtimeSinceStartup);
+            Debug.LogWarning("Last pressed:" + lastPressed);
+
+            if (Time.realtimeSinceStartup - lastPressed >= MAX_USER_DELAY) {
+                Debug.LogWarning("Delay elapsed!");
+            
+                cameraShake.shakeAmount = 0.0f;
+                // vfx
+                foreach(ParticleSystem ps in particleSystems)
+                {
+                    var emission = ps.emission;
+                    emission.rateOverTime = 0.0f;
+                }
+            }
         }
 
         // BRAINSTORMING
 
         // praticamente andrebbe qui
-        // camerashake * counter ecc, se è startato
+        // camerashake * counter ecc, se ï¿½ startato
 
         // salvo timestamp ultima volta chiamato (camera shake)
 
         // se shake 250ms
         // se son passati 50ms dall'ultimo, richiamo lo shake
 
-        // dovrei fare delle prove forse perché ho paura che se duri poco poi vada tipo a scatti ripartendo sempre dalla posizione iniziale e
+        // dovrei fare delle prove forse perchï¿½ ho paura che se duri poco poi vada tipo a scatti ripartendo sempre dalla posizione iniziale e
         // l'effetto sia bruttino
 
-        // allora il camera shake funziona così:
-        // c'è una durata totale e un'intensità:
+        // allora il camera shake funziona cosï¿½:
+        // c'ï¿½ una durata totale e un'intensitï¿½:
         // nella update lui diminuisce in base al deltatime in modo da fare un massimo di tempo pari alla durata complessiva
 
         // quindi a noi basta fare il toggle della durata (0/quanto vogliamo farlo durare - eventualmente anche il massimo, tipo 20, e quando l'utente
@@ -128,35 +143,26 @@ public class GameManagerPunchline : MonoBehaviour
 
         // yees, max 20 secondi
 
-        // intensità 0.0/1.0 toggle
+        // intensitï¿½ 0.0/1.0 toggle
 
-        // aggiorniamo continuamente il timestamp dell'ultima volta che è stato premuto
+        // aggiorniamo continuamente il timestamp dell'ultima volta che ï¿½ stato premuto
 
         // controlliamo se:
-        // il timestamp è all'interno della durata di shake
-        // -> intensità >0 => viene calcolata (come facciamo già in controller)
+        // il timestamp ï¿½ all'interno della durata di shake
+        // -> intensitï¿½ >0 => viene calcolata (come facciamo giï¿½ in controller)
         
-        // altrimenti intensità =0
+        // altrimenti intensitï¿½ =0
 
        
         // funzione da chiamare con argomento tempo (chiamante fa sia camera controller che vfx emitter)
 
-        // ahah sì
+        // ahah sï¿½
 
-        // sì adesso finisco una roba e ci provo (tutto sempre nella scena di test)
+        // sï¿½ adesso finisco una roba e ci provo (tutto sempre nella scena di test)
         
         // il trofeo ancora no, se avete un'idea di dove metterlo possiamo provare a farlo
-
-        if (Time.realtimeSinceStartup - lastPressed >= MAX_USER_DELAY)
-        {
-            cameraShake.shakeAmount = 0.0f;
-            // vfx
-            foreach(ParticleSystem ps in particleSystems)
-            {
-                var emission = ps.emission;
-                emission.rateOverTime = 0.0f;
-            }
-        }
+        
+        
         
         // TO-DO
     }
@@ -204,7 +210,8 @@ public class GameManagerPunchline : MonoBehaviour
         foreach (ParticleSystem ps in particleSystems)
         {
             var emission = ps.emission;
-            emission.rateOverTime = (counter / perfectScore) * MAX_PARTICLES;
+            //emission.rateOverTime = (counter / perfectScore) * MAX_PARTICLES;
+            emission.rateOverTime = 220;
         }
 
         // Play sound
