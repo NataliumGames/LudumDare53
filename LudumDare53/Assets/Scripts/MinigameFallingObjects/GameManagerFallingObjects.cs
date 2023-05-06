@@ -162,6 +162,8 @@ public class GameManagerFallingObjects : MonoBehaviour
                 minigameFinishedEvent.Minigame = "DroppingObjects";
                 minigameFinishedEvent.Engagement = gaugeBar.value;
                 float eng = minigameFinishedEvent.Engagement * 100f;
+                if (eng >= 99.5f)
+                    eng = 100.0f;
                 
                 StringBuilder stringBuilder = new StringBuilder("<align=\"center\">" + minigameFinishedEvent.Minigame);
                 stringBuilder.Append("\n\n\n");

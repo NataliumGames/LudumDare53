@@ -63,6 +63,7 @@ namespace UI {
             if (_gameFlowManager.numberOfMinigameDone == 2) {
                 infoButton.gameObject.SetActive(true);
                 _gameFlowManager.LoadPunchline();
+                _gameFlowManager.numberOfMinigameDone = 0;
             }
             else
             {

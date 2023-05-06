@@ -9,7 +9,7 @@ namespace Game.Managers {
     public class SceneManager : MonoBehaviour {
 
         private List<string> setupScenes = new List<string>();
-        private string currentScene = "MainMenu";
+        private string prevScene;
 
         private void Start() {
             setupScenes.Add("SetupMinigameFallingObjects");
@@ -18,9 +18,13 @@ namespace Game.Managers {
         }
 
         public void LoadNextMinigameScene() {
-            string minigame = setupScenes[Random.Range(0, setupScenes.Count)];
-            setupScenes.Remove(minigame);
-            currentScene = minigame;
+            List<string> setupScenesPool = new List<string>(setupScenes);
+            if (prevScene != null) {
+                setupScenesPool.Remove(prevScene);
+            }
+
+            string minigame = setupScenesPool[Random.Range(0, setupScenesPool.Count)];
+            prevScene = minigame;
             UnityEngine.SceneManagement.SceneManager.LoadScene(minigame, LoadSceneMode.Single);
         }
 
