@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Game;
 using Game.Managers;
+using TMPro;
 using UI;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -14,6 +15,7 @@ namespace Gameplay.Managers {
 
         public GameObject controls;
         public GameObject stats;
+        public TextMeshProUGUI scoreText;
         //public GameObject gameOver;
         public GameObject monitorPrefab;
         public GameObject micstandPrefab;
@@ -23,10 +25,17 @@ namespace Gameplay.Managers {
         public List<Transform> stoodSpawnPoints;
         public bool gameIsRunning = false;
         public GaugeBarVertical engagementBar;
+
+        public int bonusScore = 10;
+        public int malusScore = 2;
+
+        private Timer timer;
         private Engagement engagement;
         private CameraShake cameraShake;
 
         private List<GameObject> instantiatedGameobjects;
+
+        private int score = 0;
 
         private void Awake() {
             EventManager.AddListener<ObjectRepairedEvent>(OnObjectRepaired);
@@ -38,6 +47,8 @@ namespace Gameplay.Managers {
         }
         
         private void Start() {
+            timer = FindObjectOfType<Timer>();
+
             instantiatedGameobjects = new List<GameObject>();
 
             // Monitor spawn
@@ -79,11 +90,28 @@ namespace Gameplay.Managers {
         
         private void OnEngagementChange(EngagementChangeEvent evt) {
             engagementBar.SetBarValue(evt.Value);
+
+            if (engagementBar.value <= 0.0f)
+            {
+                EnemyMovement enemyMovement = FindObjectOfType<EnemyMovement>();
+                enemyMovement.enabled = false;
+                CharacterController3D characterController = FindObjectOfType<CharacterController3D>();
+                characterController.enabled = false;
+
+                timer.StopTimer();
+                EventManager.RemoveListener<TimerTimeOutEvent>(OnTimerTimeout);
+
+                GameOverEvent gameOverEvent = Events.GameOverEvent;
+                EventManager.Broadcast(gameOverEvent);
+            }
         }
 
         private void OnHittedByEnemyEvent(HittedByEnemyEvent evt) {
-            // cameraShake.Shake(0.1f);
-            // engagementBar.DecrementValueBy(0.2f);
+            cameraShake.Shake(0.1f);
+            engagementBar.DecrementValueBy(0.2f);
+
+            score -= malusScore;
+            scoreText.text = "" + score;
         }
 
         private void EndGame()
@@ -112,6 +140,9 @@ namespace Gameplay.Managers {
         }
 
         private void OnObjectRepaired(ObjectRepairedEvent evt) {
+            score += bonusScore;
+            scoreText.text = "" + score;
+
             GameObject g = instantiatedGameobjects.Find(obj => obj == evt.Object);
             
             g.tag = "Repaired";

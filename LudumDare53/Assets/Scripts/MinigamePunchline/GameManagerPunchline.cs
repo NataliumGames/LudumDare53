@@ -8,6 +8,7 @@ using System.Linq;
 using UnityEngine;
 using TMPro;
 using UI;
+using UnityEngine.UI;
 
 public class GameManagerPunchline : MonoBehaviour
 {
@@ -26,8 +27,10 @@ public class GameManagerPunchline : MonoBehaviour
     public GameObject gameStatsGameObject;
     public GameObject gameOverGameObject;
     public TextMeshProUGUI gameOverDescription;
-    public GameObject multiplierCanvas;
+    public Button mainMenuButton;
+    public Button quitButton;
 
+    public GameObject multiplierCanvas;
     public ParticleSystem[] particleSystems;
 
     public float time = 20.0f;
@@ -78,7 +81,10 @@ public class GameManagerPunchline : MonoBehaviour
             duration = time;
         }
 
-        // show panels
+        mainMenuButton.onClick.AddListener(MenuButton);
+        quitButton.onClick.AddListener(QuitButton);
+
+        // Show panels
         controlsGameObject.SetActive(true);
         gameStatsGameObject.SetActive(false);
         gameOverGameObject.SetActive(false);
@@ -102,15 +108,10 @@ public class GameManagerPunchline : MonoBehaviour
             {
                 punchButton.Release();
             }
-            
-            //Debug.LogWarning("Cur Time:" + Time.realtimeSinceStartup);
-            //Debug.LogWarning("Last pressed:" + lastPressed);
 
-            if (Time.realtimeSinceStartup - lastPressed >= MAX_USER_DELAY) {
-                //Debug.Log("Delay elapsed!");
-            
+            if (Time.realtimeSinceStartup - lastPressed >= MAX_USER_DELAY)
+            {
                 cameraShake.shakeAmount = 0.0f;
-                // vfx
                 foreach(ParticleSystem ps in particleSystems)
                 {
                     var emission = ps.emission;
@@ -118,53 +119,6 @@ public class GameManagerPunchline : MonoBehaviour
                 }
             }
         }
-
-        // BRAINSTORMING
-
-        // praticamente andrebbe qui
-        // camerashake * counter ecc, se � startato
-
-        // salvo timestamp ultima volta chiamato (camera shake)
-
-        // se shake 250ms
-        // se son passati 50ms dall'ultimo, richiamo lo shake
-
-        // dovrei fare delle prove forse perch� ho paura che se duri poco poi vada tipo a scatti ripartendo sempre dalla posizione iniziale e
-        // l'effetto sia bruttino
-
-        // allora il camera shake funziona cos�:
-        // c'� una durata totale e un'intensit�:
-        // nella update lui diminuisce in base al deltatime in modo da fare un massimo di tempo pari alla durata complessiva
-
-        // quindi a noi basta fare il toggle della durata (0/quanto vogliamo farlo durare - eventualmente anche il massimo, tipo 20, e quando l'utente
-        // non clicca per un tot di tempo lo disattiviamo, o qualcosa del genere)
-
-        // esatto, dobbiamo almeno tenere una variabile aggiuntiva tipo
-
-        // yees, max 20 secondi
-
-        // intensit� 0.0/1.0 toggle
-
-        // aggiorniamo continuamente il timestamp dell'ultima volta che � stato premuto
-
-        // controlliamo se:
-        // il timestamp � all'interno della durata di shake
-        // -> intensit� >0 => viene calcolata (come facciamo gi� in controller)
-        
-        // altrimenti intensit� =0
-
-       
-        // funzione da chiamare con argomento tempo (chiamante fa sia camera controller che vfx emitter)
-
-        // ahah s�
-
-        // s� adesso finisco una roba e ci provo (tutto sempre nella scena di test)
-        
-        // il trofeo ancora no, se avete un'idea di dove metterlo possiamo provare a farlo
-        
-        
-        
-        // TO-DO
     }
 
     private void StartGame()
@@ -176,17 +130,18 @@ public class GameManagerPunchline : MonoBehaviour
 
         timer.StartTimer();
 
-        // start shake timer
+        // Start shake timer
         cameraShake.shakeDuration = time;
         cameraShake.shakeAmount = 0.0f;
 
-        // start vfx timer
+        // Start vfx timer
         foreach (ParticleSystem ps in particleSystems)
         {
             ps.Play();
         }
 
-        // start music
+        // Start music
+        FindObjectOfType<AudioManager>().StopAll();
         FindObjectOfType<AudioManager>().PlayMusic("Punchline");
 
         EventManager.AddListener<TimerTimeOutEvent>(OnTimerTimeoutEvent);
@@ -211,7 +166,6 @@ public class GameManagerPunchline : MonoBehaviour
         {
             var emission = ps.emission;
             emission.rateOverTime = (counter / perfectScore) * MAX_PARTICLES;
-            //emission.rateOverTime = 220;
         }
 
         // Play sound
@@ -229,7 +183,11 @@ public class GameManagerPunchline : MonoBehaviour
         punchButton.gameObject.SetActive(false);
 
         cameraShake.shakeAmount = 0.0f;
-        // terminate vfx
+        foreach (ParticleSystem ps in particleSystems)
+        {
+            ps.Stop(true);
+        }
+        
 
         gameFlowManager = FindObjectOfType<GameFlowManager>();
         if (gameFlowManager != null)
@@ -277,5 +235,18 @@ public class GameManagerPunchline : MonoBehaviour
         }
 
         return multiplier;
+    }
+    
+    private void MenuButton()
+    {
+        audioManager.PlayFX("Snap");
+        audioManager.PlayMusic("MenuMusic");
+
+        FindObjectOfType<SceneManager>().LoadMainMenu();
+    }
+
+    private void QuitButton()
+    {
+        Application.Quit();
     }
 }

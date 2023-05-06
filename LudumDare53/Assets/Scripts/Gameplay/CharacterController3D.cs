@@ -81,9 +81,6 @@ namespace Gameplay {
                 isInvulnerable = true;
                 HittedByEnemyEvent hittedByEnemyEvent = Events.HittedByEnemyEvent;
                 EventManager.Broadcast(hittedByEnemyEvent);
-                FindObjectOfType<CameraShake>().Shake(0.1f);
-                FindObjectOfType<Engagement>().DecrementValueBy(0.1f);
-                FindObjectOfType<GaugeBarVertical>().DecrementValueBy(0.1f);
                 
                 StartCoroutine(EndInvulnerability());
                 _audioManager.PlayFX("Heckler");
