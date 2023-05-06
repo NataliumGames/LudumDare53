@@ -19,7 +19,7 @@ public class GameManagerPunchline : MonoBehaviour
      */ 
     private const float PERFECT_CPS = 11.0f;
     private const float MAX_SHAKE_AMOUNT = 0.2f;
-    private const int MAX_PARTICLES = 200;
+    private const int MAX_PARTICLES = 220;
     private const float MAX_USER_DELAY = 0.25f; // delay after which the shake/vfx stops if the user doesn't press the spacebar
 
     public GameObject controlsGameObject;
@@ -103,11 +103,11 @@ public class GameManagerPunchline : MonoBehaviour
                 punchButton.Release();
             }
             
-            Debug.LogWarning("Cur Time:" + Time.realtimeSinceStartup);
-            Debug.LogWarning("Last pressed:" + lastPressed);
+            //Debug.LogWarning("Cur Time:" + Time.realtimeSinceStartup);
+            //Debug.LogWarning("Last pressed:" + lastPressed);
 
             if (Time.realtimeSinceStartup - lastPressed >= MAX_USER_DELAY) {
-                Debug.LogWarning("Delay elapsed!");
+                //Debug.Log("Delay elapsed!");
             
                 cameraShake.shakeAmount = 0.0f;
                 // vfx
@@ -210,8 +210,8 @@ public class GameManagerPunchline : MonoBehaviour
         foreach (ParticleSystem ps in particleSystems)
         {
             var emission = ps.emission;
-            //emission.rateOverTime = (counter / perfectScore) * MAX_PARTICLES;
-            emission.rateOverTime = 220;
+            emission.rateOverTime = (counter / perfectScore) * MAX_PARTICLES;
+            //emission.rateOverTime = 220;
         }
 
         // Play sound
