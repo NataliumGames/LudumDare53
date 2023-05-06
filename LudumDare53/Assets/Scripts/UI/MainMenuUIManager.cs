@@ -24,7 +24,7 @@ namespace UI {
             
             startButtonGameobject = transform.GetChild(0).gameObject;
             nextButtonGameobject = transform.GetChild(1).gameObject;
-            recapPanel = transform.GetChild(5).gameObject;
+            recapPanel = transform.GetChild(4).gameObject;
             
             recapText = recapPanel.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
             startButton = startButtonGameobject.GetComponent<Button>();

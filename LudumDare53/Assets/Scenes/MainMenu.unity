@@ -413,7 +413,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1662911753}
+      - m_Target: {fileID: 5103150613585822647, guid: d5ac2199f55574c048bada3b16b6a1ec, type: 3}
         m_TargetAssemblyTypeName: Managers.AudioManager, Assembly-CSharp
         m_MethodName: PlayFX
         m_Mode: 5
@@ -932,7 +932,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-882676
+  m_Name: pb_Mesh-815854
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1135,7 +1135,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-882648
+  m_Name: pb_Mesh-815826
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1425,7 +1425,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1662911753}
+      - m_Target: {fileID: 5103150613585822647, guid: d5ac2199f55574c048bada3b16b6a1ec, type: 3}
         m_TargetAssemblyTypeName: Managers.AudioManager, Assembly-CSharp
         m_MethodName: PlayFX
         m_Mode: 5
@@ -1481,7 +1481,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-882662
+  m_Name: pb_Mesh-815840
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2733,7 +2733,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1662911753}
+      - m_Target: {fileID: 5103150613585822647, guid: d5ac2199f55574c048bada3b16b6a1ec, type: 3}
         m_TargetAssemblyTypeName: Managers.AudioManager, Assembly-CSharp
         m_MethodName: PlayFX
         m_Mode: 5
@@ -3251,7 +3251,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-882634
+  m_Name: pb_Mesh-815812
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3443,17 +3443,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1662911753 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5103150613585822647, guid: d5ac2199f55574c048bada3b16b6a1ec, type: 3}
-  m_PrefabInstance: {fileID: 1006767169}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c0d13bf49146c5a079faa7144b0d45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1665252111
 GameObject:
   m_ObjectHideFlags: 0
@@ -3816,7 +3805,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-        - m_Target: {fileID: 1662911753}
+        - m_Target: {fileID: 5103150613585822647, guid: d5ac2199f55574c048bada3b16b6a1ec, type: 3}
           m_TargetAssemblyTypeName: Managers.AudioManager, Assembly-CSharp
           m_MethodName: PlayFX
           m_Mode: 5

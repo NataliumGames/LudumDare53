@@ -883,6 +883,10 @@ PrefabInstance:
       propertyPath: m_fontSizeMax
       value: 400
       objectReference: {fileID: 0}
+    - target: {fileID: 7003099494685235289, guid: ba05fe2b12a5741bd80c53b402c34b66, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba05fe2b12a5741bd80c53b402c34b66, type: 3}
 --- !u!1 &227806268 stripped
@@ -1324,7 +1328,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 368.6
+  m_fontSize: 73.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1815,7 +1819,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 288.35
+  m_fontSize: 57.55
   m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3571,7 +3575,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 368.6
+  m_fontSize: 73.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4206,7 +4210,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 368.6
+  m_fontSize: 73.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
