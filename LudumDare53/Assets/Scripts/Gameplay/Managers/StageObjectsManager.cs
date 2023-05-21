@@ -7,6 +7,7 @@ using Game.Managers;
 using TMPro;
 using UI;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 using Timer = Game.Timer;
 
@@ -23,8 +24,8 @@ namespace Gameplay.Managers {
         public List<Transform> monitorSpawnPoints;
         public List<Transform> micstandSpawnPoints;
         public List<Transform> stoodSpawnPoints;
-        public bool gameIsRunning = false;
         public GaugeBarVertical engagementBar;
+        public GameObject mobileControls;
 
         public int bonusScore = 10;
         public int malusScore = 2;
@@ -35,6 +36,7 @@ namespace Gameplay.Managers {
 
         private List<GameObject> instantiatedGameobjects;
 
+        private bool gameIsRunning = false;
         private int score = 0;
 
         private void Awake() {
@@ -70,15 +72,43 @@ namespace Gameplay.Managers {
             g = Instantiate(stoodPrefab, transform);
             instantiatedGameobjects.Add(g);
 
+            for (int i = 0; i < controls.transform.childCount; i++)
+            {
+                GameObject go = controls.transform.GetChild(i).gameObject;
+
+                if (go.name.ToLower().Contains("desktop"))
+                    go.SetActive(SystemInfo.deviceType == DeviceType.Desktop);
+                if (go.name.ToLower().Contains("mobile"))
+                    go.SetActive(SystemInfo.deviceType == DeviceType.Handheld);
+            }
+
             controls.SetActive(true);
             stats.SetActive(false);
-            //gameOver.SetActive(false);
+
+            mobileControls.SetActive(SystemInfo.deviceType == DeviceType.Handheld);
+            if (SystemInfo.deviceType == DeviceType.Handheld)
+            {
+                foreach(Button b in mobileControls.GetComponentsInChildren<Button>(true))
+                {
+                    b.gameObject.SetActive(false);
+                }
+            }
         }
 
         private void Update() {
-            if (!gameIsRunning && (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.D))) {
+            if (!gameIsRunning 
+                && (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.D)
+                    || (FindObjectOfType<FloatingJoystick>(true).Horizontal != 0.0f))) {
                 controls.SetActive(false);
                 stats.SetActive(true);
+
+                if (SystemInfo.deviceType == DeviceType.Handheld)
+                {
+                    foreach (Button b in mobileControls.GetComponentsInChildren<Button>(true))
+                    {
+                        b.gameObject.SetActive(true);
+                    }
+                }
 
                 gameIsRunning = true;
                 
@@ -97,6 +127,8 @@ namespace Gameplay.Managers {
                 enemyMovement.enabled = false;
                 CharacterController3D characterController = FindObjectOfType<CharacterController3D>();
                 characterController.enabled = false;
+
+                mobileControls.SetActive(false);
 
                 timer.StopTimer();
                 EventManager.RemoveListener<TimerTimeOutEvent>(OnTimerTimeout);

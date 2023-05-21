@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 7105537297351028070}
   m_Layer: 0
   m_Name: Youre-Drunk
-  m_TagString: Safe
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

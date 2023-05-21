@@ -46,7 +46,9 @@ namespace Game.Managers {
             yield return new WaitForSeconds(0.5f);
             
             _menuUIManager = FindObjectOfType<MainMenuUIManager>();
-            _menuUIManager.ToggleNextButton();
+            
+            _menuUIManager.ShowNextButton();
+
             _menuUIManager.SetRecapText(recap);
         }
 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 349082815068760987}
   m_Layer: 0
   m_Name: Not-Funny
-  m_TagString: Safe
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

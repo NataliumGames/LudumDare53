@@ -9,6 +9,7 @@ using UnityEngine;
 using TMPro;
 using UI;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class GameManagerPunchline : MonoBehaviour
 {
@@ -42,6 +43,7 @@ public class GameManagerPunchline : MonoBehaviour
 
     private GaugeBar gaugeBar;
     private TextMeshProUGUI multiplierText;
+    private TextMeshProUGUI mainMenuButtonText;
 
     private int counter = 0;
     private int counterStep;
@@ -52,6 +54,7 @@ public class GameManagerPunchline : MonoBehaviour
     private float perfectScore;
 
     private float lastPressed = 0.0f; // timestamp representing the last time the user pressed the spacebar
+    private int mainMenuTimeout;
 
     void Start()
     {
@@ -62,6 +65,7 @@ public class GameManagerPunchline : MonoBehaviour
 
         gaugeBar = multiplierCanvas.GetComponentInChildren<GaugeBar>();
         multiplierText = multiplierCanvas.GetComponentInChildren<TextMeshProUGUI>();
+        mainMenuButtonText = mainMenuButton.GetComponentInChildren<TextMeshProUGUI>();
 
         perfectScore = PERFECT_CPS * time;
         counterStep = (int) perfectScore / 5;
@@ -227,6 +231,34 @@ public class GameManagerPunchline : MonoBehaviour
         gameOverGameObject.SetActive(true);
 
         EventManager.RemoveListener<TimerTimeOutEvent>(OnTimerTimeoutEvent);
+
+        if (SystemInfo.deviceType == DeviceType.Handheld)
+        {
+            mainMenuTimeout = 3;
+
+            mainMenuButton.interactable = false;
+            mainMenuButton.gameObject.GetComponent<EventTrigger>().enabled = false;
+
+            StartCoroutine(MainMenuTimer());
+        }
+    }
+
+    IEnumerator MainMenuTimer()
+    {
+        while (true)
+        {
+            if (mainMenuTimeout == 0)
+                break;
+
+            mainMenuButtonText.text = "" + mainMenuTimeout;
+            mainMenuTimeout--;
+
+            yield return new WaitForSeconds(1);
+        }
+
+        mainMenuButtonText.text = "Menu";
+        mainMenuButton.interactable = true;
+        mainMenuButton.gameObject.GetComponent<EventTrigger>().enabled = true;
     }
 
     private float updateMultiplier()

@@ -8,6 +8,7 @@ using TMPro;
 using UI;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Gameplay {
     public class RepairComponent : MonoBehaviour {
@@ -25,6 +26,8 @@ namespace Gameplay {
         private AudioManager _audioManager;
         private Dictionary<String, float> gameobjectMap;
 
+        private RepairButton buttonRepair;
+
         private void Start() {
             _audioManager = FindObjectOfType<AudioManager>();
             _engagement = FindObjectOfType<Engagement>();
@@ -33,11 +36,15 @@ namespace Gameplay {
             gaugeBarGameObject = _canvas.transform.GetChild(1).gameObject;
             gaugeBar = gaugeBarGameObject.GetComponent<GaugeBar>();
             gameobjectMap = new Dictionary<String, float>();
+
+            buttonRepair = FindObjectOfType<RepairButton>(true);
         }
 
         private void Update() {
-            if (Input.GetKeyDown(KeyCode.E) && canvasVisibility && nearGameobject && !repairing) {
-                BeginRepair(nearGameobject);
+            if (canvasVisibility && nearGameobject && !repairing) {
+                if (Input.GetKeyDown(KeyCode.E) || buttonRepair.isPressed) {
+                    BeginRepair(nearGameobject);
+                }
             }
         }
 

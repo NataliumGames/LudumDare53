@@ -137,10 +137,12 @@ public class GameManagerFallingObjects : MonoBehaviour
             gaugeBar.DecrementValueBy(decreaseInTime * Time.deltaTime);
         }
 
-        if (gaugeBar.value <= 0.0)
+        if (gaugeBar.value <= 0.0 && !gameOver)
         {
             gameRunning = false;
             gameOver = true;
+
+            floatingJoystick.gameObject.SetActive(false);
 
             gameStatsGameObject.SetActive(false);
 
@@ -187,11 +189,6 @@ public class GameManagerFallingObjects : MonoBehaviour
                 EventManager.Broadcast(minigameFinishedEvent);
             }
         }
-    }
-
-    private void OnLevelCompleted()
-    {
-
     }
 
     private void OnTimeout(TimerTimeOutEvent e)

@@ -72,9 +72,13 @@ namespace Gameplay.Managers {
             if (evt.Value <= 0.0f)
             {
                 gameRunning = false;
+                gameOver = true;
                 stats.SetActive(false);
                 FindObjectOfType<Engagement>().SetRunning(false);
                 FindObjectOfType<Timer>().StopTimer();
+
+                FindObjectOfType<HorizontalCharachterController>().enabled = false;
+                floatingJoystick.gameObject.SetActive(false);
 
                 StartCoroutine(ClearWalls(0.0f));
 

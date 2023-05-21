@@ -6,6 +6,7 @@ using Managers;
 using UI;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.UI;
 
 namespace Gameplay {
     
@@ -21,12 +22,21 @@ namespace Gameplay {
         private GameObject enemy;
         private GameObject attackText;
         private Transform transformHead;
+        private FloatingJoystick floatingJoystick;
+        private Button buttonAttack;
 
         private void Start() {
             _characterController = GetComponent<CharacterController>();
             _audioManager = FindObjectOfType<AudioManager>();
             attackText = transform.GetChild(1).transform.GetChild(2).gameObject;
-            
+            floatingJoystick = FindObjectOfType<FloatingJoystick>();
+
+            if (SystemInfo.deviceType == DeviceType.Handheld)
+            {
+                buttonAttack = floatingJoystick.transform.parent.GetChild(2).GetComponent<Button>();
+                buttonAttack.onClick.AddListener(() => { Attack(); });
+            }
+
             EventManager.AddListener<EnemySpawnedEvent>(OnEnemySpawnedEvent);
 
             StartCoroutine(EndInvulnerability());
@@ -35,8 +45,18 @@ namespace Gameplay {
         }
 
         private void Update() {
-            float horizontal = Input.GetAxis("Horizontal");
-            float vertical = Input.GetAxis("Vertical");
+            float horizontal, vertical;
+            
+            if (SystemInfo.deviceType == DeviceType.Desktop)
+            {
+                horizontal = Input.GetAxis("Horizontal");
+                vertical = Input.GetAxis("Vertical");
+            }
+            else
+            {
+                horizontal = floatingJoystick.Horizontal;
+                vertical = floatingJoystick.Vertical;
+            }
 
             Vector3 moveDirection = new Vector3(horizontal, -5f, vertical);
             _characterController.Move(moveDirection * speed * Time.deltaTime);
@@ -48,16 +68,23 @@ namespace Gameplay {
                 if(canAttack)
                     attackText.SetActive(true);
 
-                if (Input.GetKeyDown(KeyCode.Space) && canAttack) {
-                    canAttack = false;
-                    attackText.SetActive(false);
-                    AttackEvent attackEvent = Events.AttackEvent;
-                    EventManager.Broadcast(attackEvent);
-                    _audioManager.PlayPunch();
-                    StartCoroutine(AttackCooldown());
+                if (SystemInfo.deviceType == DeviceType.Desktop && Input.GetKeyDown(KeyCode.Space)) {
+                    Attack();
                 }
             } else {
                 attackText.SetActive(false);
+            }
+        }
+
+        private void Attack() {
+            if (canAttack) {
+                canAttack = false;
+                attackText.SetActive(false);
+                AttackEvent attackEvent = Events.AttackEvent;
+                EventManager.Broadcast(attackEvent);
+                _audioManager.PlayPunch();
+                StartCoroutine(AttackCooldown());
+
             }
         }
 

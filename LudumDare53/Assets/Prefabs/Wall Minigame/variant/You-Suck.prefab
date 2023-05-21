@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 2729468028641279033}
   m_Layer: 0
   m_Name: You-Suck
-  m_TagString: Safe
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
