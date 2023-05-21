@@ -80,6 +80,21 @@ public class GameManagerPunchline : MonoBehaviour
             emission.rateOverTime = 0.0f;
             duration = time;
         }
+        for (int i = 0; i < controlsGameObject.transform.childCount; i++)
+        {
+            GameObject go = controlsGameObject.transform.GetChild(i).gameObject;
+
+            if (go.name.ToLower().Contains("desktop"))
+                go.SetActive(SystemInfo.deviceType == DeviceType.Desktop);
+            if (go.name.ToLower().Contains("mobile"))
+                go.SetActive(SystemInfo.deviceType == DeviceType.Handheld);
+        }
+
+        if (SystemInfo.deviceType == DeviceType.Handheld)
+        {
+            punchButton.SetButtonDownCallback(PunchLine);
+            punchButton.SetButtonUpCallback(punchButton.Release);
+        }
 
         mainMenuButton.onClick.AddListener(MenuButton);
         quitButton.onClick.AddListener(QuitButton);
@@ -92,21 +107,25 @@ public class GameManagerPunchline : MonoBehaviour
 
     void Update()
     {
-        if (!gameRunning && !gameOver && Input.GetKeyDown("space"))
+        if (!gameRunning && !gameOver 
+            && (Input.GetKeyDown("space") || (SystemInfo.deviceType == DeviceType.Handheld && Input.GetMouseButtonDown(0))))
         {
             StartGame();
         }
 
         if (gameRunning && !gameOver)
         {
-            if (Input.GetKeyDown("space"))
+            if (SystemInfo.deviceType == DeviceType.Desktop)
             {
-                PunchLine();
-            }
+                if (Input.GetKeyDown("space"))
+                {
+                    PunchLine();
+                }
 
-            if (Input.GetKeyUp("space"))
-            {
-                punchButton.Release();
+                if (Input.GetKeyUp("space"))
+                {
+                    punchButton.Release();
+                }
             }
 
             if (Time.realtimeSinceStartup - lastPressed >= MAX_USER_DELAY)

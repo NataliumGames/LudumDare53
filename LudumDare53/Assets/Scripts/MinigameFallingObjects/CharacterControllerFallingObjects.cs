@@ -7,6 +7,7 @@ public class CharacterControllerFallingObjects : MonoBehaviour
     public float speed;
 
     private Rigidbody rb;
+    private FloatingJoystick floatingJoystick;
 
     public delegate void TriggerCallback(float points);
     private TriggerCallback callback;
@@ -16,8 +17,11 @@ public class CharacterControllerFallingObjects : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         rb = GetComponent<Rigidbody>();
+        floatingJoystick = FindObjectOfType<FloatingJoystick>();
+
+        // Mobile controls
+        floatingJoystick.gameObject.SetActive(SystemInfo.deviceType == DeviceType.Handheld);
     }
 
     // Update is called once per frame
@@ -25,9 +29,16 @@ public class CharacterControllerFallingObjects : MonoBehaviour
     {
         if(!gameRunning)
         {
+            float moveHorizontal;
 
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            //float moveVertical = Input.GetAxis("Vertical");
+            if (SystemInfo.deviceType == DeviceType.Desktop)
+            {
+                moveHorizontal = Input.GetAxis("Horizontal");
+            }
+            else
+            {
+                moveHorizontal = floatingJoystick.Horizontal;
+            }
 
             rb.velocity = new Vector3(moveHorizontal * speed, -5.0f, 0.0f);
         }

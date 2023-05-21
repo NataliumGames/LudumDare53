@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 
 namespace Gameplay.Managers {
     
-    public class RoomManager : MonoBehaviour {
+    public class GameManagerWallsDodging : MonoBehaviour {
 
         public float spawnDelay = 3f;
         public float increaseDifficultyTime = 10f;
@@ -22,6 +22,8 @@ namespace Gameplay.Managers {
         public GameObject stats;
 
         private GaugeBarVertical engagementBar;
+        private FloatingJoystick floatingJoystick;
+
         private bool gameRunning = false;
         private bool gameOver = false;
         private List<GameObject> instantiatedWalls;
@@ -31,6 +33,16 @@ namespace Gameplay.Managers {
             EventManager.AddListener<TimerTimeOutEvent>(OnTimerTimeoutEvent);
 
             engagementBar = FindObjectOfType<GaugeBarVertical>();
+            floatingJoystick = FindObjectOfType<FloatingJoystick>();
+            for (int i = 0; i < controls.transform.childCount; i++)
+            {
+                GameObject go = controls.transform.GetChild(i).gameObject;
+
+                if (go.name.ToLower().Contains("desktop"))
+                    go.SetActive(SystemInfo.deviceType == DeviceType.Desktop);
+                if (go.name.ToLower().Contains("mobile"))
+                    go.SetActive(SystemInfo.deviceType == DeviceType.Handheld);
+            }
         }
 
         private void Start() {
@@ -41,7 +53,8 @@ namespace Gameplay.Managers {
         }
 
         private void Update() {
-            if (!gameRunning && !gameOver && (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))) {
+            if (!gameRunning && !gameOver
+                && (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || floatingJoystick.Horizontal != 0.0f)) {
                 controls.SetActive(false);
                 stats.SetActive(true);
                 gameRunning = true;

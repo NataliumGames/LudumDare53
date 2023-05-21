@@ -30,6 +30,7 @@ public class GameManagerFallingObjects : MonoBehaviour
     private GaugeBarVertical gaugeBar;
     private CharacterControllerFallingObjects characterController;
     private CameraShake cameraShake;
+    private FloatingJoystick floatingJoystick;
 
     private TextMeshProUGUI textCurrentScore;
     private TextMeshProUGUI textLevelCompletedScoreValue;
@@ -50,6 +51,7 @@ public class GameManagerFallingObjects : MonoBehaviour
         gaugeBar = FindObjectOfType<GaugeBarVertical>();
         timer = FindObjectOfType<Timer>();
         cameraShake = FindObjectOfType<CameraShake>();
+        floatingJoystick = FindObjectOfType<FloatingJoystick>();
 
         timer.timeRemaining = gameDuration;
         gaugeBar.value = 1.0f;
@@ -65,6 +67,15 @@ public class GameManagerFallingObjects : MonoBehaviour
                 textLevelCompletedScoreValue = t;
             if (t.name == "TextEngagementValue")
                 textLevelCompletedEngagementValue = t;
+        }
+        for (int i = 0; i < controlsGameObject.transform.childCount; i++)
+        {
+            GameObject go = controlsGameObject.transform.GetChild(i).gameObject;
+
+            if (go.name.ToLower().Contains("desktop"))
+                go.SetActive(SystemInfo.deviceType == DeviceType.Desktop);
+            if (go.name.ToLower().Contains("mobile"))
+                go.SetActive(SystemInfo.deviceType == DeviceType.Handheld);
         }
 
         controlsGameObject.SetActive(true);
@@ -102,7 +113,9 @@ public class GameManagerFallingObjects : MonoBehaviour
         }
 
         // Press one movement key to start the minigame
-        if (!gameRunning && !levelCompleted && !gameOver && (Input.GetKeyDown("a") || Input.GetKeyDown("d")))
+        if (!gameRunning && !levelCompleted && !gameOver
+            && (Input.GetKeyDown("a") || Input.GetKeyDown("d")
+                || floatingJoystick.Horizontal != 0.0f))
         {
             gameRunning = true;
 

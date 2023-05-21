@@ -59,6 +59,8 @@ GameObject:
   - component: {fileID: 7722836471228021948}
   - component: {fileID: 5400697018620902843}
   - component: {fileID: 391866471243051956}
+  - component: {fileID: 8554464240171564702}
+  - component: {fileID: 8780363574800095883}
   m_Layer: 0
   m_Name: HitBoxMalus
   m_TagString: Untagged
@@ -92,8 +94,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.063281, y: 3.0432348, z: 1}
-  m_Center: {x: -8.877306, y: -0.021618713, z: 0}
+  m_Size: {x: 7.3890266, y: 3.0432348, z: 1}
+  m_Center: {x: -9.540178, y: -0.021618713, z: 0}
 --- !u!65 &391866471243051956
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -105,8 +107,34 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.065488, y: 3, z: 1}
-  m_Center: {x: 0.92204607, y: 0, z: 0}
+  m_Size: {x: 4.197962, y: 3, z: 1}
+  m_Center: {x: -0.011716723, y: 0, z: 0}
+--- !u!65 &8554464240171564702
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5574698149613839028}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.46732354, y: 3, z: 1}
+  m_Center: {x: 3.7240372, y: 0, z: 0}
+--- !u!65 &8780363574800095883
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5574698149613839028}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.7206173, y: 3, z: 1}
+  m_Center: {x: 6.7861595, y: 0, z: 0}
 --- !u!1 &7735603328480754900
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,8 +178,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 25.5, y: 3.3, z: 1}
-  m_Center: {x: 0.9, y: 0, z: 0}
+  m_Size: {x: 15.5523615, y: 3.3, z: 1}
+  m_Center: {x: -4.0738196, y: 0, z: 0}
 --- !u!1001 &2557523628480085944
 PrefabInstance:
   m_ObjectHideFlags: 0

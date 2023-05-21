@@ -13,10 +13,12 @@ namespace Gameplay {
         public float jumpForce = 10f;
         private bool isGrounded = true;
         private int score = 0;
+
         private Rigidbody _rigidbody;
         private CharacterController _characterController;
         private Engagement _engagement;
         private CameraShake _cameraShake;
+        private FloatingJoystick _floatingJoystick;
         private AudioManager _audioManager;
 
         private void Start() {
@@ -25,12 +27,14 @@ namespace Gameplay {
             _engagement = FindObjectOfType<Engagement>();
             _cameraShake = FindObjectOfType<CameraShake>();
             _audioManager = FindObjectOfType<AudioManager>();
+            _floatingJoystick = FindObjectOfType<FloatingJoystick>();
         }
 
         private void Update() {
+            /*
+            // Old code (jump test?)
             float moveHorizontal = Input.GetAxis("Horizontal");
-            
-            if(moveHorizontal != 0 && isGrounded) {
+            if (moveHorizontal != 0 && isGrounded) {
                 Vector3 movement = new Vector3(moveHorizontal, 0f, 0f);
                 _rigidbody.velocity = movement * velocity;
             }
@@ -38,10 +42,19 @@ namespace Gameplay {
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded) {
                 isGrounded = false;
                 _rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            }
+            }*/
 
-            float horizontal = Input.GetAxis("Horizontal");
-            Vector3 moveDirection = new Vector3(horizontal, 0f, 0f);
+            float moveHorizontal;
+
+            if (SystemInfo.deviceType == DeviceType.Desktop)
+            {
+                moveHorizontal = Input.GetAxis("Horizontal");
+            }
+            else
+            {
+               moveHorizontal = _floatingJoystick.Horizontal;
+            }
+            Vector3 moveDirection = new Vector3(moveHorizontal, 0f, 0f);
             _characterController.Move(moveDirection * velocity * Time.deltaTime);
         }
 
