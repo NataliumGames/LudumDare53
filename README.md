@@ -22,9 +22,11 @@
   
   <i>Punchline!</i> is a game where an amateur comedian tries to tell his best joke. You're going to play 3 minigames in quick succession: the first two are <i>setup</i> games, where you’ll have to "fight" to keep the audience as engaged as possible and score points; finally, in the third minigame, it will be time to <i><b>deliver the punchline</b></i>!
   
-  <a href="https://ldjam.com/events/ludum-dare/53/punchline">Jam Entry</a>
+  <a href="https://ldjam.com/events/ludum-dare/53/punchline">Entry</a>
   ·
-  <a href="https://ldjam.com/events/ludum-dare/53/stats">Jam Stats</a>
+  <a href="https://ldjam.com/events/ludum-dare/53/stats">Stats</a>
+  ·
+  <a href="https://ldjam.com/events/ludum-dare/53/results">Results</a>
   ·
   <a href="https://github.com/NataliumGames/LudumDare53/releases/latest">Latest Release</a>
   
