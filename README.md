@@ -16,9 +16,18 @@
   <img width="100px" src="./gfx/Punchline_Logo.png"/>
   <br/>
   <h1>Punchline!</h1>
-
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
+  
+  <i>Punchline!</i> is our entry for the <a href="https://ldjam.com/events/ludum-dare/53">Ludum Dare 53</a> game jam, about the theme <b>delivery</b>. 
+  We made the whole game using Unity game engine and we created each asset (models, sprites, vfx and sfx) by ourselves.
+  
+  <i>Punchline!</i> is a game where an amateur comedian tries to tell his best joke. You're going to play 3 minigames in quick succession: the first two are <i>setup</i> games, where you’ll have to "fight" to keep the audience as engaged as possible and score points; finally, in the third minigame, it will be time to <i><b>deliver the punchline</b></i>!
+  
+  <a href="https://ldjam.com/events/ludum-dare/53/punchline">Jam Entry</a>
+  ·
+  <a href="https://ldjam.com/events/ludum-dare/53/stats">Jam Stats</a>
+  ·
+  <a href="https://github.com/NataliumGames/LudumDare53/releases/latest">Latest Release</a>
+  
 </div>
 
 ## Demo
