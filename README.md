@@ -36,6 +36,14 @@
 
 https://github.com/NataliumGames/LudumDare53/assets/56556806/4315161c-f3bf-410b-a190-84fbeaded39b
 
+## Play the Game
+
+### Web Version
+You can play the game directly from your browser (only for desktop devices) on our <a href="https://federyeeco.itch.io/punchline">itch.io page</a>.
+
+### Download
+You can download desktop and mobile versions directly on your device, from the [latest release](https://github.com/NataliumGames/LudumDare53/releases/latest) page.
+
 <!--
 ## Roadmap
 - [x] mobile version
