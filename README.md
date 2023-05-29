@@ -28,13 +28,13 @@
   ·
   <a href="https://ldjam.com/events/ludum-dare/53/results">Results</a>
   ·
-  <a href="https://github.com/NataliumGames/LudumDare53/releases/latest">Latest Release</a>
+  <a href="https://github.com/NataliumGames/LudumDare53/releases/latest"><b>Latest Release</b></a>
   
 </div>
 
 ## Demo
 
-## Play the Game
+https://github.com/NataliumGames/LudumDare53/assets/56556806/4315161c-f3bf-410b-a190-84fbeaded39b
 
 <!--
 ## Roadmap
