@@ -72,21 +72,21 @@ You can download desktop and mobile versions directly on your device, from the [
   </tr>
   <tr align="center">
     <td>
-      <a href="https://github.com/Federicoand98"><img width="40px" src="https://img.icons8.com/color/96/000000/github.svg"/></a>
-      <a href="https://www.linkedin.com/in/federico-andrucci-5571a0202/"><img width="40px" src="https://img.icons8.com/color/96/000000/linkedin.svg"/></a>
+      <a href="https://github.com/Federicoand98"><img width="40px" src="https://img.icons8.com/color/96/000000/github.png"/></a>
+      <a href="https://www.linkedin.com/in/federico-andrucci-5571a0202/"><img width="40px" src="https://img.icons8.com/color/96/000000/linkedin.png"/></a>
     </td>
     <td>
-      <a href="https://github.com/Noesh"><img width="40px" src="https://img.icons8.com/color/96/000000/github.svg"/></a>
-      <a href="https://www.linkedin.com/in/alex-gianelli/"><img width="40px" src="https://img.icons8.com/color/96/000000/linkedin.svg"/></a>
+      <a href="https://github.com/Noesh"><img width="40px" src="https://img.icons8.com/color/96/000000/github.png"/></a>
+      <a href="https://www.linkedin.com/in/alex-gianelli/"><img width="40px" src="https://img.icons8.com/color/96/000000/linkedin.png"/></a>
     </td>
     <td>
-      <a href="https://github.com/Stikinit"><img width="40px" src="https://img.icons8.com/color/96/000000/github.svg"/></a>
-      <a href="https://www.linkedin.com/in/gabriele-marconi-637881270/"><img width="40px" src="https://img.icons8.com/color/96/000000/linkedin.svg"/></a>
+      <a href="https://github.com/Stikinit"><img width="40px" src="https://img.icons8.com/color/96/000000/github.png"/></a>
+      <a href="https://www.linkedin.com/in/gabriele-marconi-637881270/"><img width="40px" src="https://img.icons8.com/color/96/000000/linkedin.png"/></a>
     </td>
     <td>
-      <a href="https://github.com/mikyll"><img width="40px" src="https://img.icons8.com/color/96/000000/github.svg"/></a>
-      <a href="https://www.linkedin.com/in/michele-righi/"><img width="40px" src="https://img.icons8.com/color/96/000000/linkedin.svg"/></a>
-      <a href="https://stackoverflow.com/users/19544859/mikyll98"><img width="40px" src="https://img.icons8.com/color/96/000000/stackoverflow.svg"/></a>
+      <a href="https://github.com/mikyll"><img width="40px" src="https://img.icons8.com/color/96/000000/github.png"/></a>
+      <a href="https://www.linkedin.com/in/michele-righi/"><img width="40px" src="https://img.icons8.com/color/96/000000/linkedin.png"/></a>
+      <a href="https://stackoverflow.com/users/19544859/mikyll98"><img width="40px" src="https://img.icons8.com/color/96/000000/stackoverflow.png"/></a>
     </td>
   </tr>
 </table>
