@@ -103,5 +103,5 @@ You can download desktop and mobile versions directly on your device, from the [
 [license-url]: https://github.com/NataliumGames/LudumDare53/blob/main/LICENSE
 [issues-shield]: https://img.shields.io/github/issues/NataliumGames/LudumDare53
 [issues-url]: https://github.com/NataliumGames/LudumDare53/issues
-[stars-shield]: https://custom-icon-badges.herokuapp.com/github/stars/NataliumGames/LudumDare53?logo=star&logoColor=yellow
+[stars-shield]: https://custom-icon-badges.herokuapp.com/github/stars/NataliumGames/LudumDare53?logo=star&logoColor=yellow&style=flat
 [stars-url]: https://github.com/NataliumGames/LudumDare53/stargazers
