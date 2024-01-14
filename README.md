@@ -93,7 +93,7 @@ You can download desktop and mobile versions directly on your device, from the [
 
 [unity-shield]: https://img.shields.io/badge/Unity-000000?logo=unity&logoColor=white
 [unity-url]: https://unity.com/
-[csharp-shield]: https://img.shields.io/badge/C%23-%23239120.svg?logo=c-sharp&logoColor=white
+[csharp-shield]: https://img.shields.io/badge/C%23-%23239120.svg?logo=csharp&logoColor=white
 [csharp-url]: https://docs.microsoft.com/en-us/dotnet/csharp/
 [vs-shield]: https://img.shields.io/badge/Visual%20Studio-5C2D91.svg?logo=visual-studio-code&logoColor=white
 [vs-url]: https://visualstudio.microsoft.com/
