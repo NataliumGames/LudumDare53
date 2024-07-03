@@ -76,7 +76,7 @@ You can download desktop and mobile versions directly on your device, from the [
       <a href="https://www.linkedin.com/in/federico-andrucci-5571a0202/"><img width="40px" src="https://img.icons8.com/color/96/000000/linkedin.png"/></a>
     </td>
     <td>
-      <a href="https://github.com/Noesh"><img width="40px" src="https://img.icons8.com/color/96/000000/github.png"/></a>
+      <a href="https://github.com/AlexGianelli98"><img width="40px" src="https://img.icons8.com/color/96/000000/github.png"/></a>
       <a href="https://www.linkedin.com/in/alex-gianelli/"><img width="40px" src="https://img.icons8.com/color/96/000000/linkedin.png"/></a>
     </td>
     <td>
